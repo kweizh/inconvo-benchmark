@@ -1,0 +1,15 @@
+name = "off_state_for_sensitive_fields"
+
+[environment]
+# No special environment vars needed besides DATABASE_URL which is required by the user
+DATABASE_URL = "postgresql://postgres:postgres@localhost:5432/postgres"
+
+[evaluation]
+# Tests to run
+test_initial_state = "python3 bootstrap/test_initial_state.py"
+test_final_state = "pytest tests/test_final_state.py"
+
+[dependencies]
+# List dependencies if any, though Dockerfile handles most
+npm = ["inconvo"]
+python = ["pytest", "PyYAML", "psycopg2-binary"]

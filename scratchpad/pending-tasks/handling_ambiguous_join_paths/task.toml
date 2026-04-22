@@ -1,0 +1,25 @@
+name = "handling_ambiguous_join_paths"
+description = "Handle ambiguous join paths by explicitly defining a relationship in Inconvo's semantic model."
+
+[environment]
+# Require DATABASE_URL in the environment
+# In Harbor, this might be provided by a linked postgres service
+# For this task, we assume the evaluator provides it.
+DATABASE_URL = "postgres://postgres:postgres@localhost:5432/postgres"
+
+[setup]
+# Commands to run before the task starts
+commands = [
+    "psql $DATABASE_URL -f /home/user/init_db.sql"
+]
+
+[evaluation]
+# Commands to run to verify the task
+test_commands = [
+    "pytest /home/user/tests/test_final_state.py"
+]
+
+[metadata]
+library = "inconvo"
+complexity = "multi-step sequential commands sets"
+category = "semantic-layer"

@@ -1,0 +1,10 @@
+name = "querying_top_products"
+description = "Configure the Inconvo semantic model for an e-commerce database to enable querying for top products by summing line item quantities."
+category = "semantic-layer"
+
+[environment]
+dockerfile = "environment/Dockerfile"
+env = { DATABASE_URL = "postgresql://inconvo:inconvo@localhost:5432/inconvo_db" }
+
+[evaluation]
+# No specific evaluation script needed as we use pytest on tests/test_final_state.py

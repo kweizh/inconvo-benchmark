@@ -1,0 +1,14 @@
+name = "api_integration_express"
+description = "Integrate Inconvo into an Express.js application with PostgreSQL."
+category = "API Integration"
+complexity = 3
+
+[env]
+DATABASE_URL = { type = "string", description = "PostgreSQL connection string" }
+
+[validation]
+initial_state_test = "bootstrap/test_initial_state.py"
+final_state_test = "tests/test_final_state.py"
+
+[docker]
+dockerfile = "environment/Dockerfile"

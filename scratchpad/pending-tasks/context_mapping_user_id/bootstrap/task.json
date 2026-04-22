@@ -1,0 +1,12 @@
+{
+  "name": "context_mapping_user_id",
+  "description": "Implement a security policy on the `sales` table within the Inconvo semantic model (`inconvo.yaml`). The policy must automatically filter all generated queries by matching the `organisation_id` column to the `organisation_id` value passed in via `userContext`. The filtering policy must be applied at the semantic model level. Ensure that any query on the `sales` table strictly expects `organisation_id` as the context key.",
+  "ground_truth": {
+    "inconvo_yaml_path": "inconvo.yaml",
+    "expected_filter": {
+      "table": "sales",
+      "column": "organisation_id",
+      "context_key": "organisation_id"
+    }
+  }
+}
