@@ -1,0 +1,5 @@
+{
+  "task_name": "inconvo_cli_version_check",
+  "task_description": "# Inconvo CLI Version Check\n\n## Background\nYou have the Inconvo CLI installed in the environment. Your task is to check the version of the installed CLI.\n\n## Requirements\n- Check the installed version of the `inconvo` CLI.\n- Save the version output to a file named `version.txt` in the project directory.\n\n## Implementation Guide\n1. Run the command to get the `inconvo` version (usually `inconvo --version` or `inconvo -V`).\n2. Redirect the output to `/home/user/project/version.txt`.\n\n## Constraints\n- Project path: /home/user/project\n- Log file: /home/user/project/version.txt\n\n## Integrations\nNone",
+  "truth": "# Verification Plan\n\n## Setup\n1. `cd /home/user/project`\n\n## Verification Steps\n1. Verify that the file `/home/user/project/version.txt` exists.\n2. Verify that the content of `/home/user/project/version.txt` matches the installed version of `inconvo`.\n\n## Expected Results\n- The file `/home/user/project/version.txt` exists.\n- The file contains a version string (e.g., matching the output of `inconvo --version`)."
+}
