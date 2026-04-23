@@ -1,0 +1,9 @@
+tables:
+  customers:
+    state: Queryable
+    fields:
+      id: { state: On, type: dimension }
+      full_name:
+        state: On
+        type: dimension
+        synonyms: ["client name", "purchaser"]

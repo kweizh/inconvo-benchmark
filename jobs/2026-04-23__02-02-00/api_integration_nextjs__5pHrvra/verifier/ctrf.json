@@ -1,0 +1,48 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 3,
+            "passed": 2,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1776881987.514448,
+            "stop": 1776881989.722723
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_api_route_configured_correctly",
+                "status": "passed",
+                "duration": 0.0008513570064678788,
+                "start": 1776881987.5394728,
+                "stop": 1776881987.5407526,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_page_uses_use_chat",
+                "status": "passed",
+                "duration": 0.0007584960549138486,
+                "start": 1776881987.5410857,
+                "stop": 1776881987.5420828,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_browser_ui",
+                "status": "failed",
+                "duration": 2.1528816940262914,
+                "start": 1776881987.54233,
+                "stop": 1776881989.722434,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "@pytest.fixture(scope=\"module\")\n    def start_app():\n        # Build the app first\n        build_process = subprocess.run(\n            [\"npm\", \"run\", \"build\"],\n            cwd=PROJECT_DIR,\n            stdout=subprocess.PIPE,\n            stderr=subprocess.PIPE,\n        )\n        if build_process.returncode != 0:\n>           pytest.fail(f\"Build failed: {build_process.stderr.decode('utf-8')}\")\nE           Failed: Build failed: \u2a2f Another next build process is already running.\nE           \nE             This could be:\nE             - A next build still in progress\nE             - A previous build that didn't exit cleanly\n\ntests/test_final_state.py:29: Failed"
+            }
+        ]
+    }
+}

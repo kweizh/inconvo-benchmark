@@ -1,0 +1,11 @@
+tables:
+  users:
+    state: Queryable
+    fields:
+      id: { state: On }
+      password_hash: { state: Off }
+  internal_logs:
+    state: Off
+    fields:
+      id: { state: On }
+      message: { state: On }

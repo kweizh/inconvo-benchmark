@@ -1,0 +1,68 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 4,
+            "passed": 0,
+            "failed": 4,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1776881803.5999932,
+            "stop": 1776881803.813295
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_gross_margin_defined",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0009901950252242386,
+                "start": 1776881803.6691835,
+                "stop": 1776881803.6929772,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_gross_margin_defined():\n        yaml_path = os.path.join(PROJECT_DIR, \"inconvo.yaml\")\n        with open(yaml_path, \"r\") as f:\n            content = f.read()\n>       assert \"gross_margin\" in content, \"Expected 'gross_margin' to be defined in inconvo.yaml.\"\nE       AssertionError: Expected 'gross_margin' to be defined in inconvo.yaml.\nE       assert 'gross_margin' in 'tables:\\n  sales:\\n    state: Queryable\\n    fields:\\n      id: { state: On }\\n      revenue: { state: On, type: measure }\\n      cost: { state: On, type: measure }\\n'\n\ntests/test_final_state.py:11: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_gross_margin_expression",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0007594730122946203,
+                "start": 1776881803.6932886,
+                "stop": 1776881803.6962264,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_gross_margin_expression():\n        yaml_path = os.path.join(PROJECT_DIR, \"inconvo.yaml\")\n        with open(yaml_path, \"r\") as f:\n            content = f.read()\n>       assert \"revenue - cost\" in content, \"Expected 'revenue - cost' expression in inconvo.yaml.\"\nE       AssertionError: Expected 'revenue - cost' expression in inconvo.yaml.\nE       assert 'revenue - cost' in 'tables:\\n  sales:\\n    state: Queryable\\n    fields:\\n      id: { state: On }\\n      revenue: { state: On, type: measure }\\n      cost: { state: On, type: measure }\\n'\n\ntests/test_final_state.py:17: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_gross_margin_unit",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0006920640007592738,
+                "start": 1776881803.696482,
+                "stop": 1776881803.7008462,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_gross_margin_unit():\n        yaml_path = os.path.join(PROJECT_DIR, \"inconvo.yaml\")\n        with open(yaml_path, \"r\") as f:\n            content = f.read()\n>       assert \"USD\" in content, \"Expected 'USD' unit in inconvo.yaml.\"\nE       AssertionError: Expected 'USD' unit in inconvo.yaml.\nE       assert 'USD' in 'tables:\\n  sales:\\n    state: Queryable\\n    fields:\\n      id: { state: On }\\n      revenue: { state: On, type: measure }\\n      cost: { state: On, type: measure }\\n'\n\ntests/test_final_state.py:23: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_database_connection_and_sales_table",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.10087516799103469,
+                "start": 1776881803.7011156,
+                "stop": 1776881803.8130436,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_database_connection_and_sales_table():\n        db_url = os.environ.get(\"DATABASE_URL\")\n        if db_url:\n            result = subprocess.run(\n                [\"psql\", db_url, \"-c\", \"SELECT count(*) FROM sales;\"],\n                capture_output=True, text=True\n            )\n>           assert result.returncode == 0, f\"Failed to query 'sales' table: {result.stderr}\"\nE           AssertionError: Failed to query 'sales' table: psql: error: connection to server at \"localhost\" (::1), port 5432 failed: Connection refused\nE             \tIs the server running on that host and accepting TCP/IP connections?\nE             connection to server at \"localhost\" (127.0.0.1), port 5432 failed: Connection refused\nE             \tIs the server running on that host and accepting TCP/IP connections?\nE             \nE           assert 2 == 0\nE            +  where 2 = CompletedProcess(args=['psql', 'postgresql://postgres:postgres@localhost:5432/inconvo', '-c', 'SELECT count(*) FROM sa....0.1), port 5432 failed: Connection refused\\n\\tIs the server running on that host and accepting TCP/IP connections?\\n').returncode\n\ntests/test_final_state.py:32: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

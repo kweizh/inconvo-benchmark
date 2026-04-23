@@ -1,0 +1,81 @@
+downloading uv 0.9.7 x86_64-unknown-linux-gnu
+no checksums to verify
+installing to /root/.local/bin
+  uv
+  uvx
+everything's installed!
+
+To add $HOME/.local/bin to your PATH, either restart your shell or run:
+
+    source $HOME/.local/bin/env (sh, bash, zsh)
+    source $HOME/.local/bin/env.fish (fish)
+Downloading pygments (1.2MiB)
+ Downloading pygments
+Installed 7 packages in 163ms
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 4 items
+
+tests/test_final_state.py FFFF                                           [100%]
+
+=================================== FAILURES ===================================
+__________________________ test_gross_margin_defined ___________________________
+
+    def test_gross_margin_defined():
+        yaml_path = os.path.join(PROJECT_DIR, "inconvo.yaml")
+        with open(yaml_path, "r") as f:
+            content = f.read()
+>       assert "gross_margin" in content, "Expected 'gross_margin' to be defined in inconvo.yaml."
+E       AssertionError: Expected 'gross_margin' to be defined in inconvo.yaml.
+E       assert 'gross_margin' in 'tables:\n  sales:\n    state: Queryable\n    fields:\n      id: { state: On }\n      revenue: { state: On, type: measure }\n      cost: { state: On, type: measure }\n'
+
+tests/test_final_state.py:11: AssertionError
+_________________________ test_gross_margin_expression _________________________
+
+    def test_gross_margin_expression():
+        yaml_path = os.path.join(PROJECT_DIR, "inconvo.yaml")
+        with open(yaml_path, "r") as f:
+            content = f.read()
+>       assert "revenue - cost" in content, "Expected 'revenue - cost' expression in inconvo.yaml."
+E       AssertionError: Expected 'revenue - cost' expression in inconvo.yaml.
+E       assert 'revenue - cost' in 'tables:\n  sales:\n    state: Queryable\n    fields:\n      id: { state: On }\n      revenue: { state: On, type: measure }\n      cost: { state: On, type: measure }\n'
+
+tests/test_final_state.py:17: AssertionError
+____________________________ test_gross_margin_unit ____________________________
+
+    def test_gross_margin_unit():
+        yaml_path = os.path.join(PROJECT_DIR, "inconvo.yaml")
+        with open(yaml_path, "r") as f:
+            content = f.read()
+>       assert "USD" in content, "Expected 'USD' unit in inconvo.yaml."
+E       AssertionError: Expected 'USD' unit in inconvo.yaml.
+E       assert 'USD' in 'tables:\n  sales:\n    state: Queryable\n    fields:\n      id: { state: On }\n      revenue: { state: On, type: measure }\n      cost: { state: On, type: measure }\n'
+
+tests/test_final_state.py:23: AssertionError
+___________________ test_database_connection_and_sales_table ___________________
+
+    def test_database_connection_and_sales_table():
+        db_url = os.environ.get("DATABASE_URL")
+        if db_url:
+            result = subprocess.run(
+                ["psql", db_url, "-c", "SELECT count(*) FROM sales;"],
+                capture_output=True, text=True
+            )
+>           assert result.returncode == 0, f"Failed to query 'sales' table: {result.stderr}"
+E           AssertionError: Failed to query 'sales' table: psql: error: connection to server at "localhost" (::1), port 5432 failed: Connection refused
+E             	Is the server running on that host and accepting TCP/IP connections?
+E             connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused
+E             	Is the server running on that host and accepting TCP/IP connections?
+E             
+E           assert 2 == 0
+E            +  where 2 = CompletedProcess(args=['psql', 'postgresql://postgres:postgres@localhost:5432/inconvo', '-c', 'SELECT count(*) FROM sa....0.1), port 5432 failed: Connection refused\n\tIs the server running on that host and accepting TCP/IP connections?\n').returncode
+
+tests/test_final_state.py:32: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_final_state.py::test_gross_margin_defined - AssertionError:...
+FAILED tests/test_final_state.py::test_gross_margin_expression - AssertionErr...
+FAILED tests/test_final_state.py::test_gross_margin_unit - AssertionError: Ex...
+FAILED tests/test_final_state.py::test_database_connection_and_sales_table - ...
+============================== 4 failed in 0.23s ===============================

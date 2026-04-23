@@ -1,0 +1,32 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 1,
+            "passed": 0,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1776882015.5633888,
+            "stop": 1776882015.6316233
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_script_handles_error",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0419185699429363,
+                "start": 1776882015.5723958,
+                "stop": 1776882015.6313941,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_script_handles_error():\n        # Setup mock @inconvoai/node\n        mock_dir = os.path.join(PROJECT_DIR, \"node_modules\", \"@inconvoai\", \"node\")\n        os.makedirs(mock_dir, exist_ok=True)\n    \n        package_json = os.path.join(mock_dir, \"package.json\")\n        with open(package_json, \"w\") as f:\n            f.write('{\"name\": \"@inconvoai/node\", \"main\": \"index.js\"}')\n    \n        index_js = os.path.join(mock_dir, \"index.js\")\n        with open(index_js, \"w\") as f:\n            f.write('''\n    class BadRequestError extends Error {\n      constructor(message) {\n        super(message);\n        this.name = 'BadRequestError';\n      }\n    }\n    \n    class Inconvo {\n      constructor(config) {}\n      get agents() {\n        return {\n          conversations: {\n            create: async (agentId, options) => {\n              if (options && options.userContext && options.userContext.invalidKey) {\n                throw new BadRequestError(\"400 Invalid userContext\");\n              }\n              throw new Error(\"Unexpected error\");\n            }\n          }\n        };\n      }\n    }\n    \n    module.exports = Inconvo;\n    module.exports.default = Inconvo;\n    ''')\n    \n        # Run the script\n        env = os.environ.copy()\n        env[\"INCONVO_API_KEY\"] = \"mock_key\"\n        env[\"INCONVO_AGENT_ID\"] = \"mock_agent\"\n    \n        result = subprocess.run(\n            [\"node\", \"index.js\"],\n            cwd=PROJECT_DIR,\n            capture_output=True,\n            text=True,\n            env=env\n        )\n    \n>       assert result.returncode == 0, f\"Script crashed or threw an error: {result.stderr}\\\\nStdout: {result.stdout}\"\nE       AssertionError: Script crashed or threw an error: file:///home/user/inconvo-project/index.js:1\nE         import { Inconvo } from '@inconvoai/node';\nE                  ^^^^^^^\nE         SyntaxError: Named export 'Inconvo' not found. The requested module '@inconvoai/node' is a CommonJS module, which may not support all module.exports as named exports.\nE         CommonJS modules can always be imported via the default export, for example using:\nE         \nE         import pkg from '@inconvoai/node';\nE         const { Inconvo } = pkg;\nE         \nE             at #asyncInstantiate (node:internal/modules/esm/module_job:319:21)\nE             at async ModuleJob.run (node:internal/modules/esm/module_job:422:5)\nE             at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\nE             at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\nE         \nE         Node.js v24.14.1\nE         \\nStdout: \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['node', 'index.js'], returncode=1, stdout='', stderr=\"file:///home/user/inconvo-project/index.j...er:661:26)\\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\\n\\nNode.js v24.14.1\\n\").returncode\n\ntests/test_final_state.py:59: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}
