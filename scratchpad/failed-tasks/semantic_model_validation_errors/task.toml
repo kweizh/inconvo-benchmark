@@ -1,6 +1,0 @@
-[environment]
-image = "harbor-inconvo-semantic-model-validation-errors"
-build_context = "environment"
-
-[verifier]
-dependencies = ["pyyaml"]

@@ -1,7 +1,0 @@
-{
-  "library_name": "inconvo",
-  "complexity_level": "multi-step sequential commands sets",
-  "deep_research_path": "../../plan.md",
-  "task_name": "complex_metric_yoy_growth",
-  "output_dir": "../../scratchpad/pending-tasks"
-}

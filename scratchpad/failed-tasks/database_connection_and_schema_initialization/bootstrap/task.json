@@ -1,6 +1,0 @@
-{
-  "name": "database_connection_and_schema_initialization",
-  "description": "Initialize Inconvo by connecting to a PostgreSQL database and syncing the schema. You must use the Inconvo CLI to sync the connection and pull the semantic model locally into the `.inconvo/` directory. The `DATABASE_URL` environment variable is already set for you.",
-  "ground_truth": "The `.inconvo/` directory should contain `inconvo.yaml` and potentially other configuration files reflecting the database schema (e.g., `tables/` directory). The commands `npx inconvo connection sync` and `npx inconvo model pull` must be executed successfully.",
-  "complexity": "simple set of 2-5 commands"
-}
