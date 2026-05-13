@@ -1,0 +1,7 @@
+{
+  "library_name": "inconvo",
+  "complexity_level": "multi-step sequential commands sets",
+  "deep_research_path": "../../plan.md",
+  "task_name": "inconvo_init_existing_schema",
+  "output_dir": "../../scratchpad/pending-tasks"
+}

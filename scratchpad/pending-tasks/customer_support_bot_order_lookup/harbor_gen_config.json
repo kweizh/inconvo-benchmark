@@ -1,0 +1,7 @@
+{
+  "library_name": "inconvo",
+  "complexity_level": "multi-step sequential commands sets",
+  "deep_research_path": "../../plan.md",
+  "task_name": "customer_support_bot_order_lookup",
+  "output_dir": "../../scratchpad/pending-tasks"
+}
