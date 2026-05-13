@@ -13,7 +13,7 @@ def test_index_js_exists():
 def test_index_js_contents():
     with open(INDEX_JS, "r") as f:
         content = f.read()
-    
+
     assert "conversations.create" in content, "Expected client.conversations.create to be called in index.js"
     assert "tenant_456" in content, "Expected tenant_456 context to be used in index.js"
     assert "@inconvoai/node" in content, "Expected @inconvoai/node to be imported in index.js"
@@ -43,8 +43,10 @@ def test_output_json_exists_and_valid():
             data = json.load(f)
         except json.JSONDecodeError:
             pytest.fail("output.json is not valid JSON")
-    
-    # Since we used dummy credentials, it might be an error or a conversation object
+
+    if isinstance(data, dict):
+        assert data.get("error") is not True, f"output.json indicates an error: {data}"
+
     content_str = json.dumps(data).lower()
-    assert "error" in content_str or "message" in content_str or "id" in content_str, \
+    assert "message" in content_str or "id" in content_str, \
         f"output.json doesn't seem to contain expected API response. Content: {data}"

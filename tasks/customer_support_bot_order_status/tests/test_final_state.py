@@ -36,7 +36,10 @@ def test_response_json_exists_and_valid():
         except json.JSONDecodeError:
             pytest.fail("response.json is not valid JSON")
 
+    if isinstance(data, dict):
+        assert data.get("error") is not True, f"output.json indicates an error: {data}"
+
     # Check if it contains some data structure
     content_str = json.dumps(data).lower()
-    assert "table" in content_str or "data" in content_str or "rows" in content_str or "text" in content_str, \
+    assert "table" in content_str or "data" in content_str or "rows" in content_str or "text" in content_str or "status" in content_str, \
         f"response.json does not seem to contain expected query results. Content: {data}"

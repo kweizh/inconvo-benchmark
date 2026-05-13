@@ -15,7 +15,7 @@ def test_inconvo_yaml_exists_and_contains_tables():
 
     assert "orders" in content, "Expected 'orders' table definition in inconvo.yaml"
     assert "customers" in content, "Expected 'customers' table definition in inconvo.yaml"
-    
+
     # We also check that customers is Joinable
     assert "state: Joinable" in content, "Expected customers table to have 'state: Joinable'"
 
@@ -37,6 +37,9 @@ def test_response_json_exists_and_valid():
             data = json.load(f)
         except json.JSONDecodeError:
             pytest.fail("response.json is not valid JSON")
+
+    if isinstance(data, dict):
+        assert data.get("error") is not True, f"output.json indicates an error: {data}"
 
     content_str = json.dumps(data).lower()
     assert "table" in content_str or "data" in content_str or "rows" in content_str, \
