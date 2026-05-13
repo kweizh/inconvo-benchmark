@@ -2,10 +2,11 @@
 * **Description**: Inconvo is an open-source platform for building reliable, customer-facing "chat-with-data" agents. Unlike traditional AI-to-SQL approaches, Inconvo uses a **Semantic Layer** to map natural language questions into structured query plans that are validated against a predefined schema before being executed as SQL.
 * **Ecosystem Role**: It acts as a middleware between LLMs and production databases, providing a safe, multi-tenant, and deterministic way to expose analytics to end users. It integrates seamlessly with the Vercel AI SDK and Node.js backends.
 * **Project Setup**:
-    1.  Install the CLI: `npm install -g inconvo` or use `npx inconvo@latest dev`.
-    2.  Initialize a project: `inconvo init` (creates a default configuration and semantic model).
-    3.  Configure the database: Set the `DATABASE_URL` environment variable (e.g., in a `.env` file).
-    4.  Run the development server: `inconvo dev` (starts a local server that serves the agent and provides a preview interface).
+    1.  **Inconvo Cloud Setup**: Create an account on Inconvo Cloud (app.inconvo.ai), create a Data Agent, and obtain your Agent ID and API Key.
+    2.  **Environment Variables**: You MUST set `INCONVO_API_KEY`, `INCONVO_AGENT_ID`, and the database URL (e.g., `DATABASE_URL` or `INCONVO_DB_URL`) in your `.env` file. These are explicitly required for later usage in generation tasks and connecting to the cloud agent.
+    3.  **Database Connection**: Connect your PostgreSQL database in the Inconvo app (providing Host, Port, Username, Password, and Database Name).
+    4.  **SDK & Semantic Layer**: Install the SDK (`npm i @inconvoai/node dotenv`). Use the Inconvo CLI/skills (`npx skills add inconvoai/inconvo` and `npx inconvo model pull`) to pull and update your semantic model locally.
+    5.  **Run**: Write code using `@inconvoai/node` to call your Data Agent using the configured environment variables.
 ### 2. Core Primitives & APIs
 *   **Semantic Model (`inconvo.yaml`)**: The core configuration file where you define the "contract" between the AI and your data.
     *   **Tables**: Define which tables are `Queryable` (can be asked about), `Joinable` (only for joins), or `Off`.
@@ -60,3 +61,52 @@ relations:
 5.  [NPM: @inconvoai/node](https://www.npmjs.com/package/@inconvoai/node): SDK usage and installation details.
 6.  [NPM: inconvo (CLI)](https://www.npmjs.com/package/inconvo): CLI versioning and local development commands.
 7.  [Y Combinator: Inconvo](https://www.ycombinator.com/companies/inconvo): Summary of the platform's core value proposition and architecture.
+
+### 7. References
+
+When writing `tests/test_final_state.py`, you should NEVER generate final tests that only validate the `inconvo.yaml` config. You SHOULD always run the script and validate the response and database status if necessary. Take the following script as a reference example:
+
+```python
+import os
+import subprocess
+import json
+import pytest
+
+PROJECT_DIR = "/home/user/inconvo-app"
+RESPONSE_FILE = os.path.join(PROJECT_DIR, "response.json")
+
+def test_inconvo_yaml_exists_and_contains_tables():
+    yaml_path = os.path.join(PROJECT_DIR, "inconvo.yaml")
+    assert os.path.isfile(yaml_path), f"inconvo.yaml not found at {yaml_path}"
+
+    with open(yaml_path, "r") as f:
+        content = f.read()
+
+    assert "orders" in content, "Expected 'orders' table definition in inconvo.yaml"
+    assert "products" in content, "Expected 'products' table definition in inconvo.yaml"
+
+def test_run_index_js():
+    # Run the script that interacts with the SDK
+    result = subprocess.run(
+        ["node", "index.js"],
+        cwd=PROJECT_DIR,
+        capture_output=True,
+        text=True
+    )
+    assert result.returncode == 0, f"'node index.js' failed with output: {result.stderr}\n{result.stdout}"
+
+def test_response_json_exists_and_valid():
+    assert os.path.isfile(RESPONSE_FILE), f"response.json not found at {RESPONSE_FILE}"
+
+    with open(RESPONSE_FILE, "r") as f:
+        try:
+            data = json.load(f)
+        except json.JSONDecodeError:
+            pytest.fail("response.json is not valid JSON")
+
+    # Check if it contains some table structure
+    # The actual structure depends on the SDK, but we expect some kind of table/data response
+    content_str = json.dumps(data).lower()
+    assert "table" in content_str or "data" in content_str or "rows" in content_str, \
+        f"response.json does not seem to contain table data. Content: {data}"
+```
