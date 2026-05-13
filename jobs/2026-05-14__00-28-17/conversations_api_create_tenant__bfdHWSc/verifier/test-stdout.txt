@@ -1,0 +1,51 @@
+downloading uv 0.9.7 x86_64-unknown-linux-gnu
+no checksums to verify
+installing to /root/.local/bin
+  uv
+  uvx
+everything's installed!
+
+To add $HOME/.local/bin to your PATH, either restart your shell or run:
+
+    source $HOME/.local/bin/env (sh, bash, zsh)
+    source $HOME/.local/bin/env.fish (fish)
+Downloading pygments (1.2MiB)
+ Downloading pygments
+Installed 7 packages in 34ms
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 4 items
+
+tests/test_final_state.py ...F                                           [100%]
+
+=================================== FAILURES ===================================
+______________________ test_output_json_exists_and_valid _______________________
+
+    def test_output_json_exists_and_valid():
+        assert os.path.isfile(OUTPUT_JSON), f"output.json not found at {OUTPUT_JSON}"
+    
+        with open(OUTPUT_JSON, "r") as f:
+            try:
+                data = json.load(f)
+            except json.JSONDecodeError:
+                pytest.fail("output.json is not valid JSON")
+    
+        if isinstance(data, dict):
+            assert data.get("error") is not True, f"output.json indicates an error: {data}"
+    
+        content_str = json.dumps(data).lower()
+>       assert "message" in content_str or "id" in content_str, \
+            f"output.json doesn't seem to contain expected API response. Content: {data}"
+E       AssertionError: output.json doesn't seem to contain expected API response. Content: {'error': "Cannot read properties of undefined (reading 'create')"}
+E       assert ('message' in '{"error": "cannot read properties of undefined (reading \'create\')"}' or 'id' in '{"error": "cannot read properties of undefined (reading \'create\')"}')
+
+tests/test_final_state.py:51: AssertionError
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED tests/test_final_state.py::test_index_js_exists
+PASSED tests/test_final_state.py::test_index_js_contents
+PASSED tests/test_final_state.py::test_run_index_js
+FAILED tests/test_final_state.py::test_output_json_exists_and_valid - Asserti...
+========================= 1 failed, 3 passed in 0.09s ==========================

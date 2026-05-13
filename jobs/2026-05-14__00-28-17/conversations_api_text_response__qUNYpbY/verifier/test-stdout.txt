@@ -1,0 +1,85 @@
+downloading uv 0.9.7 x86_64-unknown-linux-gnu
+no checksums to verify
+installing to /root/.local/bin
+  uv
+  uvx
+everything's installed!
+
+To add $HOME/.local/bin to your PATH, either restart your shell or run:
+
+    source $HOME/.local/bin/env (sh, bash, zsh)
+    source $HOME/.local/bin/env.fish (fish)
+Downloading pygments (1.2MiB)
+ Downloading pygments
+Installed 7 packages in 70ms
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 3 items
+
+tests/test_final_state.py FFF                                            [100%]
+
+=================================== FAILURES ===================================
+_____________________________ test_index_js_exists _____________________________
+
+    def test_index_js_exists():
+>       assert os.path.isfile(INDEX_FILE), f"index.js not found at {INDEX_FILE}"
+E       AssertionError: index.js not found at /home/user/inconvo-app/index.js
+E       assert False
+E        +  where False = <function isfile at 0x71fe4ce5c2c0>('/home/user/inconvo-app/index.js')
+E        +    where <function isfile at 0x71fe4ce5c2c0> = <module 'posixpath' (frozen)>.isfile
+E        +      where <module 'posixpath' (frozen)> = os.path
+
+tests/test_final_state.py:11: AssertionError
+______________________________ test_run_index_js _______________________________
+
+    def test_run_index_js():
+        # Run the script that interacts with the SDK
+        result = subprocess.run(
+            ["node", "index.js"],
+            cwd=PROJECT_DIR,
+            capture_output=True,
+            text=True
+        )
+>       assert result.returncode == 0, f"'node index.js' failed with output: {result.stderr}\n{result.stdout}"
+E       AssertionError: 'node index.js' failed with output: node:internal/modules/cjs/loader:1479
+E           throw err;
+E           ^
+E         
+E         Error: Cannot find module '/home/user/inconvo-app/index.js'
+E             at Module._resolveFilename (node:internal/modules/cjs/loader:1476:15)
+E             at wrapResolveFilename (node:internal/modules/cjs/loader:1049:27)
+E             at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1073:10)
+E             at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1094:12)
+E             at Module._load (node:internal/modules/cjs/loader:1262:25)
+E             at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+E             at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+E             at node:internal/main/run_main_module:33:47 {
+E           code: 'MODULE_NOT_FOUND',
+E           requireStack: []
+E         }
+E         
+E         Node.js v24.15.0
+E         
+E         
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['node', 'index.js'], returncode=1, stdout='', stderr="node:internal/modules/cjs/loader:1479\n  ... node:internal/main/run_main_module:33:47 {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: []\n}\n\nNode.js v24.15.0\n").returncode
+
+tests/test_final_state.py:21: AssertionError
+_____________________ test_response_json_exists_and_valid ______________________
+
+    def test_response_json_exists_and_valid():
+>       assert os.path.isfile(RESPONSE_FILE), f"response.json not found at {RESPONSE_FILE}"
+E       AssertionError: response.json not found at /home/user/inconvo-app/response.json
+E       assert False
+E        +  where False = <function isfile at 0x71fe4ce5c2c0>('/home/user/inconvo-app/response.json')
+E        +    where <function isfile at 0x71fe4ce5c2c0> = <module 'posixpath' (frozen)>.isfile
+E        +      where <module 'posixpath' (frozen)> = os.path
+
+tests/test_final_state.py:24: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_final_state.py::test_index_js_exists - AssertionError: inde...
+FAILED tests/test_final_state.py::test_run_index_js - AssertionError: 'node i...
+FAILED tests/test_final_state.py::test_response_json_exists_and_valid - Asser...
+============================== 3 failed in 0.09s ===============================

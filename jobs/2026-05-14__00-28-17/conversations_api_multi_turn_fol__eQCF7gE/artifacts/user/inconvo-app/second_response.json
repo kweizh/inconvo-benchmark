@@ -1,0 +1,6 @@
+{
+  "id": "21ab1b15-1274-4787-95b7-c6da5304b9c1",
+  "conversationId": "convo_def9b7cb-0eae-44e6-bfee-e30c1cc730fc",
+  "type": "text",
+  "message": "Sorry — I can’t filter customers by “located in the United States” with the data available here. The orders data I can access only includes order id, user_id, and amount, and it doesn’t have customer location/country fields to apply that filter."
+}

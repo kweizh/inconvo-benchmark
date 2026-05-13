@@ -1,0 +1,47 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 3,
+            "passed": 3,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1778691179.6493413,
+            "stop": 1778691194.7574313
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_inconvo_yaml_exists_and_contains_filter",
+                "status": "passed",
+                "duration": 0.000521952286362648,
+                "start": 1778691179.6702466,
+                "stop": 1778691179.6709743,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_run_index_js",
+                "status": "passed",
+                "duration": 15.084968297742307,
+                "start": 1778691179.6711738,
+                "stop": 1778691194.7563422,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_response_json_exists_and_valid",
+                "status": "passed",
+                "duration": 0.0005396739579737186,
+                "start": 1778691194.7565892,
+                "stop": 1778691194.7572656,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            }
+        ]
+    }
+}

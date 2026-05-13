@@ -1,0 +1,7 @@
+version: 1
+tables:
+  - name: orders
+    description: "Table containing order details"
+    context_filters:
+      - column: store_id
+        context_key: store_id

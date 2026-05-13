@@ -1,0 +1,22 @@
+{
+  "id": "c957755f-7249-4301-a348-e0f015975b1c",
+  "conversationId": "convo_def9b7cb-0eae-44e6-bfee-e30c1cc730fc",
+  "type": "table",
+  "message": "Top customers by total order amount (all time).",
+  "table": {
+    "head": [
+      "customer_id",
+      "total_order_amount"
+    ],
+    "body": [
+      [
+        "2",
+        "20"
+      ],
+      [
+        "1",
+        "10"
+      ]
+    ]
+  }
+}

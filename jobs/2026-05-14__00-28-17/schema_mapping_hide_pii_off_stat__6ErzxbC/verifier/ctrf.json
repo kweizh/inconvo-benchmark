@@ -1,0 +1,74 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 6,
+            "passed": 6,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1778691531.181589,
+            "stop": 1778691544.2779467
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_email_state_off",
+                "status": "passed",
+                "duration": 0.0005341172218322754,
+                "start": 1778691531.199745,
+                "stop": 1778691531.2004874,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_phone_state_off",
+                "status": "passed",
+                "duration": 0.000694942194968462,
+                "start": 1778691531.200682,
+                "stop": 1778691531.2015247,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_non_pii_fields_still_on",
+                "status": "passed",
+                "duration": 0.0005225837230682373,
+                "start": 1778691531.201837,
+                "stop": 1778691531.20253,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_index_js_exists_and_references_sdk",
+                "status": "passed",
+                "duration": 0.0006158840842545033,
+                "start": 1778691531.202757,
+                "stop": 1778691531.2035494,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_run_index_js_produces_response",
+                "status": "passed",
+                "duration": 13.069521585013717,
+                "start": 1778691531.2037675,
+                "stop": 1778691544.2737856,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_response_json_is_valid_and_non_error",
+                "status": "passed",
+                "duration": 0.0021338402293622494,
+                "start": 1778691544.2746458,
+                "stop": 1778691544.2773204,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            }
+        ]
+    }
+}

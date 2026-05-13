@@ -1,8 +1,0 @@
-tables:
-  orders:
-    state: Queryable
-    fields:
-      id: { state: On }
-      revenue: { state: On, type: measure }
-      cost: { state: On, type: measure }
-      gross_margin: { state: On, type: measure, sql: "revenue - cost" }

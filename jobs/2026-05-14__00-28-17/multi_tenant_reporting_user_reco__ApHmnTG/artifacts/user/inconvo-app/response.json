@@ -1,0 +1,25 @@
+{
+  "id": "b6d291fd-f05a-454d-a85c-bae7a2f03795",
+  "conversationId": "convo_3197d618-d434-44ec-8956-552455b1612e",
+  "type": "table",
+  "message": "Here are your most recent orders (up to 50).",
+  "table": {
+    "head": [
+      "order_id",
+      "amount",
+      "user_id"
+    ],
+    "body": [
+      [
+        "2",
+        "20",
+        "2"
+      ],
+      [
+        "1",
+        "10",
+        "1"
+      ]
+    ]
+  }
+}

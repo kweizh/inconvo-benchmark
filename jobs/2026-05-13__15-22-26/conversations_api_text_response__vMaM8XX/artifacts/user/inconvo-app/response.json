@@ -1,6 +1,0 @@
-{
-  "id": "1c9090ca-9b5e-475f-907e-791982ad3612",
-  "conversationId": "convo_c2529b05-4f84-4960-8722-35da0fcb8f2b",
-  "type": "text",
-  "message": "I can, but I need to know which tables exist in your Neon database first (the database currently reports no available tables). If you tell me whether you mean top products by revenue, units sold, or number of orders—and over what time range (e.g., last 30 days, YTD)—I can pull the right breakdown once the product/order tables are available."
-}

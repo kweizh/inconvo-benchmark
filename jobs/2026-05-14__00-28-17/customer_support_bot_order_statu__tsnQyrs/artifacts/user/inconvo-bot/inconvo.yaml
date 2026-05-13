@@ -1,0 +1,13 @@
+tables:
+  - name: orders
+    state: On
+    queryable: true
+    fields:
+      - name: id
+        state: On
+      - name: status
+        state: On
+        type: dimension
+      - name: created_at
+        state: On
+        type: dimension

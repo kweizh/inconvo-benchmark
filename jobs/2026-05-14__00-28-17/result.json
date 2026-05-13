@@ -1,0 +1,61 @@
+{
+    "id": "0791426a-31cc-49d9-87eb-e10765bc2c22",
+    "started_at": "2026-05-14T00:28:22.773567",
+    "finished_at": "2026-05-14T01:02:56.748515",
+    "n_total_trials": 20,
+    "stats": {
+        "n_trials": 20,
+        "n_errors": 8,
+        "evals": {
+            "pochi__gemini-3-flash__tasks": {
+                "n_trials": 20,
+                "n_errors": 8,
+                "metrics": [
+                    {
+                        "mean": 0.55
+                    }
+                ],
+                "reward_stats": {
+                    "reward": {
+                        "0.0": [
+                            "initialize_inconvo_with_postgres__DJTopkM",
+                            "api_integration_nextjs__ngmLHe6",
+                            "conversations_api_table_response__KXxEuEF",
+                            "conversations_api_text_response__qUNYpbY",
+                            "conversations_api_create_tenant__bfdHWSc",
+                            "schema_mapping_joinable_tables__JgdB4vT",
+                            "sdk_vercel_ai_streaming_ui__Pfb4QQ4",
+                            "conversations_api_send_message_t__2pPRK6T",
+                            "express_api_chat_endpoint__FxbfwJU"
+                        ],
+                        "1.0": [
+                            "customer_support_bot_order_statu__tsnQyrs",
+                            "multi_tenant_authorization_conte__cAbrmWi",
+                            "multi_tenant_reporting_user_reco__ApHmnTG",
+                            "sdk_vercel_ai_tool_integration__8hKSkxs",
+                            "relationship_definition_line_ite__P3BRynu",
+                            "metric_definition_gross_margin__wsGpVAt",
+                            "conversations_api_multi_turn_fol__eQCF7gE",
+                            "schema_mapping_hide_pii_off_stat__6ErzxbC",
+                            "streaming_response_conversation__EuDGNNC",
+                            "schema_mapping_field_synonyms__2CNPvom",
+                            "user_identifier_tracking_convers__sMqYLCm"
+                        ]
+                    }
+                },
+                "exception_stats": {
+                    "AgentTimeoutError": [
+                        "initialize_inconvo_with_postgres__DJTopkM",
+                        "api_integration_nextjs__ngmLHe6",
+                        "conversations_api_text_response__qUNYpbY",
+                        "sdk_vercel_ai_streaming_ui__Pfb4QQ4",
+                        "conversations_api_send_message_t__2pPRK6T",
+                        "multi_tenant_reporting_user_reco__ApHmnTG",
+                        "sdk_vercel_ai_tool_integration__8hKSkxs",
+                        "relationship_definition_line_ite__P3BRynu"
+                    ]
+                }
+            }
+        }
+    }
+}

@@ -1,6 +1,0 @@
-version: "1"
-tables:
-  orders:
-    context_filter:
-      column: store_id
-      context_key: store_id

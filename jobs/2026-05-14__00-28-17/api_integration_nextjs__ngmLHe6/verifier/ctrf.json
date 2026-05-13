@@ -1,0 +1,48 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 3,
+            "passed": 2,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1778690379.2489352,
+            "stop": 1778690386.3522367
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_api_route_configured_correctly",
+                "status": "passed",
+                "duration": 0.0005655903369188309,
+                "start": 1778690379.2644737,
+                "stop": 1778690379.2652495,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_page_uses_use_chat",
+                "status": "passed",
+                "duration": 0.0004487563855946064,
+                "start": 1778690379.2654476,
+                "stop": 1778690379.2660308,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_browser_ui",
+                "status": "failed",
+                "duration": 7.0699436529539526,
+                "start": 1778690379.2662222,
+                "stop": 1778690386.3520186,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "@pytest.fixture(scope=\"module\")\n    def start_app():\n        # Build the app first\n        build_process = subprocess.run(\n            [\"npm\", \"run\", \"build\"],\n            cwd=PROJECT_DIR,\n            stdout=subprocess.PIPE,\n            stderr=subprocess.PIPE,\n        )\n        if build_process.returncode != 0:\n>           pytest.fail(f\"Build failed: {build_process.stderr.decode('utf-8')}\")\nE           Failed: Build failed: Failed to type check.\nE           \nE           ./app/page.tsx:6:21\nE           Type error: Property 'input' does not exist on type 'UseChatHelpers<UIMessage<unknown, UIDataTypes, UITools>>'.\nE           \nE             \u001b[90m4 |\u001b[0m\nE             \u001b[90m5 |\u001b[0m \u001b[36mexport\u001b[0m \u001b[36mdefault\u001b[0m \u001b[36mfunction\u001b[0m \u001b[33mChat\u001b[0m() {\nE           \u001b[31m\u001b[1m>\u001b[0m \u001b[90m6 |\u001b[0m   \u001b[36mconst\u001b[0m { messages, input, handleInputChange, handleSubmit } = useChat();\nE             \u001b[90m  |\u001b[0m                     \u001b[31m\u001b[1m^\u001b[0m\nE             \u001b[90m7 |\u001b[0m\nE             \u001b[90m8 |\u001b[0m   \u001b[36mreturn\u001b[0m (\nE             \u001b[90m9 |\u001b[0m     <div className=\u001b[32m\"flex flex-col w-full max-w-md py-24 mx-auto stretch\"\u001b[0m>\nE           Next.js build worker exited with code: 1 and signal: null\n\ntests/test_final_state.py:29: Failed"
+            }
+        ]
+    }
+}

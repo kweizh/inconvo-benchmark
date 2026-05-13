@@ -1,0 +1,29 @@
+version: "1.0"
+tables:
+  - name: orders
+    base_table: orders
+    dimensions:
+      - name: product_id
+        expr: product_id
+        data_type: integer
+    measures:
+      - name: total_amount
+        expr: total_amount
+        aggregation: sum
+        data_type: decimal
+  - name: products
+    base_table: products
+    dimensions:
+      - name: name
+        expr: name
+        data_type: string
+      - name: id
+        expr: id
+        data_type: integer
+        primary_key: true
+relationships:
+  - name: orders_to_products
+    from: orders
+    to: products
+    condition: "orders.product_id = products.id"
+    type: many_to_one

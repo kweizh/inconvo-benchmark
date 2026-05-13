@@ -1,0 +1,86 @@
+Running command: apt-get update && apt-get install -y curl ripgrep
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: echo api_integration_nextjs__ngmLHe6 > /logs/artifacts/trial_id
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model google/gemini-3-flash --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Inconvo Next.js Vercel AI SDK Integration
+
+## Background
+You need to build a Next.js application that integrates with Inconvo using the Vercel AI SDK to create an interactive data agent chat interface.
+
+## Requirements
+- Initialize a Next.js application (App Router, TypeScript, Tailwind CSS, no `src` directory) in `/home/user/app`.
+- Install the required packages: `ai`, `@ai-sdk/react`, and `@inconvoai/vercel-ai-sdk`.
+- Create a backend API route at `app/api/chat/route.ts` that uses `streamText` from `ai` and `inconvoDataAgent` from `@inconvoai/vercel-ai-sdk`.
+- The API route must configure the agent with `process.env.INCONVO_AGENT_ID`, a `userIdentifier` of `"user-123"`, and a `userContext` with `organisationId: 1`.
+- Create a frontend chat interface in `app/page.tsx` using the `useChat` hook from `@ai-sdk/react`.
+- The UI must include an input field with the placeholder "Ask about your data..." and display the conversation messages.
+- For tool calls, if the tool is an Inconvo tool and its state is `output-available`, the UI should render a generic `<div data-testid="inconvo-result">Data Visualization Available</div>`.
+
+## Implementation Guide
+1. Run `npx create-next-app@latest /home/user/app --ts --tailwind --eslint --app --no-src-dir --import-alias "@/*"` to create the project.
+2. Add the necessary dependencies.
+3. Implement the `POST` handler in `app/api/chat/route.ts` to convert messages and call `streamText` with the `inconvoDataAgent` tool, returning `result.toUIMessageStreamResponse()`.
+4. Implement the chat UI in `app/page.tsx` by iterating over `messages` from `useChat` and rendering user/AI text, as well as tool results.
+
+## Constraints
+- Project path: `/home/user/app`
+- Start command: `npm run build && npm start`
+- Port: `3000`
+- Environment: Use Node.js v24.
+- Note: Do not configure real API keys, the verifier will only check the static UI and code implementation.
+
+## Integrations
+- None
+EOF
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured

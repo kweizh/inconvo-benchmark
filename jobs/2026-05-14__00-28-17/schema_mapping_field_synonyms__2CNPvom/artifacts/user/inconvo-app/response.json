@@ -1,0 +1,22 @@
+{
+  "id": "03515285-d8df-4c90-b0c8-044693a8a2f1",
+  "conversationId": "convo_dd542ab6-9b97-4f16-becf-5558365f4e4b",
+  "type": "table",
+  "message": "Total revenue per buyer (based on orders).",
+  "table": {
+    "head": [
+      "buyer_id",
+      "total_revenue"
+    ],
+    "body": [
+      [
+        "2",
+        "20"
+      ],
+      [
+        "1",
+        "10"
+      ]
+    ]
+  }
+}

@@ -1,0 +1,3 @@
+{"type":"response.created","id":"9ff20cd8-4701-44b1-9f0c-433a9db6bc49"}
+{"type":"response.progress","id":"9ff20cd8-4701-44b1-9f0c-433a9db6bc49","message":"Fetching aggregated sales by month for the last 3 full calendar months."}
+{"type":"response.completed","id":"9ff20cd8-4701-44b1-9f0c-433a9db6bc49","response":{"type":"table","message":"Sales trend for the last 3 full calendar months (2026-02-01 to 2026-04-30), grouped by month.","table":{"head":["month","orders","sales_amount"],"body":[["2026-02","1","150"]]}}}

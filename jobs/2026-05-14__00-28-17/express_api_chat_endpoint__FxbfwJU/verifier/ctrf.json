@@ -1,0 +1,59 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 4,
+            "passed": 3,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1778691408.9537077,
+            "stop": 1778691411.185448
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_index_js_exists",
+                "status": "passed",
+                "duration": 0.00047317612916231155,
+                "start": 1778691408.9883103,
+                "stop": 1778691408.9889889,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_index_js_content_references_required_apis",
+                "status": "passed",
+                "duration": 0.00042588822543621063,
+                "start": 1778691408.9891827,
+                "stop": 1778691408.9897404,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_missing_message_returns_400",
+                "status": "passed",
+                "duration": 1.0623094402253628,
+                "start": 1778691408.9899058,
+                "stop": 1778691410.0534792,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_valid_request_returns_inconvo_response",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 1.11036878824234,
+                "start": 1778691410.0538228,
+                "stop": 1778691411.1851306,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "start_server = <Popen: returncode: None args: ['node', 'index.js']>\n\n    def test_valid_request_returns_inconvo_response(start_server):\n        status, body = _http_post(\n            \"/chat\",\n            {\"message\": \"What are my top products?\", \"userId\": \"user-123\"},\n        )\n>       assert status == 200, (\n            f\"Expected HTTP 200 for a valid /chat request, got {status}. Body: {body}\"\n        )\nE       AssertionError: Expected HTTP 200 for a valid /chat request, got 500. Body: {\"error\":\"Internal Server Error\"}\nE       assert 500 == 200\n\ntests/test_final_state.py:134: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

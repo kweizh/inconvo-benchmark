@@ -1,0 +1,44 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 2,
+            "passed": 0,
+            "failed": 2,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1778691159.6925998,
+            "stop": 1778691159.786615
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_run_index_js",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.06643829680979252,
+                "start": 1778691159.7023413,
+                "stop": 1778691159.783707,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_run_index_js():\n        result = subprocess.run(\n            [\"node\", \"index.js\"],\n            cwd=PROJECT_DIR,\n            capture_output=True,\n            text=True\n        )\n>       assert result.returncode == 0, f\"'node index.js' failed with output: {result.stderr}\\n{result.stdout}\"\nE       AssertionError: 'node index.js' failed with output: Error interacting with Inconvo API: Cannot read properties of undefined (reading 'create')\nE         \nE         \u25c7 injected env (0) from .env // tip: \u2301 auth for agents [www.vestauth.com]\nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['node', 'index.js'], returncode=1, stdout='\u25c7 injected env (0) from .env // tip: \u2301 auth for agen...estauth.com]\\n', stderr=\"Error interacting with Inconvo API: Cannot read properties of undefined (reading 'create')\\n\").returncode\n\ntests/test_final_state.py:16: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_response_json_exists_and_valid",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0006757383234798908,
+                "start": 1778691159.7839708,
+                "stop": 1778691159.7864175,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_response_json_exists_and_valid():\n>       assert os.path.isfile(RESPONSE_FILE), f\"response.json not found at {RESPONSE_FILE}\"\nE       AssertionError: response.json not found at /home/user/inconvo-app/response.json\nE       assert False\nE        +  where False = <function isfile at 0x71da026682c0>('/home/user/inconvo-app/response.json')\nE        +    where <function isfile at 0x71da026682c0> = <module 'posixpath' (frozen)>.isfile\nE        +      where <module 'posixpath' (frozen)> = os.path\n\ntests/test_final_state.py:19: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}
