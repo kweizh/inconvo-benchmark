@@ -1,7 +1,0 @@
-tables:
-  users:
-    state: Queryable
-    fields:
-      id: { state: On }
-      last_login: { state: On, type: dimension }
-      is_active: { sql: "last_login > '2025-01-01'", type: dimension }

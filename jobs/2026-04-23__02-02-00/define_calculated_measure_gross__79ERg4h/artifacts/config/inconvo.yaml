@@ -1,8 +1,0 @@
-tables:
-  products:
-    state: Queryable
-    fields:
-      id: { state: On, type: dimension }
-      price: { state: On, type: measure }
-      cost: { state: On, type: measure }
-      gross_margin: { state: On, type: measure, expression: "(price - cost) / price * 100", unit: "%" }

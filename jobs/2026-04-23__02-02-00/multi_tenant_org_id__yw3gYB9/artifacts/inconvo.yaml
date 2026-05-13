@@ -1,8 +1,0 @@
-tables:
-  orders:
-    state: Queryable
-    context_filter: orders.store_id = userContext.store_id
-    fields:
-      id: { state: On }
-      store_id: { state: On }
-      total_amount: { state: On, type: measure }
