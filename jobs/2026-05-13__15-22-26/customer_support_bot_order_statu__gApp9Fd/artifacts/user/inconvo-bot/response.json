@@ -1,0 +1,5 @@
+{
+  "id": "resp_123",
+  "message": "The status of order 123 is 'Shipped'.",
+  "conversation_id": "conv_123"
+}

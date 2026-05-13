@@ -1,0 +1,6 @@
+{
+  "id": "16e44f91-c55f-410d-951f-8fab4e763004",
+  "conversationId": "convo_99b6f654-7908-42e1-90d1-8ed27081980f",
+  "type": "text",
+  "message": "I can’t look that up yet because I don’t have access to any tables in the Neon database for this workspace (no order tables are available to query). If you can share the correct table name for orders (or connect the database with the orders table), I can return your total order count right away."
+}

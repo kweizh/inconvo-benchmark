@@ -1,0 +1,76 @@
+Running command: apt-get update && apt-get install -y curl ripgrep
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: echo multi_tenant_authorization_conte__MjkMmfS > /logs/artifacts/trial_id
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model google/gemini-3-flash --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Multi-tenant Authorization with Inconvo
+
+## Background
+Inconvo allows mapping application-level user context to database-level tenant IDs. You need to implement a context filter on the `orders` table that restricts queries to a specific `store_id` passed in the conversation context.
+
+## Requirements
+- You have an existing Node.js project at `/home/user/inconvo-app` with `@inconvoai/node` installed.
+- Update `inconvo.yaml` to include a context filter on the `orders` table for `store_id`.
+- Write a Node.js script `index.js` that uses the Inconvo SDK to create a conversation with context `{ store_id: 123 }`, asks 'What are my total orders?', and saves the JSON response to `response.json`.
+
+## Constraints
+- Project path: `/home/user/inconvo-app`
+- The script must use `client.conversations.create({ context: { store_id: 123 } })` and `client.conversations.messages.create(...)`.
+- The script must write the response to `/home/user/inconvo-app/response.json`.
+
+## Integrations
+- Inconvo Cloud
+- PostgreSQL
+EOF
+Command outputs captured
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured

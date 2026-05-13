@@ -1,0 +1,19 @@
+tables:
+  users:
+    state: Queryable
+    fields:
+      id: { state: On, type: dimension }
+      internal_id: { state: Off, type: dimension }
+      name: { state: On, type: dimension }
+  products:
+    state: Queryable
+    fields:
+      id: { state: On, type: dimension }
+      title: { state: On, type: dimension, synonyms: ["name", "item name"] }
+      price: { state: On, type: measure }
+  orders:
+    state: Queryable
+    fields:
+      id: { state: On, type: dimension }
+      total_amount: { state: On, type: measure, synonyms: ["revenue"] }
+      created_at: { state: On, type: dimension }

@@ -1,0 +1,44 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 2,
+            "passed": 0,
+            "failed": 2,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1778658898.0719347,
+            "stop": 1778658898.09806
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_inconvo_yaml_exists",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0007492713630199432,
+                "start": 1778658898.0799925,
+                "stop": 1778658898.0957828,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_inconvo_yaml_exists():\n        \"\"\"Priority 3 fallback: basic file existence check.\"\"\"\n>       assert os.path.isfile(MODEL_FILE), f\"inconvo.yaml not found at {MODEL_FILE}\"\nE       AssertionError: inconvo.yaml not found at /home/user/inconvo-app/inconvo.yaml\nE       assert False\nE        +  where False = <function isfile at 0x7736b40f0220>('/home/user/inconvo-app/inconvo.yaml')\nE        +    where <function isfile at 0x7736b40f0220> = <module 'posixpath' (frozen)>.isfile\nE        +      where <module 'posixpath' (frozen)> = os.path\n\ntests/test_final_state.py:9: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_inconvo_yaml_contains_tables",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0005180132575333118,
+                "start": 1778658898.096018,
+                "stop": 1778658898.0978928,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_inconvo_yaml_contains_tables():\n        \"\"\"Priority 3 fallback: check file contents.\"\"\"\n>       with open(MODEL_FILE, \"r\") as f:\n             ^^^^^^^^^^^^^^^^^^^^^\nE       FileNotFoundError: [Errno 2] No such file or directory: '/home/user/inconvo-app/inconvo.yaml'\n\ntests/test_final_state.py:13: FileNotFoundError",
+                "message": "The test failed in the call phase"
+            }
+        ]
+    }
+}

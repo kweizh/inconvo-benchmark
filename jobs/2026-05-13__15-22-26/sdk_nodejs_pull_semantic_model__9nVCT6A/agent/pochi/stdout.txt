@@ -1,0 +1,20 @@
+- Initializing MCP connections...
+You
+# Pull Inconvo Semantic Model ## Background You have a Node.js project at `/home/user/inconvo-app` that uses the Inconvo SDK. You need to pull the latest semantic model from your Inconvo Data Agent to your local environment. ## Requirements - Use the Inconvo CLI to pull the semantic model. - Ensure the command is executed within the project directory. ## Implementation Guide 1. Change directory to `/home/user/inconvo-app`. 2. Run the Inconvo CLI command to pull the model: `npx inconvo model pull`. ## Constraints - Project path: `/home/user/inconvo-app` - The environment variables `INCONVO_API_KEY` and `INCONVO_AGENT_ID` are already available in the environment. - You must use the `inconvo` CLI via `npx`.   
+
+Pochi
+📂 Listing files in /home/user/inconvo-app ✔ 
+💫 Executing npx inconvo model pull ✖ "Command exited with code 1"
+💭 Thinking for 281 characters   
+💫 Executing npx inconvo model pull --agent $INCONVO_AGENT_ID ✔ 
+🎉 Task Completed
+I have successfully pulled the Inconvo semantic model for the project at `/home/user/inconvo-app`.
+
+I executed the following command:
+```bash
+npx inconvo model pull --agent $INCONVO_AGENT_ID
+```
+
+The output confirmed that the pull was successful:
+`Pull complete: 1 agent(s), 1 connection snapshot(s).`   
+  

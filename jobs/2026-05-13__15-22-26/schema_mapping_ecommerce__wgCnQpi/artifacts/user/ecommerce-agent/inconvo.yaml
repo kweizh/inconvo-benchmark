@@ -1,0 +1,33 @@
+tables:
+  orders:
+    type: Queryable
+    fields:
+      id:
+        state: On
+      total_amount:
+        state: On
+        type: measure
+      user_id:
+        state: On
+  products:
+    type: Queryable
+    fields:
+      id:
+        state: On
+      name:
+        state: On
+      price:
+        state: On
+        type: measure
+  users:
+    type: Joinable
+    fields:
+      id:
+        state: On
+      email:
+        state: On
+
+relations:
+  order_to_user:
+    left: orders.user_id
+    right: users.id

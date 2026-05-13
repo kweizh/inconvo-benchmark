@@ -1,0 +1,19 @@
+[37m2026-05-13 07:49:50.271[39m[0m[0m	[32m[1mDEBUG[22m[39m[0m[0m	[37mnative:1[39m[0m[0m[1m[37m	Pochi[39m[22m[0m[0m	pochi v0.6.8
+[37m2026-05-13 07:49:50.746[39m[0m[0m	[32m[1mDEBUG[22m[39m[0m[0m	[37m$bunfs/root/pochi:519633[39m[0m[0m[1m[37m	loadAgents[39m[22m[0m[0m	Loaded 6 custom agents (6 valid, 0 invalid)
+[37m2026-05-13 07:49:50.748[39m[0m[0m	[32m[1mDEBUG[22m[39m[0m[0m	[37m$bunfs/root/pochi:519634[39m[0m[0m[1m[37m	loadSkills[39m[22m[0m[0m	Loaded 2 skills (2 valid, 0 invalid)
+[37m2026-05-13 07:49:50.801[39m[0m[0m	[32m[1mDEBUG[22m[39m[0m[0m	[37m$bunfs/root/pochi:444677[39m[0m[0m[1m[37m	PochiVendor[39m[22m[0m[0m	JWT is expiring or missing, fetching a new one
+[37m2026-05-13 07:49:54.461[39m[0m[0m	[32m[1mDEBUG[22m[39m[0m[0m	[37m$bunfs/root/pochi:416517[39m[0m[0m[1m[37m	MCPHub[39m[22m[0m[0m	MCP servers configuration changed via signal:
+[37m2026-05-13 07:49:54.461[39m[0m[0m	[32m[1mDEBUG[22m[39m[0m[0m	[37m$bunfs/root/pochi:416629[39m[0m[0m[1m[37m	MCPHub[39m[22m[0m[0m	Build MCPHub Status
+[37m2026-05-13 07:49:54.760[39m[0m[0m	[32m[1mDEBUG[22m[39m[0m[0m	[37mnative:7[39m[0m[0m[1m[37m	Pochi[39m[22m[0m[0m	Starting task runner...
+[37m2026-05-13 07:49:54.845[39m[0m[0m	[32m[1mDEBUG[22m[39m[0m[0m	[37m$bunfs/root/pochi:507614[39m[0m[0m[1m[37m	generateTaskTitle[39m[22m[0m[0m	Generating task title, old: null, new: # Inconvo Semantic Model for E-commerce
+[37m2026-05-13 07:50:07.404[39m[0m[0m	[32m[1mDEBUG[22m[39m[0m[0m	[37m$bunfs/root/pochi:463047[39m[0m[0m[1m[37m	listFiles[39m[22m[0m[0m	handling listFile with dirPath /home/user/ecommerce-agent and recursive [90mundefined[39m
+[37m2026-05-13 07:50:11.840[39m[0m[0m	[32m[1mDEBUG[22m[39m[0m[0m	[37m$bunfs/root/pochi:507614[39m[0m[0m[1m[37m	generateTaskTitle[39m[22m[0m[0m	Generating task title, old: # Inconvo Semantic Model for E-commerce, new: Create an Inconvo semantic model for e-commerce
+[37m2026-05-13 07:50:20.744[39m[0m[0m	[32m[1mDEBUG[22m[39m[0m[0m	[37m$bunfs/root/pochi:462742[39m[0m[0m[1m[37m	RipgrepUtils[39m[22m[0m[0m	searchFiles / inconvo\.yaml [90mundefined[39m
+[37m2026-05-13 07:50:20.744[39m[0m[0m	[32m[1mDEBUG[22m[39m[0m[0m	[37m$bunfs/root/pochi:462742[39m[0m[0m[1m[37m	RipgrepUtils[39m[22m[0m[0m	command "/usr/bin/rg" --json --case-sensitive --binary --sortr modified 'inconvo\.yaml' '/'
+[37m2026-05-13 07:50:30.840[39m[0m[0m	[32m[1mDEBUG[22m[39m[0m[0m	[37m$bunfs/root/pochi:519250[39m[0m[0m[1m[37m	tool-result-persistence[39m[22m[0m[0m	Persisted field "error" for searchFiles(julejrS5dJZIm7IK): 290166 chars -> /root/.pochi/tasks/f81fcc0c-228d-4166-b907-5a1e39529fcb/tool-results/julejrS5dJZIm7IK.json
+[37m2026-05-13 07:50:37.806[39m[0m[0m	[32m[1mDEBUG[22m[39m[0m[0m	[37m$bunfs/root/pochi:462742[39m[0m[0m[1m[37m	RipgrepUtils[39m[22m[0m[0m	searchFiles /home/user Queryable *.yaml
+[37m2026-05-13 07:50:37.806[39m[0m[0m	[32m[1mDEBUG[22m[39m[0m[0m	[37m$bunfs/root/pochi:462742[39m[0m[0m[1m[37m	RipgrepUtils[39m[22m[0m[0m	command "/usr/bin/rg" --json --case-sensitive --binary --sortr modified --glob '*.yaml' 'Queryable' '/home/user'
+[37m2026-05-13 07:51:05.060[39m[0m[0m	[32m[1mDEBUG[22m[39m[0m[0m	[37mnative:7[39m[0m[0m[1m[37m	Pochi[39m[22m[0m[0m	Task runner finished successfully.
+[37m2026-05-13 07:51:05.060[39m[0m[0m	[32m[1mDEBUG[22m[39m[0m[0m	[37mnative:7[39m[0m[0m[1m[37m	Pochi[39m[22m[0m[0m	Shutting down...
+[37m2026-05-13 07:51:05.079[39m[0m[0m	[32m[1mDEBUG[22m[39m[0m[0m	[37mnative:7[39m[0m[0m[1m[37m	Pochi[39m[22m[0m[0m	Shutdown completed. Process will exit.
+[37m2026-05-13 07:51:05.079[39m[0m[0m	[32m[1mDEBUG[22m[39m[0m[0m	[37m[39m[0m[0m[1m[37m	Pochi[39m[22m[0m[0m	Process exiting with code 0

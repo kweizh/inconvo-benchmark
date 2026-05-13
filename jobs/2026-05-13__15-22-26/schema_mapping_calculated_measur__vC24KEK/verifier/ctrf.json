@@ -1,0 +1,38 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 2,
+            "passed": 2,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1778658701.2206337,
+            "stop": 1778658701.233052
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_gross_margin_field_exists",
+                "status": "passed",
+                "duration": 0.0005428618751466274,
+                "start": 1778658701.2313566,
+                "stop": 1778658701.2321148,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_gross_margin_is_measure_and_has_formula",
+                "status": "passed",
+                "duration": 0.0004420238547027111,
+                "start": 1778658701.2323256,
+                "stop": 1778658701.2328985,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            }
+        ]
+    }
+}

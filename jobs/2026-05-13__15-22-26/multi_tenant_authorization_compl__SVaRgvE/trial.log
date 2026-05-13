@@ -1,0 +1,82 @@
+Running command: apt-get update && apt-get install -y curl ripgrep
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: echo multi_tenant_authorization_compl__SVaRgvE > /logs/artifacts/trial_id
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model google/gemini-3-flash --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Multi-tenant Authorization with Complex Roles
+
+## Background
+You are building a multi-tenant analytics dashboard using Inconvo. You have two types of users: `admin` and `store_manager`. Admins can see all orders across all stores, while store managers can only see orders for their specific `store_id`. You need to configure the semantic model and write a Node.js script to dynamically apply context filters based on the user's role.
+
+## Requirements
+- Create a semantic model `inconvo.yaml` that defines an `orders` table with a `store_id` column.
+- Write a Node.js script `index.js` that uses the `@inconvoai/node` SDK to create a conversation.
+- The script should export a function `askQuestion(query, user)` where `user` is an object like `{ role: 'store_manager', store_id: 123 }` or `{ role: 'admin' }`.
+- The script must correctly pass context filters to `client.conversations.create({ context: ... })` so that `store_manager` users are restricted to their `store_id`, but `admin` users are not restricted.
+- The script must send the `query` using `client.conversations.messages.create` and return the response text.
+
+## Implementation Guide
+1. Initialize a Node.js project in `/home/user/inconvo-app`.
+2. Install `@inconvoai/node` and `dotenv`.
+3. Create `inconvo.yaml` defining the `orders` table (make sure it's `Queryable` and has `store_id` as a dimension).
+4. Create `index.js` exporting the `askQuestion` function.
+5. The `askQuestion` function should initialize the Inconvo client using `INCONVO_API_KEY` and `INCONVO_AGENT_ID` from the environment.
+6. Construct the `context` object appropriately based on `user.role`.
+
+## Constraints
+- Project path: `/home/user/inconvo-app`
+- The script `index.js` must be a CommonJS module exporting `askQuestion`.
+- You do not need to start a server, just provide the `index.js` file with the correct logic.
+EOF
+Command outputs captured
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured

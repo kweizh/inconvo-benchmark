@@ -1,0 +1,50 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 3,
+            "passed": 2,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1778657483.208614,
+            "stop": 1778657483.302964
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_inconvo_yaml_exists_and_contains_tables",
+                "status": "passed",
+                "duration": 0.0005453126505017281,
+                "start": 1778657483.2190552,
+                "stop": 1778657483.2198129,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_run_index_js",
+                "status": "passed",
+                "duration": 0.056173447985202074,
+                "start": 1778657483.2200117,
+                "stop": 1778657483.276464,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_response_json_exists_and_valid",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0007684854790568352,
+                "start": 1778657483.2767107,
+                "stop": 1778657483.3027463,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_response_json_exists_and_valid():\n>       assert os.path.isfile(RESPONSE_FILE), f\"response.json not found at {RESPONSE_FILE}\"\nE       AssertionError: response.json not found at /home/user/inconvo-app/response.json\nE       assert False\nE        +  where False = <function isfile at 0x723c98e98220>('/home/user/inconvo-app/response.json')\nE        +    where <function isfile at 0x723c98e98220> = <module 'posixpath' (frozen)>.isfile\nE        +      where <module 'posixpath' (frozen)> = os.path\n\ntests/test_final_state.py:30: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

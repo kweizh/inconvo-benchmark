@@ -1,0 +1,47 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 3,
+            "passed": 3,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1778658974.681894,
+            "stop": 1778658975.325433
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_express_endpoint_responds",
+                "status": "passed",
+                "duration": 0.6095893713645637,
+                "start": 1778658974.7043402,
+                "stop": 1778658975.3156748,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_index_js_exists",
+                "status": "passed",
+                "duration": 0.0005271164700388908,
+                "start": 1778658975.3160515,
+                "stop": 1778658975.3167286,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_package_json_dependencies",
+                "status": "passed",
+                "duration": 0.008082217071205378,
+                "start": 1778658975.3169074,
+                "stop": 1778658975.3251092,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            }
+        ]
+    }
+}

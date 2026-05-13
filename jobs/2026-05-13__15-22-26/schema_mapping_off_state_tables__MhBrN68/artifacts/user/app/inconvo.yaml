@@ -1,0 +1,11 @@
+tables:
+  users:
+    state: Queryable
+    fields:
+      id: { state: On }
+      name: { state: On }
+  passwords:
+    state: Off
+    fields:
+      id: { state: On }
+      hash: { state: On }

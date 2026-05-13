@@ -1,0 +1,27 @@
+version: 1
+tables:
+  - name: orders
+    type: queryable
+    columns:
+      - name: id
+        type: string
+      - name: customer_id
+        type: string
+      - name: amount
+        type: number
+      - name: created_at
+        type: timestamp
+    relationships:
+      - name: customer
+        column: customer_id
+        to_table: customers
+        to_column: id
+  - name: customers
+    type: joinable
+    columns:
+      - name: id
+        type: string
+      - name: name
+        type: string
+      - name: email
+        type: string

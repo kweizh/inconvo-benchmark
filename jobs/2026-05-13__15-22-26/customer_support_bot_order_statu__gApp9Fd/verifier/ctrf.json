@@ -1,0 +1,50 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 3,
+            "passed": 2,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1778657578.9362562,
+            "stop": 1778657584.4647772
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_inconvo_yaml_exists_and_contains_orders_table",
+                "status": "passed",
+                "duration": 0.0006476705893874168,
+                "start": 1778657578.949764,
+                "stop": 1778657578.950682,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_run_index_js",
+                "status": "passed",
+                "duration": 5.455856143962592,
+                "start": 1778657578.9509091,
+                "stop": 1778657584.4070246,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_response_json_exists_and_valid",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0009235250763595104,
+                "start": 1778657584.4073024,
+                "stop": 1778657584.464568,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_response_json_exists_and_valid():\n        assert os.path.isfile(RESPONSE_FILE), f\"response.json not found at {RESPONSE_FILE}\"\n    \n        with open(RESPONSE_FILE, \"r\") as f:\n            try:\n                data = json.load(f)\n            except json.JSONDecodeError:\n                pytest.fail(\"response.json is not valid JSON\")\n    \n        # Check if it contains some data structure\n        content_str = json.dumps(data).lower()\n>       assert \"table\" in content_str or \"data\" in content_str or \"rows\" in content_str or \"text\" in content_str, \\\n            f\"response.json does not seem to contain expected query results. Content: {data}\"\nE       AssertionError: response.json does not seem to contain expected query results. Content: {'id': 'resp_123', 'message': \"The status of order 123 is 'Shipped'.\", 'conversation_id': 'conv_123'}\nE       assert ('table' in '{\"id\": \"resp_123\", \"message\": \"the status of order 123 is \\'shipped\\'.\", \"conversation_id\": \"conv_123\"}' or 'data' in '{\"id\": \"resp_123\", \"message\": \"the status of order 123 is \\'shipped\\'.\", \"conversation_id\": \"conv_123\"}' or 'rows' in '{\"id\": \"resp_123\", \"message\": \"the status of order 123 is \\'shipped\\'.\", \"conversation_id\": \"conv_123\"}' or 'text' in '{\"id\": \"resp_123\", \"message\": \"the status of order 123 is \\'shipped\\'.\", \"conversation_id\": \"conv_123\"}')\n\ntests/test_final_state.py:41: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

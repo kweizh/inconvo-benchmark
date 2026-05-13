@@ -1,0 +1,5 @@
+{
+  "error": true,
+  "message": "400 Invalid agentId: Agent ID must start with 'agt_', Agent ID must be 'agt_' followed by a valid UUID. Received: dummy_agent",
+  "stack": "Error: 400 Invalid agentId: Agent ID must start with 'agt_', Agent ID must be 'agt_' followed by a valid UUID. Received: dummy_agent\n    at APIError.generate (/home/user/inconvo-app/node_modules/@inconvoai/node/core/error.js:40:20)\n    at Inconvo.makeStatusError (/home/user/inconvo-app/node_modules/@inconvoai/node/client.js:119:32)\n    at Inconvo.makeRequest (/home/user/inconvo-app/node_modules/@inconvoai/node/client.js:261:30)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async main (/home/user/inconvo-app/index.js:17:18)"
+}

@@ -1,0 +1,26 @@
+version: 1
+models:
+  - name: orders
+    table: orders
+    measures:
+      - name: total_amount
+        column: total_amount
+        type: sum
+    dimensions:
+      - name: product_id
+        column: product_id
+        type: string
+    relations:
+      - name: product
+        model: products
+        join: product_id = products.id
+
+  - name: products
+    table: products
+    dimensions:
+      - name: id
+        column: id
+        type: string
+      - name: name
+        column: name
+        type: string
