@@ -1,3 +1,3 @@
-:HL["/inconvo-benchmark/_next/static/chunks/60ed58d507cd52d9.css","style"]
+:HL["/inconvo-benchmark/_next/static/chunks/467141d06f4e2f60.css","style"]
 :HL["/inconvo-benchmark/_next/static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-0:{"buildId":"YheEGi7JJb_iOSdh49A-I","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"tasks","paramType":null,"paramKey":"tasks","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
+0:{"buildId":"VaKX6uzEYEz1rSCrEFNqK","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"tasks","paramType":null,"paramKey":"tasks","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
