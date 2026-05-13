@@ -1,5 +1,0 @@
-{
-  "task_name": "metric_definition_gross_margin",
-  "task_description": "# Metric Definition: Gross Margin\n\n## Background\nYou have an initialized Inconvo project at `/home/user/inconvo-project` connected to a PostgreSQL database.\nThe database has a table `sales` with columns `id`, `revenue`, and `cost`.\nCurrently, there is no column for the gross margin.\n\n## Requirements\nUpdate the semantic model `inconvo.yaml` to define a calculated measure named `gross_margin` on the `sales` table.\nIt should be calculated as `revenue - cost`.\nSet the unit to `USD`.\n\n## Implementation\n1. Modify `/home/user/inconvo-project/inconvo.yaml`.\n2. Ensure the `sales` table has the `gross_margin` computed column defined with the correct expression and unit.\n\n## Constraints\n- **Project path**: `/home/user/inconvo-project`",
-  "truth": "# Verification Plan\n\n## Setup\nNone required.\n\n## Verification Steps\n1. Read `/home/user/inconvo-project/inconvo.yaml`.\n2. Verify that it contains `gross_margin`.\n3. Verify that it contains the expression `revenue - cost`.\n4. Verify that it contains the unit `USD`."
-}
