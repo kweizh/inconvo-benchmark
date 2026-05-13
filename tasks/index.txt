@@ -5,8 +5,8 @@
 5:I[36064,["/inconvo-benchmark/_next/static/chunks/d2c13bb33c4fcd54.js","/inconvo-benchmark/_next/static/chunks/c21188132e0e0d48.js"],"default"]
 6:I[81497,["/inconvo-benchmark/_next/static/chunks/d2c13bb33c4fcd54.js","/inconvo-benchmark/_next/static/chunks/c21188132e0e0d48.js"],"default"]
 7:I[42654,["/inconvo-benchmark/_next/static/chunks/babff0e7418ab052.js","/inconvo-benchmark/_next/static/chunks/3ecbb78a8ff87549.js","/inconvo-benchmark/_next/static/chunks/e703b49613a95162.js","/inconvo-benchmark/_next/static/chunks/be08138953094657.js"],"TasksPageClient"]
-f:I[9986,["/inconvo-benchmark/_next/static/chunks/d2c13bb33c4fcd54.js","/inconvo-benchmark/_next/static/chunks/c21188132e0e0d48.js"],"default"]
-:HL["/inconvo-benchmark/_next/static/chunks/467141d06f4e2f60.css","style"]
+1c:I[9986,["/inconvo-benchmark/_next/static/chunks/d2c13bb33c4fcd54.js","/inconvo-benchmark/_next/static/chunks/c21188132e0e0d48.js"],"default"]
+:HL["/inconvo-benchmark/_next/static/chunks/60ed58d507cd52d9.css","style"]
 :HL["/inconvo-benchmark/_next/static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 8:T78f,# Inconvo Next.js Vercel AI SDK Integration
 
@@ -36,7 +36,58 @@ You need to build a Next.js application that integrates with Inconvo using the V
 - Note: Do not configure real API keys, the verifier will only check the static UI and code implementation.
 
 ## Integrations
-- None9:T519,# Inconvo Conversations API Table Response
+- None9:T4e9,# Create a Conversation with Tenant Context
+
+## Background
+Inconvo is a platform for building chat-with-data agents. You need to write a Node.js script that uses the `@inconvoai/node` SDK to programmatically start a new conversation with a specific tenant context.
+
+## Requirements
+- Initialize a Node.js project.
+- Install `@inconvoai/node` and `dotenv`.
+- Write a script `index.js` that initializes the Inconvo client using environment variables.
+- Create a conversation using the client with the context `{"tenant_id": "tenant_456"}`.
+- Save the resulting conversation object as JSON to `/home/user/inconvo-app/output.json`.
+
+## Implementation Guide
+1. Run `npm init -y` in `/home/user/inconvo-app`.
+2. Install the required packages: `npm install @inconvoai/node dotenv`.
+3. Create `.env` with dummy values for `INCONVO_API_KEY` and `INCONVO_AGENT_ID`.
+4. In `index.js`, import `Inconvo` from `@inconvoai/node`.
+5. Initialize the client and call `client.conversations.create({ context: { tenant_id: "tenant_456" } })`.
+6. Catch any errors (since dummy keys are used) and write the error message or the response to `output.json`.
+
+## Constraints
+- Project path: /home/user/inconvo-app
+- Log file: /home/user/inconvo-app/output.json
+
+## Integrations
+- Nonea:T565,# Inconvo Conversations API: Send Message
+
+## Background
+You need to use the `@inconvoai/node` SDK to interact with an Inconvo Data Agent. Your goal is to start a conversation, send a specific question, and parse the response.
+
+## Requirements
+- Initialize a Node.js project in `/home/user/inconvo-app`.
+- Install `@inconvoai/node` and `dotenv`.
+- Write a script `index.js` that uses the SDK to start a conversation and send the message "What are my top products?".
+- Save the resulting JSON response to `/home/user/inconvo-app/response.json`.
+
+## Implementation Guide
+1. Initialize a Node.js project in `/home/user/inconvo-app`.
+2. Install the required dependencies: `npm i @inconvoai/node dotenv`.
+3. Create `index.js`.
+4. In `index.js`, initialize the Inconvo client using the environment variables `INCONVO_API_KEY` and `INCONVO_AGENT_ID`.
+5. Start a conversation using `client.conversations.create({ context: { user_id: 123 } })`.
+6. Send the message using `client.conversations.messages.create(conversation.id, { message: "What are my top products?" })`.
+7. Write the entire response object to `/home/user/inconvo-app/response.json` using `fs.writeFileSync`.
+
+## Constraints
+- Project path: /home/user/inconvo-app
+- Output file: /home/user/inconvo-app/response.json
+- The script must read `INCONVO_API_KEY` and `INCONVO_AGENT_ID` from the environment.
+
+## Integrations
+- Noneb:T519,# Inconvo Conversations API Table Response
 
 ## Background
 Inconvo is an open-source platform for building reliable "chat-with-data" agents. It uses a Semantic Layer to map natural language into structured queries. The Conversations API allows programmatic interaction with the agent.
@@ -58,7 +109,58 @@ Inconvo is an open-source platform for building reliable "chat-with-data" agents
 - Log file: `/home/user/inconvo-app/response.json`
 
 ## Integrations
-- Nonea:T452,# Initialize Inconvo Project with PostgreSQL
+- Nonec:T59d,# Handle simple text response from the Conversations API
+
+## Background
+Inconvo provides a Conversations API to interact with your data agent programmatically. You need to create a simple Node.js script that sends a message to the agent and saves the response.
+
+## Requirements
+- Initialize a Node.js project in `/home/user/inconvo-app`.
+- Install `@inconvoai/node` and `dotenv`.
+- Create a script `index.js` that initializes the Inconvo client, creates a new conversation, and sends the message "What are my top products?" to the API.
+- Save the response to `response.json` in the project directory.
+
+## Implementation Guide
+1. Initialize a Node.js project in `/home/user/inconvo-app`.
+2. Install the required dependencies: `npm install @inconvoai/node dotenv`.
+3. Create `index.js`:
+   - Load environment variables using `dotenv`.
+   - Initialize the Inconvo client using `INCONVO_API_KEY` and `INCONVO_AGENT_ID`.
+   - Call `client.conversations.create({ context: { user_id: 123 } })` to start a conversation.
+   - Call `client.conversations.messages.create(id, { message: "What are my top products?" })`.
+   - Save the returned response to `response.json` using `fs.writeFileSync`.
+4. Run the script to generate `response.json`.
+
+## Constraints
+- Project path: `/home/user/inconvo-app`
+- Log file: `/home/user/inconvo-app/response.json`
+- The environment will have `INCONVO_API_KEY` and `INCONVO_AGENT_ID` set.
+
+## Integrations
+- Noned:T66b,# Customer Support Bot Order Status
+
+## Background
+You are building a customer support bot using Inconvo. Support agents need to be able to look up order statuses using natural language. You need to create a Node.js script that uses the `@inconvoai/node` SDK to query the order status.
+
+## Requirements
+- Initialize a Node.js project in `/home/user/inconvo-bot`.
+- Install `@inconvoai/node` and `dotenv`.
+- A `.env` file is already provided in the project directory with `INCONVO_API_KEY`, `INCONVO_AGENT_ID`, and `DATABASE_URL`.
+- Create a semantic model `inconvo.yaml` that defines an `orders` table. The table should be `Queryable` and have fields: `id` (state: On), `status` (state: On, type: dimension), and `created_at` (state: On, type: dimension).
+- Create a script `index.js` that initializes the Inconvo client and uses the Conversations API to send the message: "What is the status of order 123?".
+- The script must save the raw JSON response from the Inconvo API to `/home/user/inconvo-bot/response.json`.
+
+## Implementation Guide
+1. `cd /home/user/inconvo-bot`
+2. Run `npm init -y` to initialize the project.
+3. Run `npm install @inconvoai/node dotenv` to install the dependencies.
+4. Create `inconvo.yaml` with the required semantic model.
+5. Create `index.js` which loads environment variables, initializes the Inconvo client, creates a conversation, sends the message "What is the status of order 123?", and writes the response to `response.json`.
+6. Run `node index.js` to execute the script and generate the response.
+
+## Constraints
+- Project path: `/home/user/inconvo-bot`
+- Log file: `/home/user/inconvo-bot/response.json`e:T452,# Initialize Inconvo Project with PostgreSQL
 
 ## Background
 Inconvo requires a database connection to introspect the schema and generate the semantic model. Your task is to initialize a new Inconvo project and configure it to connect to an existing PostgreSQL database.
@@ -76,15 +178,223 @@ Inconvo requires a database connection to introspect the schema and generate the
 
 ## Constraints
 - Project path: `/home/user/myproject`
-- Database URL: `postgresql://inconvo:inconvo@localhost:5432/inconvo_db`0:{"P":null,"b":"8qtT_b8AMS0-kyAcJpaFK","c":["","tasks",""],"q":"","i":false,"f":[[["",{"children":["tasks",{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/inconvo-benchmark/_next/static/chunks/467141d06f4e2f60.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/inconvo-benchmark/_next/static/chunks/babff0e7418ab052.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/inconvo-benchmark/_next/static/chunks/3ecbb78a8ff87549.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":["$","body",null,{"className":"inter_5972bc34-module__OU16Qa__className antialiased","children":["$","$L2",null,{"children":["$","$L3",null,{"defaultTheme":"dark","children":[["$","div",null,{"className":"fixed right-4 top-6 z-50 sm:top-8","children":["$","$L4",null,{}]}],["$","$L5",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]]}]}]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L5",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[["$","div",null,{"className":"min-h-screen bg-background text-foreground font-sans selection:bg-primary/20","children":[["$","div",null,{"className":"fixed inset-0 -z-10 h-full w-full bg-background bg-[radial-gradient(#2a2a2a_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-20 dark:opacity-40"}],["$","$L7",null,{"tasksData":[{"taskName":"api_integration_nextjs","instruction":"$8","trials":[{"job_name":"2026-04-23__02-02-00","trial_name":"api_integration_nextjs__5pHrvra","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":true,"latency_sec":648.352,"latency_breakdown":{"env_setup":3.609,"agent_setup":15.179,"agent_exec":600.161,"verifier":6.332},"taskName":"api_integration_nextjs","jobId":"5pHrvra","exec_duration":600.161},{"job_name":"2026-05-13__15-22-26","trial_name":"api_integration_nextjs__5p4riUC","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":null,"error":true,"latency_sec":1222.102,"latency_breakdown":{"env_setup":1201.005,"agent_setup":null,"agent_exec":null,"verifier":null},"taskName":"api_integration_nextjs","jobId":"5p4riUC","exec_duration":1222.102}]},{"taskName":"business_logic_mapping_via_computed_columns","instruction":"","trials":[{"job_name":"2026-04-23__02-02-00","trial_name":"business_logic_mapping_via_compu__6MWgxsB","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":false,"latency_sec":176.004,"latency_breakdown":{"env_setup":24.89,"agent_setup":52.853,"agent_exec":75.038,"verifier":5.288},"taskName":"business_logic_mapping_via_compu","jobId":"6MWgxsB","exec_duration":75.038}]},{"taskName":"cli_init_custom_directory","instruction":"","trials":[{"job_name":"2026-04-23__02-02-00","trial_name":"cli_init_custom_directory__XDZhhGA","model":"gemini-3-flash","agent":"Pochi","passed":true,"reward":1,"error":false,"latency_sec":323.693,"latency_breakdown":{"env_setup":5.674,"agent_setup":16.749,"agent_exec":276.005,"verifier":3.486},"taskName":"cli_init_custom_directory","jobId":"XDZhhGA","exec_duration":276.005}]},{"taskName":"column_synonyms_configuration","instruction":"","trials":[{"job_name":"2026-04-23__02-02-00","trial_name":"column_synonyms_configuration__2R3TFCJ","model":"gemini-3-flash","agent":"Pochi","passed":true,"reward":1,"error":false,"latency_sec":443.129,"latency_breakdown":{"env_setup":24.502,"agent_setup":53.637,"agent_exec":346.482,"verifier":3.155},"taskName":"column_synonyms_configuration","jobId":"2R3TFCJ","exec_duration":346.482}]},{"taskName":"configure_custom_synonyms_for_fields","instruction":"","trials":[{"job_name":"2026-04-23__02-02-00","trial_name":"configure_custom_synonyms_for_fi__Ve5nGRh","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":null,"error":true,"latency_sec":39.999,"latency_breakdown":{"env_setup":11.352,"agent_setup":12.81,"agent_exec":null,"verifier":null},"taskName":"configure_custom_synonyms_for_fi","jobId":"Ve5nGRh","exec_duration":39.999}]},{"taskName":"configure_field_synonyms","instruction":"","trials":[{"job_name":"2026-04-23__02-02-00","trial_name":"configure_field_synonyms__deRCKhT","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":false,"latency_sec":262.212,"latency_breakdown":{"env_setup":11.552,"agent_setup":31.462,"agent_exec":200.866,"verifier":3.745},"taskName":"configure_field_synonyms","jobId":"deRCKhT","exec_duration":200.866}]},{"taskName":"configuring_synonyms_for_fields","instruction":"","trials":[{"job_name":"2026-04-23__02-02-00","trial_name":"configuring_synonyms_for_fields__vuXxasG","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":false,"latency_sec":553.755,"latency_breakdown":{"env_setup":24.661,"agent_setup":53.875,"agent_exec":456.442,"verifier":3.44},"taskName":"configuring_synonyms_for_fields","jobId":"vuXxasG","exec_duration":456.442}]},{"taskName":"context_filter_multiple_conditions","instruction":"","trials":[{"job_name":"2026-04-23__02-02-00","trial_name":"context_filter_multiple_conditio__r5JN7C5","model":"gemini-3-flash","agent":"Pochi","passed":true,"reward":1,"error":false,"latency_sec":386.447,"latency_breakdown":{"env_setup":5.98,"agent_setup":16.688,"agent_exec":333.085,"verifier":11.357},"taskName":"context_filter_multiple_conditio","jobId":"r5JN7C5","exec_duration":333.085}]},{"taskName":"conversations_api_chart_response","instruction":"","trials":[{"job_name":"2026-04-23__02-02-00","trial_name":"conversations_api_chart_response__Fw7Dn8u","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":true,"latency_sec":645.708,"latency_breakdown":{"env_setup":9.047,"agent_setup":18.336,"agent_exec":600.132,"verifier":3.154},"taskName":"conversations_api_chart_response","jobId":"Fw7Dn8u","exec_duration":600.132}]},{"taskName":"conversations_api_create_tenant_context","instruction":"","trials":[{"job_name":"2026-05-13__15-22-26","trial_name":"conversations_api_create_tenant__d2LjaWK","model":"gemini-3-flash","agent":"Pochi","passed":true,"reward":1,"error":false,"latency_sec":458.9,"latency_breakdown":{"env_setup":233.062,"agent_setup":23.249,"agent_exec":166.355,"verifier":15.121},"taskName":"conversations_api_create_tenant","jobId":"d2LjaWK","exec_duration":166.355}]},{"taskName":"conversations_api_send_message_top_products","instruction":"","trials":[{"job_name":"2026-05-13__15-22-26","trial_name":"conversations_api_send_message_t__wb6qba9","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":false,"latency_sec":196.863,"latency_breakdown":{"env_setup":50.965,"agent_setup":24.851,"agent_exec":70.887,"verifier":12.097},"taskName":"conversations_api_send_message_t","jobId":"wb6qba9","exec_duration":70.887}]},{"taskName":"conversations_api_table_response","instruction":"$9","trials":[{"job_name":"2026-04-23__02-02-00","trial_name":"conversations_api_table_response__xK4ewfr","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":false,"latency_sec":318.854,"latency_breakdown":{"env_setup":3.591,"agent_setup":60.018,"agent_exec":221.52,"verifier":5.081},"taskName":"conversations_api_table_response","jobId":"xK4ewfr","exec_duration":221.52},{"job_name":"2026-05-13__15-22-26","trial_name":"conversations_api_table_response__ixtLYxE","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":false,"latency_sec":545.227,"latency_breakdown":{"env_setup":382.662,"agent_setup":33.711,"agent_exec":101.588,"verifier":11.928},"taskName":"conversations_api_table_response","jobId":"ixtLYxE","exec_duration":101.588}]},{"taskName":"conversations_api_text_response","instruction":"","trials":[{"job_name":"2026-05-13__15-22-26","trial_name":"conversations_api_text_response__vMaM8XX","model":"gemini-3-flash","agent":"Pochi","passed":true,"reward":1,"error":false,"latency_sec":790.434,"latency_breakdown":{"env_setup":381.579,"agent_setup":36.723,"agent_exec":325.643,"verifier":24.593},"taskName":"conversations_api_text_response","jobId":"vMaM8XX","exec_duration":325.643}]},{"taskName":"conversations_error_handling","instruction":"","trials":[{"job_name":"2026-04-23__02-02-00","trial_name":"conversations_error_handling__RtejKQG","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":false,"latency_sec":215.419,"latency_breakdown":{"env_setup":26.743,"agent_setup":24.985,"agent_exec":139.261,"verifier":3.333},"taskName":"conversations_error_handling","jobId":"RtejKQG","exec_duration":139.261}]},{"taskName":"custom_synonyms_advanced","instruction":"","trials":[{"job_name":"2026-04-23__02-02-00","trial_name":"custom_synonyms_advanced__E8FsbUM","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":false,"latency_sec":146.766,"latency_breakdown":{"env_setup":5.148,"agent_setup":18.171,"agent_exec":72.681,"verifier":9.955},"taskName":"custom_synonyms_advanced","jobId":"E8FsbUM","exec_duration":72.681}]},{"taskName":"custom_synonyms_configuration","instruction":"","trials":[{"job_name":"2026-04-23__02-02-00","trial_name":"custom_synonyms_configuration__8AnM4YP","model":"gemini-3-flash","agent":"Pochi","passed":true,"reward":1,"error":false,"latency_sec":137.067,"latency_breakdown":{"env_setup":20.741,"agent_setup":35.495,"agent_exec":62.844,"verifier":3.326},"taskName":"custom_synonyms_configuration","jobId":"8AnM4YP","exec_duration":62.844}]},{"taskName":"customer_support_bot_order_status","instruction":"","trials":[{"job_name":"2026-05-13__15-22-26","trial_name":"customer_support_bot_order_statu__gApp9Fd","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":false,"latency_sec":660.757,"latency_breakdown":{"env_setup":382.869,"agent_setup":34.865,"agent_exec":195.041,"verifier":18.291},"taskName":"customer_support_bot_order_statu","jobId":"gApp9Fd","exec_duration":195.041}]},{"taskName":"define_calculated_measure_gross_margin","instruction":"","trials":[{"job_name":"2026-04-23__02-02-00","trial_name":"define_calculated_measure_gross__79ERg4h","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":false,"latency_sec":203.732,"latency_breakdown":{"env_setup":24.977,"agent_setup":52.117,"agent_exec":96.37,"verifier":3.723},"taskName":"define_calculated_measure_gross","jobId":"79ERg4h","exec_duration":96.37}]},{"taskName":"handling_unsupported_queries","instruction":"","trials":[{"job_name":"2026-04-23__02-02-00","trial_name":"handling_unsupported_queries__Q9BCLuA","model":"gemini-3-flash","agent":"Pochi","passed":true,"reward":1,"error":false,"latency_sec":144.673,"latency_breakdown":{"env_setup":19.956,"agent_setup":35.233,"agent_exec":71.465,"verifier":3.281},"taskName":"handling_unsupported_queries","jobId":"Q9BCLuA","exec_duration":71.465}]},{"taskName":"inconvo_cli_version_check","instruction":"","trials":[{"job_name":"2026-04-23__02-02-00","trial_name":"inconvo_cli_version_check__H3oJGuM","model":"gemini-3-flash","agent":"Pochi","passed":true,"reward":1,"error":false,"latency_sec":111.337,"latency_breakdown":{"env_setup":19.546,"agent_setup":18.717,"agent_exec":53.769,"verifier":3.718},"taskName":"inconvo_cli_version_check","jobId":"H3oJGuM","exec_duration":53.769}]},{"taskName":"initialize_inconvo_with_postgres_db","instruction":"$a","trials":[{"job_name":"2026-04-23__02-02-00","trial_name":"initialize_inconvo_with_postgres__JHLdXVJ","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":true,"latency_sec":702.815,"latency_breakdown":{"env_setup":23.843,"agent_setup":54.586,"agent_exec":600.228,"verifier":3.328},"taskName":"initialize_inconvo_with_postgres","jobId":"JHLdXVJ","exec_duration":600.228},{"job_name":"2026-05-13__15-22-26","trial_name":"initialize_inconvo_with_postgres__oxhSE73","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":true,"latency_sec":1672.147,"latency_breakdown":{"env_setup":1014.511,"agent_setup":28.991,"agent_exec":600.118,"verifier":9.248},"taskName":"initialize_inconvo_with_postgres","jobId":"oxhSE73","exec_duration":600.118}]},{"taskName":"metric_definition_gross_margin","instruction":"","trials":[{"job_name":"2026-04-23__02-02-00","trial_name":"metric_definition_gross_margin__2jGfv8z","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":true,"latency_sec":651.236,"latency_breakdown":{"env_setup":3.919,"agent_setup":17.389,"agent_exec":600.204,"verifier":12.385},"taskName":"metric_definition_gross_margin","jobId":"2jGfv8z","exec_duration":600.204}]},{"taskName":"multi_tenant_authorization_complex_roles","instruction":"","trials":[{"job_name":"2026-05-13__15-22-26","trial_name":"multi_tenant_authorization_compl__SVaRgvE","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":false,"latency_sec":292.731,"latency_breakdown":{"env_setup":140.734,"agent_setup":27.495,"agent_exec":83.58,"verifier":14.245},"taskName":"multi_tenant_authorization_compl","jobId":"SVaRgvE","exec_duration":83.58}]},{"taskName":"multi_tenant_authorization_context","instruction":"","trials":[{"job_name":"2026-05-13__15-22-26","trial_name":"multi_tenant_authorization_conte__MjkMmfS","model":"gemini-3-flash","agent":"Pochi","passed":true,"reward":1,"error":false,"latency_sec":967.548,"latency_breakdown":{"env_setup":329.758,"agent_setup":31.633,"agent_exec":570.417,"verifier":22.977},"taskName":"multi_tenant_authorization_conte","jobId":"MjkMmfS","exec_duration":570.417}]},{"taskName":"multi_tenant_org_id","instruction":"","trials":[{"job_name":"2026-04-23__02-02-00","trial_name":"multi_tenant_org_id__yw3gYB9","model":"gemini-3-flash","agent":"Pochi","passed":true,"reward":1,"error":false,"latency_sec":149.099,"latency_breakdown":{"env_setup":35.228,"agent_setup":17.792,"agent_exec":78.796,"verifier":3.032},"taskName":"multi_tenant_org_id","jobId":"yw3gYB9","exec_duration":78.796}]},{"taskName":"multi_tenant_reporting_user_records","instruction":"","trials":[{"job_name":"2026-05-13__15-22-26","trial_name":"multi_tenant_reporting_user_reco__qj3bw9c","model":"gemini-3-flash","agent":"Pochi","passed":true,"reward":1,"error":true,"latency_sec":717.123,"latency_breakdown":{"env_setup":50.301,"agent_setup":23.297,"agent_exec":600.176,"verifier":30.846},"taskName":"multi_tenant_reporting_user_reco","jobId":"qj3bw9c","exec_duration":600.176}]},{"taskName":"schema_mapping_calculated_measure_gross_margin","instruction":"","trials":[{"job_name":"2026-05-13__15-22-26","trial_name":"schema_mapping_calculated_measur__vC24KEK","model":"gemini-3-flash","agent":"Pochi","passed":true,"reward":1,"error":false,"latency_sec":486.685,"latency_breakdown":{"env_setup":396.91,"agent_setup":21.642,"agent_exec":45.209,"verifier":10.073},"taskName":"schema_mapping_calculated_measur","jobId":"vC24KEK","exec_duration":45.209}]},{"taskName":"schema_mapping_ecommerce","instruction":"","trials":[{"job_name":"2026-05-13__15-22-26","trial_name":"schema_mapping_ecommerce__wgCnQpi","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":false,"latency_sec":519.23,"latency_breakdown":{"env_setup":392.073,"agent_setup":21.252,"agent_exec":76.302,"verifier":10.93},"taskName":"schema_mapping_ecommerce","jobId":"wgCnQpi","exec_duration":76.302}]},{"taskName":"schema_mapping_joinable_tables","instruction":"","trials":[{"job_name":"2026-05-13__15-22-26","trial_name":"schema_mapping_joinable_tables__3eVYX7h","model":"gemini-3-flash","agent":"Pochi","passed":true,"reward":1,"error":false,"latency_sec":436.024,"latency_breakdown":{"env_setup":282.258,"agent_setup":62.389,"agent_exec":60.835,"verifier":12.243},"taskName":"schema_mapping_joinable_tables","jobId":"3eVYX7h","exec_duration":60.835}]},{"taskName":"schema_mapping_multiple_join_paths","instruction":"","trials":[{"job_name":"2026-05-13__15-22-26","trial_name":"schema_mapping_multiple_join_pat__u5Brbk8","model":"gemini-3-flash","agent":"Pochi","passed":true,"reward":1,"error":false,"latency_sec":560.775,"latency_breakdown":{"env_setup":400.048,"agent_setup":53.01,"agent_exec":76.557,"verifier":11.855},"taskName":"schema_mapping_multiple_join_pat","jobId":"u5Brbk8","exec_duration":76.557}]},{"taskName":"schema_mapping_off_state_tables","instruction":"","trials":[{"job_name":"2026-05-13__15-22-26","trial_name":"schema_mapping_off_state_tables__MhBrN68","model":"gemini-3-flash","agent":"Pochi","passed":true,"reward":1,"error":false,"latency_sec":246.227,"latency_breakdown":{"env_setup":160.206,"agent_setup":21.969,"agent_exec":38.292,"verifier":12.566},"taskName":"schema_mapping_off_state_tables","jobId":"MhBrN68","exec_duration":38.292}]},{"taskName":"schema_mapping_relationships_many_to_one","instruction":"","trials":[{"job_name":"2026-05-13__15-22-26","trial_name":"schema_mapping_relationships_man__8tCC5rq","model":"gemini-3-flash","agent":"Pochi","passed":true,"reward":1,"error":false,"latency_sec":141.044,"latency_breakdown":{"env_setup":25.099,"agent_setup":21.719,"agent_exec":47.658,"verifier":12.657},"taskName":"schema_mapping_relationships_man","jobId":"8tCC5rq","exec_duration":47.658}]},{"taskName":"schema_mapping_synonyms","instruction":"","trials":[{"job_name":"2026-05-13__15-22-26","trial_name":"schema_mapping_synonyms__afAsKYf","model":"gemini-3-flash","agent":"Pochi","passed":true,"reward":1,"error":false,"latency_sec":291.959,"latency_breakdown":{"env_setup":182.827,"agent_setup":21.371,"agent_exec":58.147,"verifier":13.03},"taskName":"schema_mapping_synonyms","jobId":"afAsKYf","exec_duration":58.147}]},{"taskName":"schema_mapping_time_dimensions","instruction":"","trials":[{"job_name":"2026-05-13__15-22-26","trial_name":"schema_mapping_time_dimensions__iRsLNoX","model":"gemini-3-flash","agent":"Pochi","passed":true,"reward":1,"error":false,"latency_sec":132.613,"latency_breakdown":{"env_setup":16.831,"agent_setup":22.448,"agent_exec":53.444,"verifier":11.862},"taskName":"schema_mapping_time_dimensions","jobId":"iRsLNoX","exec_duration":53.444}]},{"taskName":"sdk_nodejs_express_endpoint","instruction":"","trials":[{"job_name":"2026-05-13__15-22-26","trial_name":"sdk_nodejs_express_endpoint__Nf4V223","model":"gemini-3-flash","agent":"Pochi","passed":true,"reward":1,"error":false,"latency_sec":276.773,"latency_breakdown":{"env_setup":11.491,"agent_setup":26.387,"agent_exec":210.735,"verifier":15.313},"taskName":"sdk_nodejs_express_endpoint","jobId":"Nf4V223","exec_duration":210.735}]},{"taskName":"sdk_nodejs_pull_semantic_model","instruction":"","trials":[{"job_name":"2026-05-13__15-22-26","trial_name":"sdk_nodejs_pull_semantic_model__9nVCT6A","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":false,"latency_sec":169.467,"latency_breakdown":{"env_setup":56.885,"agent_setup":21.707,"agent_exec":41.519,"verifier":11.518},"taskName":"sdk_nodejs_pull_semantic_model","jobId":"9nVCT6A","exec_duration":41.519}]},{"taskName":"sdk_vercel_ai_streaming_ui","instruction":"","trials":[{"job_name":"2026-05-13__15-22-26","trial_name":"sdk_vercel_ai_streaming_ui__YuWZNbZ","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":true,"latency_sec":1369.414,"latency_breakdown":{"env_setup":639.076,"agent_setup":24.04,"agent_exec":600.108,"verifier":79.912},"taskName":"sdk_vercel_ai_streaming_ui","jobId":"YuWZNbZ","exec_duration":600.108}]},{"taskName":"sdk_vercel_ai_tool_integration","instruction":"","trials":[{"job_name":"2026-05-13__15-22-26","trial_name":"sdk_vercel_ai_tool_integration__ibC87Jy","model":"gemini-3-flash","agent":"Pochi","passed":true,"reward":1,"error":true,"latency_sec":666.775,"latency_breakdown":{"env_setup":11.458,"agent_setup":28.643,"agent_exec":600.121,"verifier":13.965},"taskName":"sdk_vercel_ai_tool_integration","jobId":"ibC87Jy","exec_duration":600.121}]}]}]]}],["$Lb","$Lc"],"$Ld"]}],{},null,false,false]},null,false,false]},null,false,false],"$Le",false]],"m":"$undefined","G":["$f",[]],"S":true}
-10:I[75049,["/inconvo-benchmark/_next/static/chunks/d2c13bb33c4fcd54.js","/inconvo-benchmark/_next/static/chunks/c21188132e0e0d48.js"],"OutletBoundary"]
-11:"$Sreact.suspense"
-13:I[75049,["/inconvo-benchmark/_next/static/chunks/d2c13bb33c4fcd54.js","/inconvo-benchmark/_next/static/chunks/c21188132e0e0d48.js"],"ViewportBoundary"]
-15:I[75049,["/inconvo-benchmark/_next/static/chunks/d2c13bb33c4fcd54.js","/inconvo-benchmark/_next/static/chunks/c21188132e0e0d48.js"],"MetadataBoundary"]
-b:["$","script","script-0",{"src":"/inconvo-benchmark/_next/static/chunks/e703b49613a95162.js","async":true,"nonce":"$undefined"}]
-c:["$","script","script-1",{"src":"/inconvo-benchmark/_next/static/chunks/be08138953094657.js","async":true,"nonce":"$undefined"}]
-d:["$","$L10",null,{"children":["$","$11",null,{"name":"Next.MetadataOutlet","children":"$@12"}]}]
-e:["$","$1","h",{"children":[null,["$","$L13",null,{"children":"$L14"}],["$","div",null,{"hidden":true,"children":["$","$L15",null,{"children":["$","$11",null,{"name":"Next.Metadata","children":"$L16"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]
-14:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
-12:null
-16:[["$","title","0",{"children":"Inconvo Benchmark"}],["$","meta","1",{"name":"description","content":"Performance results of AI coding models on Inconvo tasks, measuring success rate and execution time with high precision."}]]
+- Database URL: `postgresql://inconvo:inconvo@localhost:5432/inconvo_db`f:T746,# Multi-tenant Authorization with Complex Roles
+
+## Background
+You are building a multi-tenant analytics dashboard using Inconvo. You have two types of users: `admin` and `store_manager`. Admins can see all orders across all stores, while store managers can only see orders for their specific `store_id`. You need to configure the semantic model and write a Node.js script to dynamically apply context filters based on the user's role.
+
+## Requirements
+- Create a semantic model `inconvo.yaml` that defines an `orders` table with a `store_id` column.
+- Write a Node.js script `index.js` that uses the `@inconvoai/node` SDK to create a conversation.
+- The script should export a function `askQuestion(query, user)` where `user` is an object like `{ role: 'store_manager', store_id: 123 }` or `{ role: 'admin' }`.
+- The script must correctly pass context filters to `client.conversations.create({ context: ... })` so that `store_manager` users are restricted to their `store_id`, but `admin` users are not restricted.
+- The script must send the `query` using `client.conversations.messages.create` and return the response text.
+
+## Implementation Guide
+1. Initialize a Node.js project in `/home/user/inconvo-app`.
+2. Install `@inconvoai/node` and `dotenv`.
+3. Create `inconvo.yaml` defining the `orders` table (make sure it's `Queryable` and has `store_id` as a dimension).
+4. Create `index.js` exporting the `askQuestion` function.
+5. The `askQuestion` function should initialize the Inconvo client using `INCONVO_API_KEY` and `INCONVO_AGENT_ID` from the environment.
+6. Construct the `context` object appropriately based on `user.role`.
+
+## Constraints
+- Project path: `/home/user/inconvo-app`
+- The script `index.js` must be a CommonJS module exporting `askQuestion`.
+- You do not need to start a server, just provide the `index.js` file with the correct logic.10:T647,# Inconvo Multi-tenant Reporting
+
+## Background
+Inconvo is an open-source platform for building "chat-with-data" agents. When building multi-tenant analytics, it's crucial to scope data so users can only query their own records. You can do this by implementing context filters in the semantic model.
+
+## Requirements
+- Configure the `inconvo.yaml` semantic model to include an `orders` table.
+- Implement a context filter on the `orders` table that restricts queries to a specific `store_id` passed in the conversation context.
+- Write a Node.js script (`index.js`) using the `@inconvoai/node` SDK to start a conversation with `context: { store_id: 123 }` and ask "What are my orders?".
+- Save the API response to `response.json`.
+
+## Implementation Guide
+1. A Node.js project is already initialized at `/home/user/inconvo-app` with dependencies installed.
+2. Edit `/home/user/inconvo-app/inconvo.yaml` to define the `orders` table and add the context filter for `store_id`.
+3. Create `/home/user/inconvo-app/index.js` to initialize the Inconvo client (it will automatically pick up `INCONVO_API_KEY` and `INCONVO_AGENT_ID` from the environment).
+4. In `index.js`, use `client.conversations.create({ context: { store_id: 123 } })` and `client.conversations.messages.create(...)` to ask "What are my orders?".
+5. Write the final response data to `/home/user/inconvo-app/response.json`.
+6. Run `node index.js` to generate the response.
+
+## Constraints
+- Project path: `/home/user/inconvo-app`
+- The script must read credentials from environment variables.
+- Output file: `/home/user/inconvo-app/response.json`11:T46f,# Inconvo Semantic Model for E-commerce
+
+## Background
+Inconvo uses a Semantic Layer (`inconvo.yaml`) to map natural language questions into structured query plans. You need to create a semantic model for an e-commerce database with three tables: `orders`, `products`, and `users`.
+
+## Requirements
+- Create an `inconvo.yaml` file in the project directory.
+- Define three tables: `orders`, `products`, and `users`.
+- The `orders` table must be `Queryable`. It should have `id` (state: On), `total_amount` (state: On, type: measure), and `user_id` (state: On).
+- The `products` table must be `Queryable`. It should have `id` (state: On), `name` (state: On), and `price` (state: On, type: measure).
+- The `users` table must be `Joinable`. It should have `id` (state: On) and `email` (state: On).
+- Define relations:
+  - `order_to_user`: left `orders.user_id`, right `users.id`.
+
+## Implementation Guide
+1. Navigate to `/home/user/ecommerce-agent`.
+2. Create the `inconvo.yaml` file with the required tables and fields.
+3. Make sure the syntax matches the Inconvo schema format.
+
+## Constraints
+- Project path: /home/user/ecommerce-agent
+12:T586,# Explicitly Constrain Join Paths in Inconvo
+
+## Background
+Inconvo uses a Semantic Layer (`inconvo.yaml`) to map natural language to SQL. When multiple join paths exist between tables (e.g., an order has both a `buyer_id` and a `seller_id` pointing to a `users` table), the agent may pick the wrong one unless explicitly defined in the YAML.
+
+## Requirements
+- You have an Inconvo project at `/home/user/inconvo-app` with an initial `inconvo.yaml`.
+- The schema includes `orders` and `users` tables.
+- The `orders` table has `buyer_id` and `seller_id` columns, both referencing `users.id`.
+- Update `inconvo.yaml` to explicitly define two relationships:
+  1. Name: `order_to_buyer`, Left: `orders.buyer_id`, Right: `users.id`
+  2. Name: `order_to_seller`, Left: `orders.seller_id`, Right: `users.id`
+- Create a Node.js script `index.js` that initializes the `@inconvoai/node` client and saves the client instance to a global variable (for testing purposes, just write a basic script that can be executed without throwing errors). The script must require `@inconvoai/node`.
+
+## Implementation Guide
+1. Open `/home/user/inconvo-app/inconvo.yaml`.
+2. Add a `relations` section at the root level if it doesn't exist.
+3. Define the `order_to_buyer` and `order_to_seller` relationships as specified.
+4. Create `/home/user/inconvo-app/index.js` requiring the SDK.
+
+## Constraints
+- Project path: `/home/user/inconvo-app`13:T490,# Inconvo Schema Mapping: Synonyms and Hidden Fields
+
+## Background
+You have an Inconvo project at `/home/user/inconvo-app`. It contains a semantic model configuration file `inconvo.yaml` for an e-commerce database. You need to hide internal fields and add synonyms to improve the natural language querying experience.
+
+## Requirements
+- Edit `inconvo.yaml` in the `/home/user/inconvo-app` directory.
+- The `users` table has an `internal_id` field. Change its state to `Off` to hide it from the AI.
+- The `products` table has a `title` field. Add synonyms `["name", "item name"]` to it so users can ask about "product name" or "item name".
+- The `orders` table has a `total_amount` field. Add a synonym `["revenue"]` to it.
+
+## Implementation Guide
+1. Open `/home/user/inconvo-app/inconvo.yaml`.
+2. Locate the `users` table and update the `internal_id` field to have `state: Off`.
+3. Locate the `products` table and update the `title` field to include `synonyms: ["name", "item name"]`.
+4. Locate the `orders` table and update the `total_amount` field to include `synonyms: ["revenue"]`.
+
+## Constraints
+- Project path: `/home/user/inconvo-app`
+
+## Integrations
+- None14:T446,# Configure Time Dimension in Inconvo
+
+## Background
+You have an Inconvo project set up at `/home/user/inconvo-app`. The project contains a semantic model configuration file `inconvo.yaml` with an `orders` table. You need to configure the `created_at` field as a time dimension to allow temporal queries, and then run a script to verify the configuration.
+
+## Requirements
+- Update the `inconvo.yaml` file in the project directory.
+- Locate the `orders` table and its `created_at` field.
+- Configure the `created_at` field to be queryable (`state: On`) and explicitly set its type to `dimension`.
+- Run `node index.js` to ensure the configuration is valid and can answer a time-based question.
+
+## Constraints
+- Project path: `/home/user/inconvo-app`
+- File to modify: `/home/user/inconvo-app/inconvo.yaml`
+
+## Implementation Guide
+1. Open `/home/user/inconvo-app/inconvo.yaml`.
+2. Find the `tables` section and the `orders` table.
+3. In the `fields` section of `orders`, add or update the `created_at` field to have `{ state: On, type: dimension }`.
+4. Run `node index.js` to verify the setup.15:T6bb,# Inconvo Express.js Endpoint
+
+## Background
+Inconvo provides an SDK for interacting with your Data Agents. You need to build a simple Express.js endpoint that uses the `@inconvoai/node` SDK to forward user questions to the Inconvo dev server.
+
+## Requirements
+- Initialize a Node.js project in `/home/user/inconvo-express`.
+- Install `express` and `@inconvoai/node`.
+- Create an `index.js` that sets up an Express server.
+- Implement a POST `/ask` endpoint that accepts JSON body `{"question": "...", "userId": "..."}`.
+- The endpoint must use the `INCONVO_API_KEY` and `INCONVO_AGENT_ID` environment variables.
+- It should use the SDK to create a conversation for the given `userId` (using `userIdentifier`), and then send the `question` as a message to that conversation.
+- Return the response from the message creation.
+
+## Implementation Guide
+1. `mkdir -p /home/user/inconvo-express && cd /home/user/inconvo-express`
+2. `npm init -y`
+3. `npm install express @inconvoai/node`
+4. Create `index.js` and set up the Express app to parse JSON bodies.
+5. Initialize the `Inconvo` client from `@inconvoai/node`.
+6. In the POST `/ask` route, create a conversation using `client.agents.conversations.create(process.env.INCONVO_AGENT_ID, { userIdentifier: req.body.userId })`.
+7. Send the message using `client.agents.conversations.messages.create(process.env.INCONVO_AGENT_ID, conversation.id, { message: req.body.question })` (or equivalent SDK method based on the Inconvo SDK structure).
+8. Start the server on the specified port.
+
+## Constraints
+- Project path: `/home/user/inconvo-express`
+- Start command: `node index.js`
+- Port: `3000`
+- The server must read `INCONVO_API_KEY` and `INCONVO_AGENT_ID` from the environment.16:T593,# Inconvo Streaming UI with Vercel AI SDK
+
+## Background
+Inconvo provides a middleware for building chat-with-data agents. You can use `@inconvoai/vercel-ai-sdk` to stream responses to a React frontend using the Vercel AI SDK.
+
+## Requirements
+- You are provided with a Next.js application in `/home/user/app`.
+- Implement an API route at `app/api/chat/route.ts` that uses `@inconvoai/vercel-ai-sdk` and `@inconvoai/node` to handle chat messages and stream the response from Inconvo.
+- Implement the main UI in `app/page.tsx` using the `useChat` hook from the `ai` package.
+- When the agent returns a `table` response, render it as a formatted HTML data grid (`<table>`, `<thead>`, `<tbody>`, `<tr>`, `<th>`, `<td>`).
+- The table should display the data correctly based on the streamed Inconvo table response structure.
+
+## Implementation Guide
+1. Use `@inconvoai/node` to initialize the Inconvo client in the API route.
+2. Use `@inconvoai/vercel-ai-sdk` to stream the response back to the client.
+3. In `app/page.tsx`, use `useChat` to manage the chat state.
+4. Render user messages as text.
+5. For assistant messages, if the content or tool invocation represents a table, render it as an HTML `<table>`.
+
+## Constraints
+- Project path: /home/user/app
+- Start command: npm run build && npm start
+- Port: 3000
+- Environment Variables: `INCONVO_API_KEY` and `INCONVO_AGENT_ID` are set in the environment.
+
+## Integrations
+- None17:T6d7,# Inconvo Vercel AI SDK Tool Integration
+
+## Background
+You need to integrate Inconvo as a tool within a Vercel AI SDK agent workflow. The agent should be able to answer natural language questions by querying an e-commerce database through Inconvo's semantic layer.
+
+## Requirements
+- Initialize a Node.js project in `/home/user/inconvo-agent`.
+- Install necessary dependencies: `@inconvoai/node`, `@inconvoai/vercel-ai-sdk`, `ai`, `@ai-sdk/openai`, and `dotenv`.
+- Create an `inconvo.yaml` semantic model defining `orders` (Queryable) and `customers` (Joinable) tables, with a relationship from `orders.customer_id` to `customers.id`.
+- Create an `agent.js` script that uses the Vercel AI SDK `generateText` function with an OpenAI model.
+- Provide the Inconvo tool to the agent so it can answer questions about the data.
+- The script should ask the agent: "What is the total amount of orders?" and save the agent's textual response to `/home/user/inconvo-agent/response.json` as a JSON object `{"response": "..."}`.
+
+## Implementation Guide
+1. `mkdir -p /home/user/inconvo-agent` and initialize the project.
+2. Install the required packages.
+3. Create `inconvo.yaml` based on standard Inconvo configuration for an e-commerce schema.
+4. Create `agent.js` that initializes the Inconvo client, wraps it as a Vercel AI SDK tool using `@inconvoai/vercel-ai-sdk`, and calls `generateText`.
+5. Write the output of `generateText` to `response.json`.
+
+## Constraints
+- Project path: `/home/user/inconvo-agent`
+- Log file: `/home/user/inconvo-agent/output.log`
+- The script must read `INCONVO_API_KEY`, `INCONVO_AGENT_ID`, `INCONVO_DB_URL`, and `OPENAI_API_KEY` from the environment.
+- Run the script and pipe output to the log file.
+
+## Integrations
+- OpenAI0:{"P":null,"b":"FyaVIy5jo1S_5qw_GH7lR","c":["","tasks",""],"q":"","i":false,"f":[[["",{"children":["tasks",{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/inconvo-benchmark/_next/static/chunks/60ed58d507cd52d9.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/inconvo-benchmark/_next/static/chunks/babff0e7418ab052.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/inconvo-benchmark/_next/static/chunks/3ecbb78a8ff87549.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":["$","body",null,{"className":"inter_5972bc34-module__OU16Qa__className antialiased","children":["$","$L2",null,{"children":["$","$L3",null,{"defaultTheme":"dark","children":[["$","div",null,{"className":"fixed right-4 top-6 z-50 sm:top-8","children":["$","$L4",null,{}]}],["$","$L5",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]]}]}]}]}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L5",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L6",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[["$","div",null,{"className":"min-h-screen bg-background text-foreground font-sans selection:bg-primary/20","children":[["$","div",null,{"className":"fixed inset-0 -z-10 h-full w-full bg-background bg-[radial-gradient(#2a2a2a_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-20 dark:opacity-40"}],["$","$L7",null,{"tasksData":[{"taskName":"api_integration_nextjs","instruction":"$8","trials":[{"job_name":"2026-05-13__15-22-26","trial_name":"api_integration_nextjs__5p4riUC","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":null,"error":true,"latency_sec":1222.102,"latency_breakdown":{"env_setup":1201.005,"agent_setup":null,"agent_exec":null,"verifier":null},"taskName":"api_integration_nextjs","jobId":"5p4riUC","exec_duration":1222.102}]},{"taskName":"conversations_api_create_tenant_context","instruction":"$9","trials":[{"job_name":"2026-05-13__15-22-26","trial_name":"conversations_api_create_tenant__d2LjaWK","model":"gemini-3-flash","agent":"Pochi","passed":true,"reward":1,"error":false,"latency_sec":458.9,"latency_breakdown":{"env_setup":233.062,"agent_setup":23.249,"agent_exec":166.355,"verifier":15.121},"taskName":"conversations_api_create_tenant","jobId":"d2LjaWK","exec_duration":166.355}]},{"taskName":"conversations_api_send_message_top_products","instruction":"$a","trials":[{"job_name":"2026-05-13__15-22-26","trial_name":"conversations_api_send_message_t__wb6qba9","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":false,"latency_sec":196.863,"latency_breakdown":{"env_setup":50.965,"agent_setup":24.851,"agent_exec":70.887,"verifier":12.097},"taskName":"conversations_api_send_message_t","jobId":"wb6qba9","exec_duration":70.887}]},{"taskName":"conversations_api_table_response","instruction":"$b","trials":[{"job_name":"2026-05-13__15-22-26","trial_name":"conversations_api_table_response__ixtLYxE","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":false,"latency_sec":545.227,"latency_breakdown":{"env_setup":382.662,"agent_setup":33.711,"agent_exec":101.588,"verifier":11.928},"taskName":"conversations_api_table_response","jobId":"ixtLYxE","exec_duration":101.588}]},{"taskName":"conversations_api_text_response","instruction":"$c","trials":[{"job_name":"2026-05-13__15-22-26","trial_name":"conversations_api_text_response__vMaM8XX","model":"gemini-3-flash","agent":"Pochi","passed":true,"reward":1,"error":false,"latency_sec":790.434,"latency_breakdown":{"env_setup":381.579,"agent_setup":36.723,"agent_exec":325.643,"verifier":24.593},"taskName":"conversations_api_text_response","jobId":"vMaM8XX","exec_duration":325.643}]},{"taskName":"customer_support_bot_order_status","instruction":"$d","trials":[{"job_name":"2026-05-13__15-22-26","trial_name":"customer_support_bot_order_statu__gApp9Fd","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":false,"latency_sec":660.757,"latency_breakdown":{"env_setup":382.869,"agent_setup":34.865,"agent_exec":195.041,"verifier":18.291},"taskName":"customer_support_bot_order_statu","jobId":"gApp9Fd","exec_duration":195.041}]},{"taskName":"initialize_inconvo_with_postgres_db","instruction":"$e","trials":[{"job_name":"2026-05-13__15-22-26","trial_name":"initialize_inconvo_with_postgres__oxhSE73","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":true,"latency_sec":1672.147,"latency_breakdown":{"env_setup":1014.511,"agent_setup":28.991,"agent_exec":600.118,"verifier":9.248},"taskName":"initialize_inconvo_with_postgres","jobId":"oxhSE73","exec_duration":600.118}]},{"taskName":"multi_tenant_authorization_complex_roles","instruction":"$f","trials":[{"job_name":"2026-05-13__15-22-26","trial_name":"multi_tenant_authorization_compl__SVaRgvE","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":false,"latency_sec":292.731,"latency_breakdown":{"env_setup":140.734,"agent_setup":27.495,"agent_exec":83.58,"verifier":14.245},"taskName":"multi_tenant_authorization_compl","jobId":"SVaRgvE","exec_duration":83.58}]},{"taskName":"multi_tenant_authorization_context","instruction":"# Multi-tenant Authorization with Inconvo\n\n## Background\nInconvo allows mapping application-level user context to database-level tenant IDs. You need to implement a context filter on the `orders` table that restricts queries to a specific `store_id` passed in the conversation context.\n\n## Requirements\n- You have an existing Node.js project at `/home/user/inconvo-app` with `@inconvoai/node` installed.\n- Update `inconvo.yaml` to include a context filter on the `orders` table for `store_id`.\n- Write a Node.js script `index.js` that uses the Inconvo SDK to create a conversation with context `{ store_id: 123 }`, asks 'What are my total orders?', and saves the JSON response to `response.json`.\n\n## Constraints\n- Project path: `/home/user/inconvo-app`\n- The script must use `client.conversations.create({ context: { store_id: 123 } })` and `client.conversations.messages.create(...)`.\n- The script must write the response to `/home/user/inconvo-app/response.json`.\n\n## Integrations\n- Inconvo Cloud\n- PostgreSQL","trials":[{"job_name":"2026-05-13__15-22-26","trial_name":"multi_tenant_authorization_conte__MjkMmfS","model":"gemini-3-flash","agent":"Pochi","passed":true,"reward":1,"error":false,"latency_sec":967.548,"latency_breakdown":{"env_setup":329.758,"agent_setup":31.633,"agent_exec":570.417,"verifier":22.977},"taskName":"multi_tenant_authorization_conte","jobId":"MjkMmfS","exec_duration":570.417}]},{"taskName":"multi_tenant_reporting_user_records","instruction":"$10","trials":[{"job_name":"2026-05-13__15-22-26","trial_name":"multi_tenant_reporting_user_reco__qj3bw9c","model":"gemini-3-flash","agent":"Pochi","passed":true,"reward":1,"error":true,"latency_sec":717.123,"latency_breakdown":{"env_setup":50.301,"agent_setup":23.297,"agent_exec":600.176,"verifier":30.846},"taskName":"multi_tenant_reporting_user_reco","jobId":"qj3bw9c","exec_duration":600.176}]},{"taskName":"schema_mapping_calculated_measure_gross_margin","instruction":"# Define a Calculated Measure in Inconvo\n\n## Background\nInconvo uses a Semantic Layer (`inconvo.yaml`) to map natural language to SQL. You need to define a calculated measure for \"Gross Margin\" (Revenue - Cost) within the semantic layer.\n\n## Requirements\n- You have an Inconvo project located at `/home/user/inconvo-app`.\n- The `inconvo.yaml` file contains an `orders` table with `revenue` and `cost` fields.\n- Add a new calculated measure named `gross_margin` to the `orders` table.\n- The calculated measure should represent Revenue minus Cost.\n\n## Implementation Guide\n1. Open `/home/user/inconvo-app/inconvo.yaml`.\n2. Locate the `orders` table and its `fields` section.\n3. Add a new field `gross_margin` with state `On`, type `measure`, and an appropriate SQL expression (e.g., `sql: \"revenue - cost\"`).\n\n## Constraints\n- Project path: `/home/user/inconvo-app`\n- The file to modify is `inconvo.yaml`.\n\n## Integrations\n- None","trials":[{"job_name":"2026-05-13__15-22-26","trial_name":"schema_mapping_calculated_measur__vC24KEK","model":"gemini-3-flash","agent":"Pochi","passed":true,"reward":1,"error":false,"latency_sec":486.685,"latency_breakdown":{"env_setup":396.91,"agent_setup":21.642,"agent_exec":45.209,"verifier":10.073},"taskName":"schema_mapping_calculated_measur","jobId":"vC24KEK","exec_duration":45.209}]},{"taskName":"schema_mapping_ecommerce","instruction":"$11","trials":[{"job_name":"2026-05-13__15-22-26","trial_name":"schema_mapping_ecommerce__wgCnQpi","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":false,"latency_sec":519.23,"latency_breakdown":{"env_setup":392.073,"agent_setup":21.252,"agent_exec":76.302,"verifier":10.93},"taskName":"schema_mapping_ecommerce","jobId":"wgCnQpi","exec_duration":76.302}]},{"taskName":"schema_mapping_joinable_tables","instruction":"# Configure Customers Table as Joinable\n\n## Background\nInconvo uses a semantic model defined in `inconvo.yaml` to map natural language to data. You have an existing Inconvo project where the `customers` table is currently configured as `Queryable`.\n\n## Requirements\n- Update the `inconvo.yaml` file to configure the `customers` table as `Joinable` only, not `Queryable` directly.\n- Run the `index.js` script to generate a `response.json` file verifying the configuration.\n\n## Implementation Guide\n1. Open the `inconvo.yaml` file located in `/home/user/inconvo-app`.\n2. Locate the `customers` table definition.\n3. Change its `state` from `Queryable` to `Joinable`.\n4. Run `node index.js` in the project directory. This will query the agent and save the result to `response.json`.\n\n## Constraints\n- Project path: /home/user/inconvo-app\n\n## Integrations\n- None","trials":[{"job_name":"2026-05-13__15-22-26","trial_name":"schema_mapping_joinable_tables__3eVYX7h","model":"gemini-3-flash","agent":"Pochi","passed":true,"reward":1,"error":false,"latency_sec":436.024,"latency_breakdown":{"env_setup":282.258,"agent_setup":62.389,"agent_exec":60.835,"verifier":12.243},"taskName":"schema_mapping_joinable_tables","jobId":"3eVYX7h","exec_duration":60.835}]},{"taskName":"schema_mapping_multiple_join_paths","instruction":"$12","trials":[{"job_name":"2026-05-13__15-22-26","trial_name":"schema_mapping_multiple_join_pat__u5Brbk8","model":"gemini-3-flash","agent":"Pochi","passed":true,"reward":1,"error":false,"latency_sec":560.775,"latency_breakdown":{"env_setup":400.048,"agent_setup":53.01,"agent_exec":76.557,"verifier":11.855},"taskName":"schema_mapping_multiple_join_pat","jobId":"u5Brbk8","exec_duration":76.557}]},{"taskName":"schema_mapping_off_state_tables","instruction":"# Exclude Sensitive Tables\n\n## Background\nInconvo uses a Semantic Model (`inconvo.yaml`) to define the contract between the AI and your data. You have an existing project with a semantic model where a sensitive table `passwords` is currently exposed.\n\n## Requirements\n- Update the semantic model to exclude the `passwords` table by setting its state to `Off`.\n\n## Implementation Guide\n1. Go to `/home/user/app`.\n2. Open `inconvo.yaml`.\n3. Change the `state` of the `passwords` table to `Off`.\n\n## Constraints\n- Project path: /home/user/app\n- Do not modify the `users` table definition.\n\n## Integrations\n- None","trials":[{"job_name":"2026-05-13__15-22-26","trial_name":"schema_mapping_off_state_tables__MhBrN68","model":"gemini-3-flash","agent":"Pochi","passed":true,"reward":1,"error":false,"latency_sec":246.227,"latency_breakdown":{"env_setup":160.206,"agent_setup":21.969,"agent_exec":38.292,"verifier":12.566},"taskName":"schema_mapping_off_state_tables","jobId":"MhBrN68","exec_duration":38.292}]},{"taskName":"schema_mapping_relationships_many_to_one","instruction":"# Configure Many-to-One Relationship in Inconvo\n\n## Background\nYou have an Inconvo project set up at `/home/user/inconvo-app`. The semantic model is defined in `inconvo.yaml`, which currently contains `line_items` and `products` tables. You need to configure a many-to-one relationship between `line_items` and `products` so the agent can correctly join them.\n\n## Requirements\n- Define a relationship named `line_item_to_product` in `inconvo.yaml`.\n- The relationship must map `line_items.product_id` to `products.id`.\n\n## Implementation Guide\n1. Open `/home/user/inconvo-app/inconvo.yaml`.\n2. Add a `relations` section if it doesn't exist.\n3. Add a relation named `line_item_to_product` with `left` pointing to `line_items.product_id` and `right` pointing to `products.id`.\n\n## Constraints\n- Project path: /home/user/inconvo-app","trials":[{"job_name":"2026-05-13__15-22-26","trial_name":"schema_mapping_relationships_man__8tCC5rq","model":"gemini-3-flash","agent":"Pochi","passed":true,"reward":1,"error":false,"latency_sec":141.044,"latency_breakdown":{"env_setup":25.099,"agent_setup":21.719,"agent_exec":47.658,"verifier":12.657},"taskName":"schema_mapping_relationships_man","jobId":"8tCC5rq","exec_duration":47.658}]},{"taskName":"schema_mapping_synonyms","instruction":"$13","trials":[{"job_name":"2026-05-13__15-22-26","trial_name":"schema_mapping_synonyms__afAsKYf","model":"gemini-3-flash","agent":"Pochi","passed":true,"reward":1,"error":false,"latency_sec":291.959,"latency_breakdown":{"env_setup":182.827,"agent_setup":21.371,"agent_exec":58.147,"verifier":13.03},"taskName":"schema_mapping_synonyms","jobId":"afAsKYf","exec_duration":58.147}]},{"taskName":"schema_mapping_time_dimensions","instruction":"$14","trials":[{"job_name":"2026-05-13__15-22-26","trial_name":"schema_mapping_time_dimensions__iRsLNoX","model":"gemini-3-flash","agent":"Pochi","passed":true,"reward":1,"error":false,"latency_sec":132.613,"latency_breakdown":{"env_setup":16.831,"agent_setup":22.448,"agent_exec":53.444,"verifier":11.862},"taskName":"schema_mapping_time_dimensions","jobId":"iRsLNoX","exec_duration":53.444}]},{"taskName":"sdk_nodejs_express_endpoint","instruction":"$15","trials":[{"job_name":"2026-05-13__15-22-26","trial_name":"sdk_nodejs_express_endpoint__Nf4V223","model":"gemini-3-flash","agent":"Pochi","passed":true,"reward":1,"error":false,"latency_sec":276.773,"latency_breakdown":{"env_setup":11.491,"agent_setup":26.387,"agent_exec":210.735,"verifier":15.313},"taskName":"sdk_nodejs_express_endpoint","jobId":"Nf4V223","exec_duration":210.735}]},{"taskName":"sdk_nodejs_pull_semantic_model","instruction":"# Pull Inconvo Semantic Model\n\n## Background\nYou have a Node.js project at `/home/user/inconvo-app` that uses the Inconvo SDK. You need to pull the latest semantic model from your Inconvo Data Agent to your local environment.\n\n## Requirements\n- Use the Inconvo CLI to pull the semantic model.\n- Ensure the command is executed within the project directory.\n\n## Implementation Guide\n1. Change directory to `/home/user/inconvo-app`.\n2. Run the Inconvo CLI command to pull the model: `npx inconvo model pull`.\n\n## Constraints\n- Project path: `/home/user/inconvo-app`\n- The environment variables `INCONVO_API_KEY` and `INCONVO_AGENT_ID` are already available in the environment.\n- You must use the `inconvo` CLI via `npx`.","trials":[{"job_name":"2026-05-13__15-22-26","trial_name":"sdk_nodejs_pull_semantic_model__9nVCT6A","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":false,"latency_sec":169.467,"latency_breakdown":{"env_setup":56.885,"agent_setup":21.707,"agent_exec":41.519,"verifier":11.518},"taskName":"sdk_nodejs_pull_semantic_model","jobId":"9nVCT6A","exec_duration":41.519}]},{"taskName":"sdk_vercel_ai_streaming_ui","instruction":"$16","trials":[{"job_name":"2026-05-13__15-22-26","trial_name":"sdk_vercel_ai_streaming_ui__YuWZNbZ","model":"gemini-3-flash","agent":"Pochi","passed":false,"reward":0,"error":true,"latency_sec":1369.414,"latency_breakdown":{"env_setup":639.076,"agent_setup":24.04,"agent_exec":600.108,"verifier":79.912},"taskName":"sdk_vercel_ai_streaming_ui","jobId":"YuWZNbZ","exec_duration":600.108}]},{"taskName":"sdk_vercel_ai_tool_integration","instruction":"$17","trials":[{"job_name":"2026-05-13__15-22-26","trial_name":"sdk_vercel_ai_tool_integration__ibC87Jy","model":"gemini-3-flash","agent":"Pochi","passed":true,"reward":1,"error":true,"latency_sec":666.775,"latency_breakdown":{"env_setup":11.458,"agent_setup":28.643,"agent_exec":600.121,"verifier":13.965},"taskName":"sdk_vercel_ai_tool_integration","jobId":"ibC87Jy","exec_duration":600.121}]}]}]]}],["$L18","$L19"],"$L1a"]}],{},null,false,false]},null,false,false]},null,false,false],"$L1b",false]],"m":"$undefined","G":["$1c",[]],"S":true}
+1d:I[75049,["/inconvo-benchmark/_next/static/chunks/d2c13bb33c4fcd54.js","/inconvo-benchmark/_next/static/chunks/c21188132e0e0d48.js"],"OutletBoundary"]
+1e:"$Sreact.suspense"
+20:I[75049,["/inconvo-benchmark/_next/static/chunks/d2c13bb33c4fcd54.js","/inconvo-benchmark/_next/static/chunks/c21188132e0e0d48.js"],"ViewportBoundary"]
+22:I[75049,["/inconvo-benchmark/_next/static/chunks/d2c13bb33c4fcd54.js","/inconvo-benchmark/_next/static/chunks/c21188132e0e0d48.js"],"MetadataBoundary"]
+18:["$","script","script-0",{"src":"/inconvo-benchmark/_next/static/chunks/e703b49613a95162.js","async":true,"nonce":"$undefined"}]
+19:["$","script","script-1",{"src":"/inconvo-benchmark/_next/static/chunks/be08138953094657.js","async":true,"nonce":"$undefined"}]
+1a:["$","$L1d",null,{"children":["$","$1e",null,{"name":"Next.MetadataOutlet","children":"$@1f"}]}]
+1b:["$","$1","h",{"children":[null,["$","$L20",null,{"children":"$L21"}],["$","div",null,{"hidden":true,"children":["$","$L22",null,{"children":["$","$1e",null,{"name":"Next.Metadata","children":"$L23"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]
+21:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+1f:null
+23:[["$","title","0",{"children":"Inconvo Benchmark"}],["$","meta","1",{"name":"description","content":"Performance results of AI coding models on Inconvo tasks, measuring success rate and execution time with high precision."}]]
