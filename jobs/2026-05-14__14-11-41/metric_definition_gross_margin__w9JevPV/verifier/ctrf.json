@@ -1,0 +1,56 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 4,
+            "passed": 4,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1778740330.57204,
+            "stop": 1778740347.546325
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_inconvo_yaml_contains_gross_margin_measure",
+                "status": "passed",
+                "duration": 0.0006416738033294678,
+                "start": 1778740330.5887458,
+                "stop": 1778740330.5896096,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_index_js_exists_and_uses_inconvo_sdk",
+                "status": "passed",
+                "duration": 0.0005955486558377743,
+                "start": 1778740330.5898054,
+                "stop": 1778740330.590542,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_run_index_js_produces_response",
+                "status": "passed",
+                "duration": 16.95026964507997,
+                "start": 1778740330.590717,
+                "stop": 1778740347.5415072,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_response_json_is_valid_and_non_empty",
+                "status": "passed",
+                "duration": 0.0024247760884463787,
+                "start": 1778740347.5424302,
+                "stop": 1778740347.5454574,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            }
+        ]
+    }
+}

@@ -1,0 +1,3 @@
+{"type":"response.created","id":"cf74d47d-31d4-46b5-91be-0dfe89332477"}
+{"type":"response.progress","id":"cf74d47d-31d4-46b5-91be-0dfe89332477","message":"Fetching recent sales data and aggregating it by month to summarize the trend."}
+{"type":"response.completed","id":"cf74d47d-31d4-46b5-91be-0dfe89332477","response":{"type":"table","message":"Sales trend by month for the last ~3 months (2026-02-14 to 2026-05-14 UTC).","table":{"head":["Month","Transactions","Sales amount","Gross margin"],"body":[["2026-02","1","150","45"]]}}}

@@ -1,0 +1,18 @@
+tables:
+  line_items:
+    state: Queryable
+    fields:
+      id: { state: On }
+      order_id: { state: On }
+      product_id: { state: On }
+      quantity: { state: On, type: measure }
+  products:
+    state: Joinable
+    fields:
+      id: { state: On }
+      name: { state: On, type: dimension }
+      price: { state: On, type: measure }
+relations:
+  - name: line_item_to_product
+    left: line_items.product_id
+    right: products.id

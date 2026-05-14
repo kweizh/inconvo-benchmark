@@ -1,0 +1,25 @@
+{
+  "id": "c826703c-6735-4793-8a2b-cab7b8baaaa3",
+  "conversationId": "convo_51865827-16bf-4e86-8880-7ee0cda9ba3b",
+  "type": "table",
+  "message": "Here are your most recent orders (up to 50).",
+  "table": {
+    "head": [
+      "order_id",
+      "amount",
+      "gross_margin"
+    ],
+    "body": [
+      [
+        "2",
+        "20",
+        "6.0"
+      ],
+      [
+        "1",
+        "10",
+        "3.0"
+      ]
+    ]
+  }
+}

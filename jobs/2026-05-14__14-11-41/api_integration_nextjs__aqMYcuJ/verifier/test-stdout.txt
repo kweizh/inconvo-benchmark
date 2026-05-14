@@ -1,0 +1,72 @@
+downloading uv 0.9.7 x86_64-unknown-linux-gnu
+no checksums to verify
+installing to /root/.local/bin
+  uv
+  uvx
+everything's installed!
+
+To add $HOME/.local/bin to your PATH, either restart your shell or run:
+
+    source $HOME/.local/bin/env (sh, bash, zsh)
+    source $HOME/.local/bin/env.fish (fish)
+Downloading pygments (1.2MiB)
+ Downloading pygments
+Installed 7 packages in 22ms
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 3 items
+
+tests/test_final_state.py .FE                                            [100%]
+
+==================================== ERRORS ====================================
+______________________ ERROR at setup of test_browser_ui _______________________
+
+    @pytest.fixture(scope="module")
+    def start_app():
+        # Build the app first
+        build_process = subprocess.run(
+            ["npm", "run", "build"],
+            cwd=PROJECT_DIR,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+        )
+        if build_process.returncode != 0:
+>           pytest.fail(f"Build failed: {build_process.stderr.decode('utf-8')}")
+E           Failed: Build failed: Failed to type check.
+E           
+E           ./app/api/chat/route.ts:22:17
+E           Type error: Property 'toDataStreamResponse' does not exist on type 'StreamTextResult<{ [x: string]: any; }, Output<string, string, never>>'. Did you mean 'toTextStreamResponse'?
+E           
+E             [90m20 |[0m   });
+E             [90m21 |[0m
+E           [31m[1m>[0m [90m22 |[0m   [36mreturn[0m result.toDataStreamResponse();
+E             [90m   |[0m                 [31m[1m^[0m
+E             [90m23 |[0m }
+E             [90m24 |[0m
+E           Next.js build worker exited with code: 1 and signal: null
+
+tests/test_final_state.py:29: Failed
+=================================== FAILURES ===================================
+___________________________ test_page_uses_use_chat ____________________________
+
+    def test_page_uses_use_chat():
+        """Priority 3 fallback: Verify page uses useChat."""
+        page_path = os.path.join(PROJECT_DIR, "app/page.tsx")
+        assert os.path.isfile(page_path), f"Page not found at {page_path}"
+    
+        with open(page_path, "r") as f:
+            content = f.read()
+    
+>       assert "useChat" in content, "Expected 'useChat' hook to be used in page.tsx."
+E       AssertionError: Expected 'useChat' hook to be used in page.tsx.
+E       assert 'useChat' in 'import Image from "next/image";\n\nexport default function Home() {\n  return (\n    <div className="flex flex-col fl...eferrer"\n          >\n            Documentation\n          </a>\n        </div>\n      </main>\n    </div>\n  );\n}\n'
+
+tests/test_final_state.py:73: AssertionError
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED tests/test_final_state.py::test_api_route_configured_correctly
+ERROR tests/test_final_state.py::test_browser_ui - Failed: Build failed: Fail...
+FAILED tests/test_final_state.py::test_page_uses_use_chat - AssertionError: E...
+===================== 1 failed, 1 passed, 1 error in 6.70s =====================

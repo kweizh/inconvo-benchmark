@@ -1,0 +1,6 @@
+{
+  "id": "b0919123-f4e5-42de-867c-d8e495bbaf60",
+  "conversationId": "convo_7fbb882d-937d-47b1-a84b-a7b4316d59c3",
+  "type": "text",
+  "message": "I can’t answer “top products” from the current data: the available tables (orders, sales) don’t include any product identifier/name/category to rank by. If you tell me what you mean by “product” in your system (e.g., SKU, item name, category) and where it’s stored, I can pull and rank it (by revenue, order count, or gross margin—your choice)."
+}

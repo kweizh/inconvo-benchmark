@@ -1,0 +1,5 @@
+tables:
+  - name: orders
+    context_filters:
+      - column: store_id
+        context: store_id

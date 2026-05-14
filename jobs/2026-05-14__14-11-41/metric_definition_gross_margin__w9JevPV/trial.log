@@ -1,0 +1,98 @@
+Running command: apt-get update && apt-get install -y curl ripgrep
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: echo metric_definition_gross_margin__w9JevPV > /logs/artifacts/trial_id
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model google/gemini-3.1-pro --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Define a `gross_margin` Calculated Measure with Inconvo
+
+## Background
+Inconvo's Semantic Model (`inconvo.yaml`) lets you define calculated measures directly on a table. Calculated measures are derived from other fields and can then be queried in natural language. You will add a new `gross_margin` measure to the `orders` table, derived from `total_amount` and `cost`, and then ask the Data Agent for the average gross margin per month.
+
+## Requirements
+- You have an existing Node.js project at `/home/user/inconvo-app` with `@inconvoai/node` and `dotenv` already installed.
+- A starter `inconvo.yaml` is already present in the project directory. It defines `orders` (as `Queryable`) and `customers` (as `Joinable`), but it does NOT yet contain a `gross_margin` measure.
+- A `.env` file is already present referencing `INCONVO_API_KEY`, `INCONVO_AGENT_ID`, and `INCONVO_DB_URL`. Do NOT modify it.
+- Edit `inconvo.yaml` to add a calculated measure named `gross_margin` to the `orders` table. Its `type` must be `measure` and its formula must reference both `total_amount` and `cost` using the `-` operator (i.e. `total_amount - cost`).
+- Write `index.js` in the project root which:
+  1. Loads environment variables with `dotenv`.
+  2. Initializes the Inconvo client from `@inconvoai/node` using `process.env.INCONVO_API_KEY`.
+  3. Creates a new conversation against `process.env.INCONVO_AGENT_ID` using `inconvo.agents.conversations.create`.
+  4. Calls `inconvo.agents.conversations.response.create` with the message `"What is the average gross margin per month?"` and `stream: false`.
+  5. Writes the resulting JSON response to `/home/user/inconvo-app/response.json` using `JSON.stringify`.
+- Run `node index.js` so `response.json` is created with real data returned from the Inconvo Cloud agent.
+
+## Implementation Guide
+1. Open `/home/user/inconvo-app/inconvo.yaml` and locate the existing `orders` table block.
+2. Under `orders.fields`, add an entry similar to:
+   ```yaml
+   gross_margin:
+     state: On
+     type: measure
+     formula: total_amount - cost
+   ```
+   Use whichever exact key (`formula`, `expression`, `sql`, etc.) is appropriate for your semantic model as long as the field is a `measure` and the expression contains both `total_amount` and `cost` with a `-` operator.
+3. Create `/home/user/inconvo-app/index.js` that uses `@inconvoai/node` to send the natural language query and save the JSON response.
+4. Run the script: `node index.js`.
+
+## Constraints
+- Project path: `/home/user/inconvo-app`
+- Log file: `/home/user/inconvo-app/response.json`
+- Do NOT hardcode API keys, agent IDs, or database URLs anywhere in source. Always read them from `process.env`.
+- Do NOT mock the Inconvo SDK; the script must hit the real Inconvo Cloud API.
+
+## Integrations
+- Inconvo Cloud (`INCONVO_API_KEY`, `INCONVO_AGENT_ID`)
+- PostgreSQL (`INCONVO_DB_URL`)
+EOF
+Command outputs captured
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured

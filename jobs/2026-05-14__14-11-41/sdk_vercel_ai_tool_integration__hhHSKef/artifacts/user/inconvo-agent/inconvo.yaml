@@ -1,0 +1,26 @@
+version: "1.0"
+tables:
+  - name: orders
+    type: queryable
+    description: "Orders placed by customers"
+    columns:
+      - name: id
+        type: string
+        primary_key: true
+      - name: customer_id
+        type: string
+      - name: amount
+        type: number
+    relationships:
+      - to: customers
+        type: many_to_one
+        join: orders.customer_id = customers.id
+  - name: customers
+    type: joinable
+    description: "Customers who placed orders"
+    columns:
+      - name: id
+        type: string
+        primary_key: true
+      - name: name
+        type: string

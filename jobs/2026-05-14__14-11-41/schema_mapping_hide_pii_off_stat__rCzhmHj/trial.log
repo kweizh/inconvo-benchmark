@@ -1,0 +1,113 @@
+Running command: apt-get update && apt-get install -y curl ripgrep
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: echo schema_mapping_hide_pii_off_stat__rCzhmHj > /logs/artifacts/trial_id
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model google/gemini-3.1-pro --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Hide PII Fields by Setting State to Off
+
+## Background
+Inconvo uses a semantic model defined in `inconvo.yaml` to map natural language questions to safe, validated SQL queries. To prevent sensitive PII (personally identifiable information) from being exposed to the agent, individual fields can be hidden by setting their `state` to `Off`. You have an existing Inconvo project at `/home/user/inconvo-app` where the `customers` table currently exposes the `email` and `phone` fields (both with `state: On`). Your job is to hide these PII fields and then call the Inconvo Data Agent from a Node.js script to confirm the agent still works for non-PII queries.
+
+## Requirements
+- Update `/home/user/inconvo-app/inconvo.yaml` so that the `email` and `phone` fields under the `customers` table have `state: Off`.
+- Leave the remaining fields (e.g. `customers.id`, `customers.name`, and all `orders` fields) untouched with `state: On` so they remain queryable.
+- Do not change the table-level `state: Queryable` for `customers` or `orders`.
+- Create (or edit) `/home/user/inconvo-app/index.js` so that it uses the `@inconvoai/node` SDK to:
+  - Read `INCONVO_API_KEY` and `INCONVO_AGENT_ID` from environment variables (the SDK reads `INCONVO_API_KEY` from env automatically; `INCONVO_AGENT_ID` is the agent id you pass to `inconvo.agents.conversations.create`).
+  - Start a new conversation via `inconvo.agents.conversations.create(process.env.INCONVO_AGENT_ID, { userIdentifier: "user-pii-off-test" })`.
+  - Send the natural language question `"List customer names and their total orders"` via `inconvo.agents.conversations.response.create(conversationId, { agentId: process.env.INCONVO_AGENT_ID, message: "List customer names and their total orders", stream: false })`.
+  - Write the JSON-stringified response from the agent to `/home/user/inconvo-app/response.json`.
+- Run `node index.js` from the project directory so that `response.json` is produced.
+
+## Implementation Guide
+1. Open `/home/user/inconvo-app/inconvo.yaml`.
+2. Under `tables.customers.fields`, change `email: { state: On }` to `email: { state: Off }` and `phone: { state: On }` to `phone: { state: Off }`.
+3. Write `/home/user/inconvo-app/index.js` using the snippet below as a starting point:
+
+```javascript
+import Inconvo from "@inconvoai/node";
+import fs from "node:fs";
+
+const inconvo = new Inconvo({ apiKey: process.env.INCONVO_API_KEY });
+
+async function main() {
+  const conversation = await inconvo.agents.conversations.create(
+    process.env.INCONVO_AGENT_ID,
+    { userIdentifier: "user-pii-off-test" },
+  );
+  const response = await inconvo.agents.conversations.response.create(
+    conversation.id,
+    {
+      agentId: process.env.INCONVO_AGENT_ID,
+      message: "List customer names and their total orders",
+      stream: false,
+    },
+  );
+  fs.writeFileSync("response.json", JSON.stringify(response, null, 2));
+}
+
+main().catch((err) => { console.error(err); process.exit(1); });
+```
+
+4. From `/home/user/inconvo-app`, run `node index.js`.
+
+## Constraints
+- Project path: /home/user/inconvo-app
+- Log file: /home/user/inconvo-app/response.json
+- Use the `@inconvoai/node` SDK (already installed under `node_modules`). Do not introduce mocks.
+- The script must read the `INCONVO_API_KEY` and `INCONVO_AGENT_ID` values from the environment; do not hardcode them.
+
+## Integrations
+- None
+EOF
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured

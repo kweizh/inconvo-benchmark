@@ -1,0 +1,61 @@
+downloading uv 0.9.7 x86_64-unknown-linux-gnu
+no checksums to verify
+installing to /root/.local/bin
+  uv
+  uvx
+everything's installed!
+
+To add $HOME/.local/bin to your PATH, either restart your shell or run:
+
+    source $HOME/.local/bin/env (sh, bash, zsh)
+    source $HOME/.local/bin/env.fish (fish)
+Downloading pygments (1.2MiB)
+ Downloading pygments
+Installed 8 packages in 37ms
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 3 items
+
+tests/test_final_state.py .FF                                            [100%]
+
+=================================== FAILURES ===================================
+___________________________ test_inconvo_yaml_exists ___________________________
+
+    def test_inconvo_yaml_exists():
+        config_path = os.path.join(PROJECT_DIR, "inconvo.yaml")
+        assert os.path.isfile(config_path), f"Config file {config_path} does not exist."
+    
+        with open(config_path, 'r') as f:
+            config = yaml.safe_load(f)
+    
+        assert config is not None, "inconvo.yaml is empty or invalid"
+>       assert 'tables' in config or 'connections' in config or 'models' in config, "inconvo.yaml does not look like a valid semantic model"
+E       AssertionError: inconvo.yaml does not look like a valid semantic model
+E       assert ('tables' in {'version': 1} or 'connections' in {'version': 1} or 'models' in {'version': 1})
+
+tests/test_final_state.py:25: AssertionError
+___________________________ test_database_connection ___________________________
+
+    def test_database_connection():
+        result = subprocess.run(
+            ["psql", "postgresql://inconvo:inconvo@localhost:5432/inconvo_db", "-c", "\\conninfo"],
+            capture_output=True, text=True
+        )
+>       assert result.returncode == 0, f"Failed to connect to the database: {result.stderr}"
+E       AssertionError: Failed to connect to the database: psql: error: connection to server at "localhost" (::1), port 5432 failed: Connection refused
+E         	Is the server running on that host and accepting TCP/IP connections?
+E         connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused
+E         	Is the server running on that host and accepting TCP/IP connections?
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['psql', 'postgresql://inconvo:inconvo@localhost:5432/inconvo_db', '-c', '\\conninfo'], returnco....0.1), port 5432 failed: Connection refused\n\tIs the server running on that host and accepting TCP/IP connections?\n').returncode
+
+tests/test_final_state.py:32: AssertionError
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED tests/test_final_state.py::test_env_file_contains_database_url
+FAILED tests/test_final_state.py::test_inconvo_yaml_exists - AssertionError: ...
+FAILED tests/test_final_state.py::test_database_connection - AssertionError: ...
+========================= 2 failed, 1 passed in 0.25s ==========================

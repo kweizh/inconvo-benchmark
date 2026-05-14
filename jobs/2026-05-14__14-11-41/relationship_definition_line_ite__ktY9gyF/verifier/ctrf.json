@@ -1,0 +1,47 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 3,
+            "passed": 3,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1778740514.5530655,
+            "stop": 1778740530.3223557
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_inconvo_yaml_has_line_item_to_product_relation",
+                "status": "passed",
+                "duration": 0.0005188873037695885,
+                "start": 1778740514.565939,
+                "stop": 1778740514.5666604,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_run_index_js",
+                "status": "passed",
+                "duration": 15.75379392458126,
+                "start": 1778740514.5668485,
+                "stop": 1778740530.3209827,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_response_json_exists_and_valid",
+                "status": "passed",
+                "duration": 0.000643542967736721,
+                "start": 1778740530.3213434,
+                "stop": 1778740530.322139,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            }
+        ]
+    }
+}

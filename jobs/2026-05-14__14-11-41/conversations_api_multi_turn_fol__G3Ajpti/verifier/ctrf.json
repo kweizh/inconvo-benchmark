@@ -1,0 +1,74 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 6,
+            "passed": 6,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1778740244.5675519,
+            "stop": 1778740266.6805387
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_index_js_exists",
+                "status": "passed",
+                "duration": 0.0005029966123402119,
+                "start": 1778740244.582125,
+                "stop": 1778740244.5828362,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_run_index_js",
+                "status": "passed",
+                "duration": 22.093740252777934,
+                "start": 1778740244.5830345,
+                "stop": 1778740266.676992,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_conversation_id_file_contains_non_empty_id",
+                "status": "passed",
+                "duration": 0.0004962608218193054,
+                "start": 1778740266.6772454,
+                "stop": 1778740266.6778836,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_first_response_is_valid_real_response",
+                "status": "passed",
+                "duration": 0.0005271169357001781,
+                "start": 1778740266.678073,
+                "stop": 1778740266.678741,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_second_response_is_valid_real_response",
+                "status": "passed",
+                "duration": 0.000497031956911087,
+                "start": 1778740266.6789305,
+                "stop": 1778740266.6796029,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_index_js_sends_multi_turn_followup",
+                "status": "passed",
+                "duration": 0.0004505179822444916,
+                "start": 1778740266.67979,
+                "stop": 1778740266.680373,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            }
+        ]
+    }
+}

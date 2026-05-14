@@ -1,0 +1,6 @@
+{
+  "id": "228fee5f-a0ee-48a6-bb22-91c6aba6854f",
+  "conversationId": "convo_0c99d1f8-12a8-4781-9ccd-9bd0b30a45b5",
+  "type": "text",
+  "message": "I can total orders, but this database doesn’t have a customer table (only `orders`, `sales`, `products`, and `line_items`), so I don’t have customer names to list. If you want, I can list `user_id` and total order count instead."
+}

@@ -1,0 +1,22 @@
+tables:
+  orders:
+    state: Queryable
+    fields:
+      id: { state: On }
+      customer_id: { state: On }
+      total_amount:
+        state: On
+        type: measure
+        synonyms: ["revenue", "sales", "income"]
+      created_at: { state: On, type: dimension }
+  customers:
+    state: Joinable
+    fields:
+      id: { state: On }
+      name:
+        state: On
+        synonyms: ["customer", "buyer", "client"]
+relations:
+  - name: order_to_customer
+    left: orders.customer_id
+    right: customers.id

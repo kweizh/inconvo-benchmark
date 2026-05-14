@@ -1,0 +1,22 @@
+{
+  "id": "adc88dab-ae1f-45ca-b5a1-d98676a815e8",
+  "conversationId": "convo_1ae37f5f-2f1c-40a8-b17a-1ca4523ef036",
+  "type": "table",
+  "message": "Average gross margin per month (based on sales.created_at).",
+  "table": {
+    "head": [
+      "Month",
+      "Average gross margin"
+    ],
+    "body": [
+      [
+        "2026-01",
+        "30"
+      ],
+      [
+        "2026-02",
+        "45"
+      ]
+    ]
+  }
+}

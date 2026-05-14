@@ -1,0 +1,51 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 3,
+            "passed": 1,
+            "failed": 2,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1778739809.8523872,
+            "stop": 1778739816.553438
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_api_route_configured_correctly",
+                "status": "passed",
+                "duration": 0.0005273674614727497,
+                "start": 1778739809.8668659,
+                "stop": 1778739809.8676493,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_page_uses_use_chat",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0011245082132518291,
+                "start": 1778739809.8678427,
+                "stop": 1778739809.8831215,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_page_uses_use_chat():\n        \"\"\"Priority 3 fallback: Verify page uses useChat.\"\"\"\n        page_path = os.path.join(PROJECT_DIR, \"app/page.tsx\")\n        assert os.path.isfile(page_path), f\"Page not found at {page_path}\"\n    \n        with open(page_path, \"r\") as f:\n            content = f.read()\n    \n>       assert \"useChat\" in content, \"Expected 'useChat' hook to be used in page.tsx.\"\nE       AssertionError: Expected 'useChat' hook to be used in page.tsx.\nE       assert 'useChat' in 'import Image from \"next/image\";\\n\\nexport default function Home() {\\n  return (\\n    <div className=\"flex flex-col fl...eferrer\"\\n          >\\n            Documentation\\n          </a>\\n        </div>\\n      </main>\\n    </div>\\n  );\\n}\\n'\n\ntests/test_final_state.py:73: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_browser_ui",
+                "status": "failed",
+                "duration": 6.666686466895044,
+                "start": 1778739809.8833165,
+                "stop": 1778739816.5532558,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "@pytest.fixture(scope=\"module\")\n    def start_app():\n        # Build the app first\n        build_process = subprocess.run(\n            [\"npm\", \"run\", \"build\"],\n            cwd=PROJECT_DIR,\n            stdout=subprocess.PIPE,\n            stderr=subprocess.PIPE,\n        )\n        if build_process.returncode != 0:\n>           pytest.fail(f\"Build failed: {build_process.stderr.decode('utf-8')}\")\nE           Failed: Build failed: Failed to type check.\nE           \nE           ./app/api/chat/route.ts:22:17\nE           Type error: Property 'toDataStreamResponse' does not exist on type 'StreamTextResult<{ [x: string]: any; }, Output<string, string, never>>'. Did you mean 'toTextStreamResponse'?\nE           \nE             \u001b[90m20 |\u001b[0m   });\nE             \u001b[90m21 |\u001b[0m\nE           \u001b[31m\u001b[1m>\u001b[0m \u001b[90m22 |\u001b[0m   \u001b[36mreturn\u001b[0m result.toDataStreamResponse();\nE             \u001b[90m   |\u001b[0m                 \u001b[31m\u001b[1m^\u001b[0m\nE             \u001b[90m23 |\u001b[0m }\nE             \u001b[90m24 |\u001b[0m\nE           Next.js build worker exited with code: 1 and signal: null\n\ntests/test_final_state.py:29: Failed"
+            }
+        ]
+    }
+}

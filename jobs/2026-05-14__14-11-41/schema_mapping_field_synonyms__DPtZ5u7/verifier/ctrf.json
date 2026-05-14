@@ -1,0 +1,74 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 6,
+            "passed": 6,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1778740548.3925958,
+            "stop": 1778740572.3259246
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_inconvo_yaml_exists",
+                "status": "passed",
+                "duration": 0.0005105845630168915,
+                "start": 1778740548.407796,
+                "stop": 1778740548.408574,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_total_amount_synonyms_present",
+                "status": "passed",
+                "duration": 0.0006862403824925423,
+                "start": 1778740548.4087813,
+                "stop": 1778740548.4096606,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_customer_name_synonyms_present",
+                "status": "passed",
+                "duration": 0.0006800512783229351,
+                "start": 1778740548.4098444,
+                "stop": 1778740548.4106529,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_index_js_exists_and_uses_sdk",
+                "status": "passed",
+                "duration": 0.000570366159081459,
+                "start": 1778740548.4109824,
+                "stop": 1778740548.411691,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_run_index_js_against_real_inconvo",
+                "status": "passed",
+                "duration": 23.912697804160416,
+                "start": 1778740548.411888,
+                "stop": 1778740572.3247902,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_response_json_is_valid_and_has_real_data",
+                "status": "passed",
+                "duration": 0.0005626571364700794,
+                "start": 1778740572.32504,
+                "stop": 1778740572.3257465,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            }
+        ]
+    }
+}

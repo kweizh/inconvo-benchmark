@@ -1,0 +1,74 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 6,
+            "passed": 6,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1778740633.227374,
+            "stop": 1778740648.9828286
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_index_js_exists",
+                "status": "passed",
+                "duration": 0.0005734600126743317,
+                "start": 1778740633.2470496,
+                "stop": 1778740633.2478843,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_index_js_uses_streaming_sdk_call",
+                "status": "passed",
+                "duration": 0.0004979763180017471,
+                "start": 1778740633.248084,
+                "stop": 1778740633.24872,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_run_index_js_produces_outputs",
+                "status": "passed",
+                "duration": 15.731116930022836,
+                "start": 1778740633.2488973,
+                "stop": 1778740648.9802122,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_stream_jsonl_exists_with_multiple_json_lines",
+                "status": "passed",
+                "duration": 0.00051545025780797,
+                "start": 1778740648.9804556,
+                "stop": 1778740648.98111,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_summary_json_exists_and_valid",
+                "status": "passed",
+                "duration": 0.00045061903074383736,
+                "start": 1778740648.9813094,
+                "stop": 1778740648.9818945,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_summary_chunk_count_matches_stream_lines",
+                "status": "passed",
+                "duration": 0.0004668384790420532,
+                "start": 1778740648.9820735,
+                "stop": 1778740648.9826665,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            }
+        ]
+    }
+}

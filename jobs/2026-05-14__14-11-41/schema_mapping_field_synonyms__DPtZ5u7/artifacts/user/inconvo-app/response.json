@@ -1,0 +1,22 @@
+{
+  "id": "1b090d9e-80a3-4c6a-9396-eff773a79570",
+  "conversationId": "convo_16326320-ebcb-46c4-b090-a558002dbdce",
+  "type": "table",
+  "message": "Total revenue per buyer (sorted by highest total).",
+  "table": {
+    "head": [
+      "buyer_user_id",
+      "total_revenue"
+    ],
+    "body": [
+      [
+        "2",
+        "20"
+      ],
+      [
+        "1",
+        "10"
+      ]
+    ]
+  }
+}
