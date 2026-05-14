@@ -1,0 +1,155 @@
+Running command: apt-get update && apt-get install -y curl ripgrep
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: echo schema_mapping_field_synonyms__Vf858tG > /logs/artifacts/trial_id
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model anthropic/claude-4-6-sonnet --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Add Field Synonyms to the Inconvo Semantic Model
+
+## Background
+Inconvo's semantic layer maps natural language to your database schema using `inconvo.yaml`. Synonyms allow you to teach the agent alternative business terms that users may use when asking questions (for example, "revenue" instead of "total_amount").
+
+A pre-existing Inconvo project lives at `/home/user/inconvo-app`. It already contains:
+- An installed `node_modules` directory with `@inconvoai/node` and `dotenv`.
+- A starter `inconvo.yaml` that defines an `orders` table (Queryable) and a `customers` table (Joinable) with a relation from `orders.customer_id` to `customers.id`.
+- A `package.json` for the project.
+
+The environment variables `INCONVO_API_KEY`, `INCONVO_AGENT_ID`, and `INCONVO_DB_URL` are already exported into the container's process environment, so `process.env.INCONVO_API_KEY` and `process.env.INCONVO_AGENT_ID` can be read directly from Node.
+
+No synonyms have been configured yet.
+
+## Requirements
+1. Edit `/home/user/inconvo-app/inconvo.yaml` to add synonyms:
+   - On the `total_amount` field of the `orders` table, add the synonyms `["revenue", "sales", "income"]`.
+   - On the `name` field of the `customers` table, add the synonyms `["customer", "buyer", "client"]`.
+2. Write (or edit) `/home/user/inconvo-app/index.js` so that when executed with `node index.js`:
+   - It loads environment variables from `.env` using `dotenv`.
+   - It uses the `@inconvoai/node` SDK to create a conversation against the agent identified by `INCONVO_AGENT_ID`.
+   - It sends the natural language message `"What is the total revenue per buyer?"` and waits for a non-streaming response.
+   - It writes the raw JSON response from the Inconvo API to `/home/user/inconvo-app/response.json`.
+3. Run `node index.js` so that `response.json` is produced.
+
+## Implementation Guide
+1. `cd /home/user/inconvo-app`
+2. Open `inconvo.yaml` and add a `synonyms` key under the `total_amount` and `name` fields. The exact YAML you use must keep the existing structure intact. For example:
+   ```yaml
+   tables:
+     orders:
+       state: Queryable
+       fields:
+         id: { state: On }
+         total_amount:
+           state: On
+           type: measure
+           synonyms: ["revenue", "sales", "income"]
+         created_at: { state: On, type: dimension }
+     customers:
+       state: Joinable
+       fields:
+         id: { state: On }
+         name:
+           state: On
+           synonyms: ["customer", "buyer", "client"]
+   relations:
+     - name: order_to_customer
+       left: orders.customer_id
+       right: customers.id
+   ```
+3. Create `index.js` similar to the snippet below, using the real environment variables `INCONVO_API_KEY` and `INCONVO_AGENT_ID`:
+   ```javascript
+   import "dotenv/config";
+   import { randomUUID } from "node:crypto";
+   import fs from "node:fs";
+   import Inconvo from "@inconvoai/node";
+
+   const inconvo = new Inconvo({ apiKey: process.env.INCONVO_API_KEY });
+
+   async function main() {
+     const convo = await inconvo.agents.conversations.create(
+       process.env.INCONVO_AGENT_ID,
+       { userIdentifier: randomUUID().toString() }
+     );
+     const response = await inconvo.agents.conversations.response.create(
+       convo.id,
+       {
+         agentId: process.env.INCONVO_AGENT_ID,
+         message: "What is the total revenue per buyer?",
+         stream: false,
+       }
+     );
+     fs.writeFileSync("response.json", JSON.stringify(response, null, 2));
+   }
+
+   main().catch((err) => {
+     console.error(err);
+     process.exit(1);
+   });
+   ```
+   You may use either ESM (`import`) or CommonJS (`require`) syntax — the project's `package.json` supports both because `@inconvoai/node` ships with dual exports.
+4. Run the script:
+   ```bash
+   node index.js
+   ```
+5. Confirm that `/home/user/inconvo-app/response.json` was written.
+
+## Constraints
+- Project path: `/home/user/inconvo-app`
+- Log file: `/home/user/inconvo-app/response.json`
+- Do NOT delete or rename the existing `orders` or `customers` table definitions or the existing relation.
+- Do NOT mock the Inconvo SDK; the script must actually call the live Inconvo API using the real credentials.
+- The `INCONVO_API_KEY`, `INCONVO_AGENT_ID`, and `INCONVO_DB_URL` environment variables are already exported into the container's process environment.
+
+## Integrations
+- Inconvo Cloud (uses `INCONVO_API_KEY`, `INCONVO_AGENT_ID`, `INCONVO_DB_URL`).
+EOF
+Command outputs captured
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured

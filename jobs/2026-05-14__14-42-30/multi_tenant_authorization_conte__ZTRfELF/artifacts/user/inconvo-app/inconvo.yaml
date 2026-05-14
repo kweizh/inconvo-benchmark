@@ -1,0 +1,8 @@
+integrations:
+  - type: postgresql
+    name: postgres
+    tables:
+      - name: orders
+        contextFilters:
+          - column: store_id
+            contextKey: store_id

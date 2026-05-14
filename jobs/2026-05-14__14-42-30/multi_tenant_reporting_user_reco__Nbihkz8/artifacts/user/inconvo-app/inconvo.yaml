@@ -1,0 +1,30 @@
+version: "1"
+
+semantic_model:
+  tables:
+    - name: orders
+      description: "Customer orders scoped to a specific store"
+      source: orders
+      columns:
+        - name: id
+          type: integer
+          description: "Unique order identifier"
+        - name: store_id
+          type: integer
+          description: "The store that owns this order"
+        - name: customer_name
+          type: string
+          description: "Name of the customer who placed the order"
+        - name: total_amount
+          type: float
+          description: "Total monetary value of the order"
+        - name: status
+          type: string
+          description: "Current order status (e.g. pending, completed, cancelled)"
+        - name: created_at
+          type: timestamp
+          description: "Timestamp when the order was placed"
+      context_filters:
+        - column: store_id
+          context_key: store_id
+          description: "Restrict queries to orders belonging to the store identified by store_id in conversation context"

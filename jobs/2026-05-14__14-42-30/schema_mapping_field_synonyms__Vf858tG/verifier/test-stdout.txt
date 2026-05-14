@@ -1,0 +1,54 @@
+downloading uv 0.9.7 x86_64-unknown-linux-gnu
+no checksums to verify
+installing to /root/.local/bin
+  uv
+  uvx
+everything's installed!
+
+To add $HOME/.local/bin to your PATH, either restart your shell or run:
+
+    source $HOME/.local/bin/env (sh, bash, zsh)
+    source $HOME/.local/bin/env.fish (fish)
+Downloading pygments (1.2MiB)
+ Downloading pygments
+Installed 7 packages in 28ms
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 6 items
+
+tests/test_final_state.py .....F                                         [100%]
+
+=================================== FAILURES ===================================
+________________ test_response_json_is_valid_and_has_real_data _________________
+
+    def test_response_json_is_valid_and_has_real_data():
+        assert os.path.isfile(RESPONSE_FILE), f"response.json not found at {RESPONSE_FILE}"
+    
+        raw = _read(RESPONSE_FILE)
+        try:
+            data = json.loads(raw)
+        except json.JSONDecodeError as exc:
+            pytest.fail(f"response.json is not valid JSON: {exc}\nContents: {raw[:500]}")
+    
+        # Reject an obvious error envelope.
+        if isinstance(data, dict):
+>           assert data.get("error") not in (True, "true"), (
+                f"response.json indicates an error: {data}"
+            )
+E           AssertionError: response.json indicates an error: {'error': True, 'status': 403, 'message': '403 You have reached your message limit for your current plan. Please upgrade your plan to continue using the service.', 'headers': {'access-control-allow-origin': '*', 'connection': 'keep-alive', 'content-type': 'text/plain;charset=UTF-8', 'date': 'Thu, 14 May 2026 07:00:45 GMT', 'transfer-encoding': 'chunked', 'vary': 'rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch', 'via': '1.1 76ea4124553a6a24f128f56848dd62cc.cloudfront.net (CloudFront)', 'x-amz-cf-id': 'AJZOaKaNu3bJIAgSyNghgYP0sq384vHTGhtQoq3Jddp1wzHlaF8JAg==', 'x-amz-cf-pop': 'LAX54-P10', 'x-cache': 'Error from cloudfront'}}
+E           assert True not in (True, 'true')
+E            +  where True = <built-in method get of dict object at 0x703de46e5440>('error')
+E            +    where <built-in method get of dict object at 0x703de46e5440> = {'error': True, 'headers': {'access-control-allow-origin': '*', 'connection': 'keep-alive', 'content-type': 'text/plai...ched your message limit for your current plan. Please upgrade your plan to continue using the service.', 'status': 403}.get
+
+tests/test_final_state.py:112: AssertionError
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED tests/test_final_state.py::test_inconvo_yaml_exists
+PASSED tests/test_final_state.py::test_total_amount_synonyms_present
+PASSED tests/test_final_state.py::test_customer_name_synonyms_present
+PASSED tests/test_final_state.py::test_index_js_exists_and_uses_sdk
+PASSED tests/test_final_state.py::test_run_index_js_against_real_inconvo
+FAILED tests/test_final_state.py::test_response_json_is_valid_and_has_real_data
+========================= 1 failed, 5 passed in 2.95s ==========================

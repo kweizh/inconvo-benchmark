@@ -1,0 +1,16 @@
+{
+  "error": "400 User context is disabled for this agent. Omit userContext when starting a conversation.",
+  "status": 400,
+  "headers": {
+    "access-control-allow-origin": "*",
+    "connection": "keep-alive",
+    "content-type": "text/plain;charset=UTF-8",
+    "date": "Thu, 14 May 2026 06:46:52 GMT",
+    "transfer-encoding": "chunked",
+    "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+    "via": "1.1 e3a402c7b046c2ff456c30009b54d8b6.cloudfront.net (CloudFront)",
+    "x-amz-cf-id": "9T3zfL1sUYf9LyLg1BONhGtqbsu7sPnns9thL0ZcLf6PE7PjwOkJgA==",
+    "x-amz-cf-pop": "LAX54-P10",
+    "x-cache": "Error from cloudfront"
+  }
+}

@@ -1,0 +1,77 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 6,
+            "passed": 5,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1778742033.366068,
+            "stop": 1778742037.357322
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_index_js_exists",
+                "status": "passed",
+                "duration": 0.0004947539418935776,
+                "start": 1778742033.3860424,
+                "stop": 1778742033.386743,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_index_js_uses_streaming_sdk_call",
+                "status": "passed",
+                "duration": 0.0004310915246605873,
+                "start": 1778742033.3869343,
+                "stop": 1778742033.387504,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_run_index_js_produces_outputs",
+                "status": "passed",
+                "duration": 3.951184737496078,
+                "start": 1778742033.3876739,
+                "stop": 1778742037.3390572,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_stream_jsonl_exists_with_multiple_json_lines",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0006426945328712463,
+                "start": 1778742037.3393564,
+                "stop": 1778742037.3556397,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_stream_jsonl_exists_with_multiple_json_lines():\n        assert os.path.isfile(STREAM_FILE), f\"stream.jsonl not found at {STREAM_FILE}\"\n    \n        lines = _read_non_empty_lines(STREAM_FILE)\n>       assert len(lines) > 1, \\\n            f\"Expected more than 1 non-empty line in stream.jsonl, got {len(lines)}.\"\nE       AssertionError: Expected more than 1 non-empty line in stream.jsonl, got 1.\nE       assert 1 > 1\nE        +  where 1 = len(['{\"type\":\"error\",\"error\":\"You have reached your message limit for your current plan. Please upgrade your plan to continue using the service.\"}'])\n\ntests/test_final_state.py:60: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_summary_json_exists_and_valid",
+                "status": "passed",
+                "duration": 0.0004639294929802418,
+                "start": 1778742037.3558385,
+                "stop": 1778742037.356434,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_summary_chunk_count_matches_stream_lines",
+                "status": "passed",
+                "duration": 0.0004401206970214844,
+                "start": 1778742037.3566039,
+                "stop": 1778742037.357175,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            }
+        ]
+    }
+}

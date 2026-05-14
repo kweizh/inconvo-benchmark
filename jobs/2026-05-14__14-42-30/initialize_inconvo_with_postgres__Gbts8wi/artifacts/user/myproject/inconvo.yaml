@@ -1,0 +1,8 @@
+# Inconvo Project Configuration
+# https://github.com/inconvoai/inconvo
+
+version: "1"
+
+database:
+  dialect: postgresql
+  url: "${DATABASE_URL}"

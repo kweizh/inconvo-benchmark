@@ -1,0 +1,94 @@
+downloading uv 0.9.7 x86_64-unknown-linux-gnu
+no checksums to verify
+installing to /root/.local/bin
+  uv
+  uvx
+everything's installed!
+
+To add $HOME/.local/bin to your PATH, either restart your shell or run:
+
+    source $HOME/.local/bin/env (sh, bash, zsh)
+    source $HOME/.local/bin/env.fish (fish)
+Downloading pygments (1.2MiB)
+ Downloading pygments
+Installed 7 packages in 21ms
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 6 items
+
+tests/test_final_state.py ....FF                                         [100%]
+
+=================================== FAILURES ===================================
+_____________________ test_run_index_js_produces_response ______________________
+
+    def test_run_index_js_produces_response():
+        env = os.environ.copy()
+        assert env.get("INCONVO_API_KEY"), "INCONVO_API_KEY must be set in the verifier environment."
+        assert env.get("INCONVO_AGENT_ID"), "INCONVO_AGENT_ID must be set in the verifier environment."
+    
+        # Remove any stale response.json from previous runs.
+        if os.path.exists(RESPONSE_FILE):
+            os.remove(RESPONSE_FILE)
+    
+        result = subprocess.run(
+            ["node", "index.js"],
+            cwd=PROJECT_DIR,
+            capture_output=True,
+            text=True,
+            env=env,
+            timeout=180,
+        )
+>       assert result.returncode == 0, (
+            f"'node index.js' failed with stderr:\n{result.stderr}\nstdout:\n{result.stdout}"
+        )
+E       AssertionError: 'node index.js' failed with stderr:
+E         PermissionDeniedError: 403 You have reached your message limit for your current plan. Please upgrade your plan to continue using the service.
+E             at APIError.generate (file:///home/user/inconvo-app/node_modules/@inconvoai/node/core/error.mjs:42:20)
+E             at Inconvo.makeStatusError (file:///home/user/inconvo-app/node_modules/@inconvoai/node/client.mjs:116:32)
+E             at Inconvo.makeRequest (file:///home/user/inconvo-app/node_modules/@inconvoai/node/client.mjs:258:30)
+E             at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+E             at async main (file:///home/user/inconvo-app/index.js:11:20) {
+E           status: 403,
+E           headers: Headers {
+E             'content-type': 'text/plain;charset=UTF-8',
+E             'transfer-encoding': 'chunked',
+E             connection: 'keep-alive',
+E             date: 'Thu, 14 May 2026 06:58:25 GMT',
+E             vary: 'rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch',
+E             'access-control-allow-origin': '*',
+E             'x-cache': 'Error from cloudfront',
+E             via: '1.1 76ea4124553a6a24f128f56848dd62cc.cloudfront.net (CloudFront)',
+E             'x-amz-cf-pop': 'LAX54-P10',
+E             'x-amz-cf-id': 'IhH3FH8Fbd1CvuNeUTY-eWn_928j0wqOKOcJu182tw0_7Osoey22Wg=='
+E           },
+E           error: undefined
+E         }
+E         
+E         stdout:
+E         
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['node', 'index.js'], returncode=1, stdout='', stderr="PermissionDeniedError: 403 You have reach...4-P10',\n    'x-amz-cf-id': 'IhH3FH8Fbd1CvuNeUTY-eWn_928j0wqOKOcJu182tw0_7Osoey22Wg=='\n  },\n  error: undefined\n}\n").returncode
+
+tests/test_final_state.py:90: AssertionError
+__________________ test_response_json_is_valid_and_non_error ___________________
+
+    def test_response_json_is_valid_and_non_error():
+>       assert os.path.isfile(RESPONSE_FILE), f"response.json not found at {RESPONSE_FILE}"
+E       AssertionError: response.json not found at /home/user/inconvo-app/response.json
+E       assert False
+E        +  where False = <function isfile at 0x7a2c981382c0>('/home/user/inconvo-app/response.json')
+E        +    where <function isfile at 0x7a2c981382c0> = <module 'posixpath' (frozen)>.isfile
+E        +      where <module 'posixpath' (frozen)> = os.path
+
+tests/test_final_state.py:96: AssertionError
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED tests/test_final_state.py::test_email_state_off
+PASSED tests/test_final_state.py::test_phone_state_off
+PASSED tests/test_final_state.py::test_non_pii_fields_still_on
+PASSED tests/test_final_state.py::test_index_js_exists_and_references_sdk
+FAILED tests/test_final_state.py::test_run_index_js_produces_response - Asser...
+FAILED tests/test_final_state.py::test_response_json_is_valid_and_non_error
+========================= 2 failed, 4 passed in 3.02s ==========================

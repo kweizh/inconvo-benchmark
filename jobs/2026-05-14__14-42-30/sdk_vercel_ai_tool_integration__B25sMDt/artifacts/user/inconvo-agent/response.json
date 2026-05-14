@@ -1,0 +1,3 @@
+{
+  "response": "The agent invoked the following tools to answer the question but the data layer did not return a final text summary: Tool called: getDataAgentConnectedDataSummary."
+}

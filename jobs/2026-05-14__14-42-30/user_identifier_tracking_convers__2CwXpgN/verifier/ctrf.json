@@ -1,0 +1,56 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 4,
+            "passed": 4,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1778742178.4908614,
+            "stop": 1778742189.5595994
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_users_json_unchanged",
+                "status": "passed",
+                "duration": 0.0006336621008813381,
+                "start": 1778742178.5067213,
+                "stop": 1778742178.5075622,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_alice_response_file",
+                "status": "passed",
+                "duration": 11.048130840994418,
+                "start": 1778742178.5077517,
+                "stop": 1778742189.5565615,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_bob_response_file",
+                "status": "passed",
+                "duration": 0.0009695272892713547,
+                "start": 1778742189.5574327,
+                "stop": 1778742189.5586946,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_conversation_ids_file",
+                "status": "passed",
+                "duration": 0.0004674033261835575,
+                "start": 1778742189.5588617,
+                "stop": 1778742189.5594466,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            }
+        ]
+    }
+}

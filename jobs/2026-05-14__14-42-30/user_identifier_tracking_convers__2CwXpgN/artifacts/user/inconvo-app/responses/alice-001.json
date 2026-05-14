@@ -1,0 +1,13 @@
+{
+  "id": "4962607a-82c4-4600-b119-0112dd6007c2",
+  "input": {
+    "message": "Hello, what is my latest order amount?",
+    "context": {
+      "store_id": 1
+    }
+  },
+  "output": {
+    "message": "Your latest order amount is 20.",
+    "type": "text"
+  }
+}

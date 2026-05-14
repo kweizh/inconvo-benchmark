@@ -1,0 +1,53 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 3,
+            "passed": 1,
+            "failed": 2,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1778741378.894217,
+            "stop": 1778741381.3377151
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_inconvo_yaml_exists_and_contains_orders",
+                "status": "passed",
+                "duration": 0.0005177906714379787,
+                "start": 1778741378.9037764,
+                "stop": 1778741378.9044995,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_run_index_js",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 2.4111332655884326,
+                "start": 1778741378.9046884,
+                "stop": 1778741381.3348525,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_run_index_js():\n        result = subprocess.run(\n            [\"node\", \"index.js\"],\n            cwd=PROJECT_DIR,\n            capture_output=True,\n            text=True\n        )\n>       assert result.returncode == 0, f\"'node index.js' failed with output: {result.stderr}\\n{result.stdout}\"\nE       AssertionError: 'node index.js' failed with output: Error: BadRequestError: 400 User context is disabled for this agent. Omit userContext when starting a conversation.\nE             at APIError.generate (/home/user/inconvo-app/node_modules/@inconvoai/node/core/error.js:40:20)\nE             at Inconvo.makeStatusError (/home/user/inconvo-app/node_modules/@inconvoai/node/client.js:119:32)\nE             at Inconvo.makeRequest (/home/user/inconvo-app/node_modules/@inconvoai/node/client.js:261:30)\nE             at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\nE             at async main (/home/user/inconvo-app/index.js:51:24) {\nE           status: 400,\nE           headers: Headers {\nE             'content-type': 'text/plain;charset=UTF-8',\nE             'transfer-encoding': 'chunked',\nE             connection: 'keep-alive',\nE             date: 'Thu, 14 May 2026 06:49:40 GMT',\nE             vary: 'rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch',\nE             'access-control-allow-origin': '*',\nE             'x-cache': 'Error from cloudfront',\nE             via: '1.1 43fdf818d7c9d8a5a20ed895b805f154.cloudfront.net (CloudFront)',\nE             'x-amz-cf-pop': 'LAX54-P10',\nE             'x-amz-cf-id': '5uJ390tHbjslIyg7yPf1Zi_xxPz8SwnNdFTdxpqWbcdrZXq5JEK_sQ=='\nE           },\nE           error: undefined\nE         }\nE         \nE         \u25c7 injected env (0) from .env // tip: \u2318 custom filepath { path: '/custom/path/.env' }\nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['node', 'index.js'], returncode=1, stdout=\"\u25c7 injected env (0) from .env // tip: \u2318 custom filepa...4-P10',\\n    'x-amz-cf-id': '5uJ390tHbjslIyg7yPf1Zi_xxPz8SwnNdFTdxpqWbcdrZXq5JEK_sQ=='\\n  },\\n  error: undefined\\n}\\n\").returncode\n\ntests/test_final_state.py:25: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_response_json_exists_and_valid",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.000605355016887188,
+                "start": 1778741381.3350837,
+                "stop": 1778741381.3375382,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_response_json_exists_and_valid():\n>       assert os.path.isfile(RESPONSE_FILE), f\"response.json not found at {RESPONSE_FILE}\"\nE       AssertionError: response.json not found at /home/user/inconvo-app/response.json\nE       assert False\nE        +  where False = <function isfile at 0x7847e7ac42c0>('/home/user/inconvo-app/response.json')\nE        +    where <function isfile at 0x7847e7ac42c0> = <module 'posixpath' (frozen)>.isfile\nE        +      where <module 'posixpath' (frozen)> = os.path\n\ntests/test_final_state.py:28: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

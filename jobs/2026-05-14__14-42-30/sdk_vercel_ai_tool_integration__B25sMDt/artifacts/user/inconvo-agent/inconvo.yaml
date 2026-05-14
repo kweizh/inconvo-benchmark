@@ -1,0 +1,49 @@
+tables:
+  - name: orders
+    type: Queryable
+    description: "Contains all e-commerce orders placed by customers"
+    columns:
+      - name: id
+        type: integer
+        description: "Unique identifier for the order"
+        primaryKey: true
+      - name: customer_id
+        type: integer
+        description: "Reference to the customer who placed the order"
+      - name: amount
+        type: decimal
+        description: "Total monetary value of the order"
+      - name: status
+        type: string
+        description: "Current status of the order (e.g. pending, completed, cancelled)"
+      - name: created_at
+        type: timestamp
+        description: "Timestamp when the order was created"
+
+  - name: customers
+    type: Joinable
+    description: "Contains customer account information"
+    columns:
+      - name: id
+        type: integer
+        description: "Unique identifier for the customer"
+        primaryKey: true
+      - name: name
+        type: string
+        description: "Full name of the customer"
+      - name: email
+        type: string
+        description: "Email address of the customer"
+      - name: created_at
+        type: timestamp
+        description: "Timestamp when the customer account was created"
+
+relationships:
+  - from:
+      table: orders
+      column: customer_id
+    to:
+      table: customers
+      column: id
+    type: many-to-one
+    description: "Each order belongs to one customer"

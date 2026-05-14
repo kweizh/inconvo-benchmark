@@ -1,0 +1,86 @@
+Running command: apt-get update && apt-get install -y curl ripgrep
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: echo sdk_vercel_ai_tool_integration__B25sMDt > /logs/artifacts/trial_id
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model anthropic/claude-4-6-sonnet --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Inconvo Vercel AI SDK Tool Integration
+
+## Background
+You need to integrate Inconvo as a tool within a Vercel AI SDK agent workflow. The agent should be able to answer natural language questions by querying an e-commerce database through Inconvo's semantic layer.
+
+## Requirements
+- Initialize a Node.js project in `/home/user/inconvo-agent`.
+- Install necessary dependencies: `@inconvoai/node`, `@inconvoai/vercel-ai-sdk`, `ai`, `@ai-sdk/openai`, and `dotenv`.
+- Create an `inconvo.yaml` semantic model defining `orders` (Queryable) and `customers` (Joinable) tables, with a relationship from `orders.customer_id` to `customers.id`.
+- Create an `agent.js` script that uses the Vercel AI SDK `generateText` function with an OpenAI model.
+- Provide the Inconvo tool to the agent so it can answer questions about the data.
+- The script should ask the agent: "What is the total amount of orders?" and save the agent's textual response to `/home/user/inconvo-agent/response.json` as a JSON object `{"response": "..."}`.
+
+## Implementation Guide
+1. `mkdir -p /home/user/inconvo-agent` and initialize the project.
+2. Install the required packages.
+3. Create `inconvo.yaml` based on standard Inconvo configuration for an e-commerce schema.
+4. Create `agent.js` that initializes the Inconvo client, wraps it as a Vercel AI SDK tool using `@inconvoai/vercel-ai-sdk`, and calls `generateText`.
+5. Write the output of `generateText` to `response.json`.
+
+## Constraints
+- Project path: `/home/user/inconvo-agent`
+- Log file: `/home/user/inconvo-agent/output.log`
+- The script must read `INCONVO_API_KEY`, `INCONVO_AGENT_ID`, `INCONVO_DB_URL`, and `OPENAI_API_KEY` from the environment.
+- Run the script and pipe output to the log file.
+
+## Integrations
+- OpenAI
+EOF
+Command outputs captured
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured

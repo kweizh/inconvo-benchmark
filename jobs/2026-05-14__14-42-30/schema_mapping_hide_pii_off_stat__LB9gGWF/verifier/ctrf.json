@@ -1,0 +1,80 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 6,
+            "passed": 4,
+            "failed": 2,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1778741902.8766465,
+            "stop": 1778741905.8977027
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_email_state_off",
+                "status": "passed",
+                "duration": 0.0019037160091102123,
+                "start": 1778741902.9030712,
+                "stop": 1778741902.9052656,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_phone_state_off",
+                "status": "passed",
+                "duration": 0.0005880990065634251,
+                "start": 1778741902.9055557,
+                "stop": 1778741902.9063463,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_non_pii_fields_still_on",
+                "status": "passed",
+                "duration": 0.0005432232283055782,
+                "start": 1778741902.9066036,
+                "stop": 1778741902.9073412,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_index_js_exists_and_references_sdk",
+                "status": "passed",
+                "duration": 0.0005511986091732979,
+                "start": 1778741902.9075978,
+                "stop": 1778741902.9083946,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_run_index_js_produces_response",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 2.954502928070724,
+                "start": 1778741902.908639,
+                "stop": 1778741905.8890145,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_run_index_js_produces_response():\n        env = os.environ.copy()\n        assert env.get(\"INCONVO_API_KEY\"), \"INCONVO_API_KEY must be set in the verifier environment.\"\n        assert env.get(\"INCONVO_AGENT_ID\"), \"INCONVO_AGENT_ID must be set in the verifier environment.\"\n    \n        # Remove any stale response.json from previous runs.\n        if os.path.exists(RESPONSE_FILE):\n            os.remove(RESPONSE_FILE)\n    \n        result = subprocess.run(\n            [\"node\", \"index.js\"],\n            cwd=PROJECT_DIR,\n            capture_output=True,\n            text=True,\n            env=env,\n            timeout=180,\n        )\n>       assert result.returncode == 0, (\n            f\"'node index.js' failed with stderr:\\n{result.stderr}\\nstdout:\\n{result.stdout}\"\n        )\nE       AssertionError: 'node index.js' failed with stderr:\nE         PermissionDeniedError: 403 You have reached your message limit for your current plan. Please upgrade your plan to continue using the service.\nE             at APIError.generate (file:///home/user/inconvo-app/node_modules/@inconvoai/node/core/error.mjs:42:20)\nE             at Inconvo.makeStatusError (file:///home/user/inconvo-app/node_modules/@inconvoai/node/client.mjs:116:32)\nE             at Inconvo.makeRequest (file:///home/user/inconvo-app/node_modules/@inconvoai/node/client.mjs:258:30)\nE             at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\nE             at async main (file:///home/user/inconvo-app/index.js:11:20) {\nE           status: 403,\nE           headers: Headers {\nE             'content-type': 'text/plain;charset=UTF-8',\nE             'transfer-encoding': 'chunked',\nE             connection: 'keep-alive',\nE             date: 'Thu, 14 May 2026 06:58:25 GMT',\nE             vary: 'rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch',\nE             'access-control-allow-origin': '*',\nE             'x-cache': 'Error from cloudfront',\nE             via: '1.1 76ea4124553a6a24f128f56848dd62cc.cloudfront.net (CloudFront)',\nE             'x-amz-cf-pop': 'LAX54-P10',\nE             'x-amz-cf-id': 'IhH3FH8Fbd1CvuNeUTY-eWn_928j0wqOKOcJu182tw0_7Osoey22Wg=='\nE           },\nE           error: undefined\nE         }\nE         \nE         stdout:\nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['node', 'index.js'], returncode=1, stdout='', stderr=\"PermissionDeniedError: 403 You have reach...4-P10',\\n    'x-amz-cf-id': 'IhH3FH8Fbd1CvuNeUTY-eWn_928j0wqOKOcJu182tw0_7Osoey22Wg=='\\n  },\\n  error: undefined\\n}\\n\").returncode\n\ntests/test_final_state.py:90: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_response_json_is_valid_and_non_error",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0007609901949763298,
+                "start": 1778741905.8893163,
+                "stop": 1778741905.897447,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_response_json_is_valid_and_non_error():\n>       assert os.path.isfile(RESPONSE_FILE), f\"response.json not found at {RESPONSE_FILE}\"\nE       AssertionError: response.json not found at /home/user/inconvo-app/response.json\nE       assert False\nE        +  where False = <function isfile at 0x7a2c981382c0>('/home/user/inconvo-app/response.json')\nE        +    where <function isfile at 0x7a2c981382c0> = <module 'posixpath' (frozen)>.isfile\nE        +      where <module 'posixpath' (frozen)> = os.path\n\ntests/test_final_state.py:96: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

@@ -1,0 +1,59 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 4,
+            "passed": 3,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1778741210.2469404,
+            "stop": 1778741212.500616
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_index_js_exists",
+                "status": "passed",
+                "duration": 0.000508554745465517,
+                "start": 1778741210.2588587,
+                "stop": 1778741210.2595985,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_index_js_contents",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0006350409239530563,
+                "start": 1778741210.2598004,
+                "stop": 1778741210.2750208,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_index_js_contents():\n        with open(INDEX_JS, \"r\") as f:\n            content = f.read()\n    \n        assert \"conversations.create\" in content, \"Expected client.conversations.create to be called in index.js\"\n>       assert \"tenant_456\" in content, \"Expected tenant_456 context to be used in index.js\"\nE       AssertionError: Expected tenant_456 context to be used in index.js\nE       assert 'tenant_456' in 'import \"dotenv/config\";\\nimport { randomUUID } from \"crypto\";\\nimport { createWriteStream } from \"fs\";\\nimport { writ...captured and written to output.json:\");\\n    console.error(JSON.stringify(errorOutput, null, 2));\\n  }\\n}\\n\\nmain();\\n'\n\ntests/test_final_state.py:18: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_run_index_js",
+                "status": "passed",
+                "duration": 2.223373263143003,
+                "start": 1778741210.275241,
+                "stop": 1778741212.4988704,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_output_json_exists_and_valid",
+                "status": "passed",
+                "duration": 0.0008597401902079582,
+                "start": 1778741212.4992552,
+                "stop": 1778741212.5003493,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            }
+        ]
+    }
+}

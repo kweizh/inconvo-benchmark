@@ -1,0 +1,83 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 6,
+            "passed": 3,
+            "failed": 3,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1778741877.7833576,
+            "stop": 1778741880.9453437
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_index_js_exists",
+                "status": "passed",
+                "duration": 0.0005516423843801022,
+                "start": 1778741877.7970917,
+                "stop": 1778741877.7978492,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_run_index_js",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 3.0910546788945794,
+                "start": 1778741877.7980385,
+                "stop": 1778741880.933474,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_run_index_js():\n        \"\"\"Run the multi-turn script against the real Inconvo Data Agent.\"\"\"\n        result = subprocess.run(\n            [\"node\", \"index.js\"],\n            cwd=PROJECT_DIR,\n            capture_output=True,\n            text=True,\n            timeout=300,\n        )\n>       assert result.returncode == 0, \\\n            f\"'node index.js' failed with output:\\nSTDERR: {result.stderr}\\nSTDOUT: {result.stdout}\"\nE       AssertionError: 'node index.js' failed with output:\nE         STDERR: Error: PermissionDeniedError: 403 You have reached your message limit for your current plan. Please upgrade your plan to continue using the service.\nE             at APIError.generate (file:///home/user/inconvo-app/node_modules/@inconvoai/node/core/error.mjs:42:20)\nE             at Inconvo.makeStatusError (file:///home/user/inconvo-app/node_modules/@inconvoai/node/client.mjs:116:32)\nE             at Inconvo.makeRequest (file:///home/user/inconvo-app/node_modules/@inconvoai/node/client.mjs:258:30)\nE             at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\nE             at async main (file:///home/user/inconvo-app/index.js:24:25) {\nE           status: 403,\nE           headers: Headers {\nE             'content-type': 'text/plain;charset=UTF-8',\nE             'transfer-encoding': 'chunked',\nE             connection: 'keep-alive',\nE             date: 'Thu, 14 May 2026 06:58:00 GMT',\nE             vary: 'rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch',\nE             'access-control-allow-origin': '*',\nE             'x-cache': 'Error from cloudfront',\nE             via: '1.1 27575afdd2237286cc5470b375b4d04e.cloudfront.net (CloudFront)',\nE             'x-amz-cf-pop': 'LAX54-P10',\nE             'x-amz-cf-id': 'jTeQRqrf4XjC3G-_KekUJLa9VNkWc4vceXqrSaQQEUFGDu1-RUXqBQ=='\nE           },\nE           error: undefined\nE         }\nE         \nE         STDOUT: Conversation created: convo_1475ab92-febe-4cc0-8bb5-4061fe1a25a9\nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['node', 'index.js'], returncode=1, stdout='Conversation created: convo_1475ab92-febe-4cc0-8bb5-...4-P10',\\n    'x-amz-cf-id': 'jTeQRqrf4XjC3G-_KekUJLa9VNkWc4vceXqrSaQQEUFGDu1-RUXqBQ=='\\n  },\\n  error: undefined\\n}\\n\").returncode\n\ntests/test_final_state.py:26: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_conversation_id_file_contains_non_empty_id",
+                "status": "passed",
+                "duration": 0.0007063751108944416,
+                "start": 1778741880.9338257,
+                "stop": 1778741880.934761,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_first_response_is_valid_real_response",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0007394198328256607,
+                "start": 1778741880.9350357,
+                "stop": 1778741880.9401062,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_first_response_is_valid_real_response():\n>       data = _load_response(FIRST_RESPONSE_FILE)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\ntests/test_final_state.py:64: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\npath = '/home/user/inconvo-app/first_response.json'\n\n    def _load_response(path):\n>       assert os.path.isfile(path), f\"Response file not found at {path}\"\nE       AssertionError: Response file not found at /home/user/inconvo-app/first_response.json\nE       assert False\nE        +  where False = <function isfile at 0x7771b3b7c2c0>('/home/user/inconvo-app/first_response.json')\nE        +    where <function isfile at 0x7771b3b7c2c0> = <module 'posixpath' (frozen)>.isfile\nE        +      where <module 'posixpath' (frozen)> = os.path\n\ntests/test_final_state.py:43: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_second_response_is_valid_real_response",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.000627666711807251,
+                "start": 1778741880.940355,
+                "stop": 1778741880.944248,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_second_response_is_valid_real_response():\n>       data = _load_response(SECOND_RESPONSE_FILE)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\ntests/test_final_state.py:69: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\npath = '/home/user/inconvo-app/second_response.json'\n\n    def _load_response(path):\n>       assert os.path.isfile(path), f\"Response file not found at {path}\"\nE       AssertionError: Response file not found at /home/user/inconvo-app/second_response.json\nE       assert False\nE        +  where False = <function isfile at 0x7771b3b7c2c0>('/home/user/inconvo-app/second_response.json')\nE        +    where <function isfile at 0x7771b3b7c2c0> = <module 'posixpath' (frozen)>.isfile\nE        +      where <module 'posixpath' (frozen)> = os.path\n\ntests/test_final_state.py:43: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_index_js_sends_multi_turn_followup",
+                "status": "passed",
+                "duration": 0.0005242950282990932,
+                "start": 1778741880.944492,
+                "stop": 1778741880.9451654,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            }
+        ]
+    }
+}

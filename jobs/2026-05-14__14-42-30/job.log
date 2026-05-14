@@ -1,0 +1,1789 @@
+Running command: apt-get update && apt-get install -y curl ripgrep
+Running command: apt-get update && apt-get install -y curl ripgrep
+Running command: apt-get update && apt-get install -y curl ripgrep
+Running command: apt-get update && apt-get install -y curl ripgrep
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: echo api_integration_nextjs__RYmWKc5 > /logs/artifacts/trial_id
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model anthropic/claude-4-6-sonnet --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Inconvo Next.js Vercel AI SDK Integration
+
+## Background
+You need to build a Next.js application that integrates with Inconvo using the Vercel AI SDK to create an interactive data agent chat interface.
+
+## Requirements
+- Initialize a Next.js application (App Router, TypeScript, Tailwind CSS, no `src` directory) in `/home/user/app`.
+- Install the required packages: `ai`, `@ai-sdk/react`, and `@inconvoai/vercel-ai-sdk`.
+- Create a backend API route at `app/api/chat/route.ts` that uses `streamText` from `ai` and `inconvoDataAgent` from `@inconvoai/vercel-ai-sdk`.
+- The API route must configure the agent with `process.env.INCONVO_AGENT_ID`, a `userIdentifier` of `"user-123"`, and a `userContext` with `organisationId: 1`.
+- Create a frontend chat interface in `app/page.tsx` using the `useChat` hook from `@ai-sdk/react`.
+- The UI must include an input field with the placeholder "Ask about your data..." and display the conversation messages.
+- For tool calls, if the tool is an Inconvo tool and its state is `output-available`, the UI should render a generic `<div data-testid="inconvo-result">Data Visualization Available</div>`.
+
+## Implementation Guide
+1. Run `npx create-next-app@latest /home/user/app --ts --tailwind --eslint --app --no-src-dir --import-alias "@/*"` to create the project.
+2. Add the necessary dependencies.
+3. Implement the `POST` handler in `app/api/chat/route.ts` to convert messages and call `streamText` with the `inconvoDataAgent` tool, returning `result.toUIMessageStreamResponse()`.
+4. Implement the chat UI in `app/page.tsx` by iterating over `messages` from `useChat` and rendering user/AI text, as well as tool results.
+
+## Constraints
+- Project path: `/home/user/app`
+- Start command: `npm run build && npm start`
+- Port: `3000`
+- Environment: Use Node.js v24.
+- Note: Do not configure real API keys, the verifier will only check the static UI and code implementation.
+
+## Integrations
+- None
+EOF
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Running command: apt-get update && apt-get install -y curl ripgrep
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: echo conversations_api_text_response__9JaXJNE > /logs/artifacts/trial_id
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model anthropic/claude-4-6-sonnet --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Handle simple text response from the Conversations API
+
+## Background
+Inconvo provides a Conversations API to interact with your data agent programmatically. You need to create a simple Node.js script that sends a message to the agent and saves the response.
+
+## Requirements
+- Initialize a Node.js project in `/home/user/inconvo-app`.
+- Install `@inconvoai/node` and `dotenv`.
+- Create a script `index.js` that initializes the Inconvo client, creates a new conversation, and sends the message "What are my top products?" to the API.
+- Save the response to `response.json` in the project directory.
+
+## Implementation Guide
+1. Initialize a Node.js project in `/home/user/inconvo-app`.
+2. Install the required dependencies: `npm install @inconvoai/node dotenv`.
+3. Create `index.js`:
+   - Load environment variables using `dotenv`.
+   - Initialize the Inconvo client using `INCONVO_API_KEY` and `INCONVO_AGENT_ID`.
+   - Call `client.conversations.create({ context: { user_id: 123 } })` to start a conversation.
+   - Call `client.conversations.messages.create(id, { message: "What are my top products?" })`.
+   - Save the returned response to `response.json` using `fs.writeFileSync`.
+4. Run the script to generate `response.json`.
+
+## Constraints
+- Project path: `/home/user/inconvo-app`
+- Log file: `/home/user/inconvo-app/response.json`
+- The environment will have `INCONVO_API_KEY` and `INCONVO_AGENT_ID` set.
+
+## Integrations
+- None
+EOF
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: echo conversations_api_create_tenant__6mCBzUF > /logs/artifacts/trial_id
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model anthropic/claude-4-6-sonnet --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Create a Conversation with Tenant Context
+
+## Background
+Inconvo is a platform for building chat-with-data agents. You need to write a Node.js script that uses the `@inconvoai/node` SDK to programmatically start a new conversation with a specific tenant context.
+
+## Requirements
+- Initialize a Node.js project.
+- Install `@inconvoai/node` and `dotenv`.
+- Write a script `index.js` that initializes the Inconvo client using environment variables.
+- Create a conversation using the client with the UserContext `{"organisationId": 2}`.
+- Save the resulting conversation object as JSON to `/home/user/inconvo-app/output.json`.
+
+## Implementation Guide
+1. Run `npm init -y` in `/home/user/inconvo-app`.
+2. Install the required packages: `npm install @inconvoai/node dotenv`.
+3. Create `.env` with dummy values for `INCONVO_API_KEY` and `INCONVO_AGENT_ID`.
+4. In `index.js`, import `Inconvo` from `@inconvoai/node`.
+5. Initialize the client and call `client.agents.conversations.create(process.env.INCONVO_AGENT_ID!, { userIdentifier: randomUUID().toString(), userContext: { organisationId: 1}} )`.
+6. Sends a natural language query and receives a structured response: `client.agents.conversations.response.create(id, { agentId: process.env.INCONVO_AGENT_ID!, message: "QUERY" })`.
+7. Catch any errors (never use dummy keys) and write the error message or the response to `output.json`.
+
+## Constraints
+- Project path: /home/user/inconvo-app
+- Log file: /home/user/inconvo-app/output.json
+
+## Integrations
+- None
+
+EOF
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: echo initialize_inconvo_with_postgres__Gbts8wi > /logs/artifacts/trial_id
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model anthropic/claude-4-6-sonnet --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Initialize Inconvo Project with PostgreSQL
+
+## Background
+Inconvo requires a database connection to introspect the schema and generate the semantic model. Your task is to initialize a new Inconvo project and configure it to connect to an existing PostgreSQL database.
+
+## Requirements
+- You must initialize an Inconvo project in `/home/user/myproject`.
+- You must configure the database connection by creating a `.env` file in the project directory.
+- The `.env` file must contain the `DATABASE_URL` environment variable set to `postgresql://inconvo:inconvo@localhost:5432/inconvo_db`.
+- The project must have a valid `inconvo.yaml` file after initialization.
+
+## Implementation Guide
+1. Navigate to `/home/user/myproject`.
+2. Create a `.env` file and set `DATABASE_URL=postgresql://inconvo:inconvo@localhost:5432/inconvo_db`.
+3. Run the appropriate command to initialize the Inconvo project (e.g., `npx inconvo@latest init` or the equivalent if it's a manual initialization).
+
+## Constraints
+- Project path: `/home/user/myproject`
+- Database URL: `postgresql://inconvo:inconvo@localhost:5432/inconvo_db`
+EOF
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: echo customer_support_bot_order_statu__9VhkmRh > /logs/artifacts/trial_id
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model anthropic/claude-4-6-sonnet --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Customer Support Bot Order Status
+
+## Background
+You are building a customer support bot using Inconvo. Support agents need to be able to look up order statuses using natural language. You need to create a Node.js script that uses the `@inconvoai/node` SDK to query the order status.
+
+## Requirements
+- Initialize a Node.js project in `/home/user/inconvo-bot`.
+- Install `@inconvoai/node` and `dotenv`.
+- A `.env` file is already provided in the project directory with `INCONVO_API_KEY`, `INCONVO_AGENT_ID`, and `DATABASE_URL`.
+- Create a semantic model `inconvo.yaml` that defines an `orders` table. The table should be `Queryable` and have fields: `id` (state: On), `status` (state: On, type: dimension), and `created_at` (state: On, type: dimension).
+- Create a script `index.js` that initializes the Inconvo client and uses the Conversations API to send the message: "What is the status of order 123?".
+- The script must save the raw JSON response from the Inconvo API to `/home/user/inconvo-bot/response.json`.
+
+## Implementation Guide
+1. `cd /home/user/inconvo-bot`
+2. Run `npm init -y` to initialize the project.
+3. Run `npm install @inconvoai/node dotenv` to install the dependencies.
+4. Create `inconvo.yaml` with the required semantic model.
+5. Create `index.js` which loads environment variables, initializes the Inconvo client, creates a conversation, sends the message "What is the status of order 123?", and writes the response to `response.json`.
+6. Run `node index.js` to execute the script and generate the response.
+
+## Constraints
+- Project path: `/home/user/inconvo-bot`
+- Log file: `/home/user/inconvo-bot/response.json`
+EOF
+Command outputs captured
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+Command outputs captured
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+Running command: apt-get update && apt-get install -y curl ripgrep
+Command outputs captured
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Command outputs captured
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+Running command: echo multi_tenant_authorization_conte__ZTRfELF > /logs/artifacts/trial_id
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model anthropic/claude-4-6-sonnet --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Multi-tenant Authorization with Inconvo
+
+## Background
+Inconvo allows mapping application-level user context to database-level tenant IDs. You need to implement a context filter on the `orders` table that restricts queries to a specific `store_id` passed in the conversation context.
+
+## Requirements
+- You have an existing Node.js project at `/home/user/inconvo-app` with `@inconvoai/node` installed.
+- Update `inconvo.yaml` to include a context filter on the `orders` table for `store_id`.
+- Write a Node.js script `index.js` that uses the Inconvo SDK to create a conversation with context `{ store_id: 123 }`, asks 'What are my total orders?', and saves the JSON response to `response.json`.
+
+## Constraints
+- Project path: `/home/user/inconvo-app`
+- The script must use `client.conversations.create({ context: { store_id: 123 } })` and `client.conversations.messages.create(...)`.
+- The script must write the response to `/home/user/inconvo-app/response.json`.
+
+## Integrations
+- Inconvo Cloud
+- PostgreSQL
+EOF
+Running command: apt-get update && apt-get install -y curl ripgrep
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: echo schema_mapping_joinable_tables__vzZUWt5 > /logs/artifacts/trial_id
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model anthropic/claude-4-6-sonnet --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Configure Customers Table as Joinable
+
+## Background
+Inconvo uses a semantic model defined in `inconvo.yaml` to map natural language to data. You have an existing Inconvo project where the `customers` table is currently configured as `Queryable`.
+
+## Requirements
+- Update the `inconvo.yaml` file to configure the `customers` table as `Joinable` only, not `Queryable` directly.
+- Run the `index.js` script to generate a `response.json` file verifying the configuration.
+
+## Implementation Guide
+1. Open the `inconvo.yaml` file located in `/home/user/inconvo-app`.
+2. Locate the `customers` table definition.
+3. Change its `state` from `Queryable` to `Joinable`.
+4. Run `node index.js` in the project directory. This will query the agent and save the result to `response.json`.
+
+## Constraints
+- Project path: /home/user/inconvo-app
+
+## Integrations
+- None
+EOF
+Command outputs captured
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+Running command: apt-get update && apt-get install -y curl ripgrep
+Running command: apt-get update && apt-get install -y curl ripgrep
+Command outputs captured
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: echo sdk_vercel_ai_streaming_ui__NK2WkxY > /logs/artifacts/trial_id
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model anthropic/claude-4-6-sonnet --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Inconvo Streaming UI with Vercel AI SDK
+
+## Background
+Inconvo provides a middleware for building chat-with-data agents. You can use `@inconvoai/vercel-ai-sdk` to stream responses to a React frontend using the Vercel AI SDK.
+
+## Requirements
+- You are provided with a Next.js application in `/home/user/app`.
+- Implement an API route at `app/api/chat/route.ts` that uses `@inconvoai/vercel-ai-sdk` and `@inconvoai/node` to handle chat messages and stream the response from Inconvo.
+- Implement the main UI in `app/page.tsx` using the `useChat` hook from the `ai` package.
+- When the agent returns a `table` response, render it as a formatted HTML data grid (`<table>`, `<thead>`, `<tbody>`, `<tr>`, `<th>`, `<td>`).
+- The table should display the data correctly based on the streamed Inconvo table response structure.
+
+## Implementation Guide
+1. Use `@inconvoai/node` to initialize the Inconvo client in the API route.
+2. Use `@inconvoai/vercel-ai-sdk` to stream the response back to the client.
+3. In `app/page.tsx`, use `useChat` to manage the chat state.
+4. Render user messages as text.
+5. For assistant messages, if the content or tool invocation represents a table, render it as an HTML `<table>`.
+
+## Constraints
+- Project path: /home/user/app
+- Start command: npm run build && npm start
+- Port: 3000
+- Environment Variables: `INCONVO_API_KEY` and `INCONVO_AGENT_ID` are set in the environment.
+
+## Integrations
+- None
+EOF
+Command outputs captured
+Running command: echo conversations_api_send_message_t__xdLZyRq > /logs/artifacts/trial_id
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model anthropic/claude-4-6-sonnet --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Inconvo Conversations API: Send Message
+
+## Background
+You need to use the `@inconvoai/node` SDK to interact with an Inconvo Data Agent. Your goal is to start a conversation, send a specific question, and parse the response.
+
+## Requirements
+- Initialize a Node.js project in `/home/user/inconvo-app`.
+- Install `@inconvoai/node` and `dotenv`.
+- Write a script `index.js` that uses the SDK to start a conversation and send the message "What are my top products?".
+- Save the resulting JSON response to `/home/user/inconvo-app/response.json`.
+
+## Implementation Guide
+1. Initialize a Node.js project in `/home/user/inconvo-app`.
+2. Install the required dependencies: `npm i @inconvoai/node dotenv`.
+3. Create `index.js`.
+4. In `index.js`, initialize the Inconvo client using the environment variables `INCONVO_API_KEY` and `INCONVO_AGENT_ID`.
+5. Start a conversation using `client.conversations.create({ context: { user_id: 123 } })`.
+6. Send the message using `client.conversations.messages.create(conversation.id, { message: "What are my top products?" })`.
+7. Write the entire response object to `/home/user/inconvo-app/response.json` using `fs.writeFileSync`.
+
+## Constraints
+- Project path: /home/user/inconvo-app
+- Output file: /home/user/inconvo-app/response.json
+- The script must read `INCONVO_API_KEY` and `INCONVO_AGENT_ID` from the environment.
+
+## Integrations
+- None
+EOF
+Running command: apt-get update && apt-get install -y curl ripgrep
+Running command: apt-get update && apt-get install -y curl ripgrep
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: echo multi_tenant_reporting_user_reco__Nbihkz8 > /logs/artifacts/trial_id
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model anthropic/claude-4-6-sonnet --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Inconvo Multi-tenant Reporting
+
+## Background
+Inconvo is an open-source platform for building "chat-with-data" agents. When building multi-tenant analytics, it's crucial to scope data so users can only query their own records. You can do this by implementing context filters in the semantic model.
+
+## Requirements
+- Configure the `inconvo.yaml` semantic model to include an `orders` table.
+- Implement a context filter on the `orders` table that restricts queries to a specific `store_id` passed in the conversation context.
+- Write a Node.js script (`index.js`) using the `@inconvoai/node` SDK to start a conversation with `context: { store_id: 123 }` and ask "What are my orders?".
+- Save the API response to `response.json`.
+
+## Implementation Guide
+1. A Node.js project is already initialized at `/home/user/inconvo-app` with dependencies installed.
+2. Edit `/home/user/inconvo-app/inconvo.yaml` to define the `orders` table and add the context filter for `store_id`.
+3. Create `/home/user/inconvo-app/index.js` to initialize the Inconvo client (it will automatically pick up `INCONVO_API_KEY` and `INCONVO_AGENT_ID` from the environment).
+4. In `index.js`, use `client.conversations.create({ context: { store_id: 123 } })` and `client.conversations.messages.create(...)` to ask "What are my orders?".
+5. Write the final response data to `/home/user/inconvo-app/response.json`.
+6. Run `node index.js` to generate the response.
+
+## Constraints
+- Project path: `/home/user/inconvo-app`
+- The script must read credentials from environment variables.
+- Output file: `/home/user/inconvo-app/response.json`
+EOF
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: echo sdk_vercel_ai_tool_integration__B25sMDt > /logs/artifacts/trial_id
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model anthropic/claude-4-6-sonnet --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Inconvo Vercel AI SDK Tool Integration
+
+## Background
+You need to integrate Inconvo as a tool within a Vercel AI SDK agent workflow. The agent should be able to answer natural language questions by querying an e-commerce database through Inconvo's semantic layer.
+
+## Requirements
+- Initialize a Node.js project in `/home/user/inconvo-agent`.
+- Install necessary dependencies: `@inconvoai/node`, `@inconvoai/vercel-ai-sdk`, `ai`, `@ai-sdk/openai`, and `dotenv`.
+- Create an `inconvo.yaml` semantic model defining `orders` (Queryable) and `customers` (Joinable) tables, with a relationship from `orders.customer_id` to `customers.id`.
+- Create an `agent.js` script that uses the Vercel AI SDK `generateText` function with an OpenAI model.
+- Provide the Inconvo tool to the agent so it can answer questions about the data.
+- The script should ask the agent: "What is the total amount of orders?" and save the agent's textual response to `/home/user/inconvo-agent/response.json` as a JSON object `{"response": "..."}`.
+
+## Implementation Guide
+1. `mkdir -p /home/user/inconvo-agent` and initialize the project.
+2. Install the required packages.
+3. Create `inconvo.yaml` based on standard Inconvo configuration for an e-commerce schema.
+4. Create `agent.js` that initializes the Inconvo client, wraps it as a Vercel AI SDK tool using `@inconvoai/vercel-ai-sdk`, and calls `generateText`.
+5. Write the output of `generateText` to `response.json`.
+
+## Constraints
+- Project path: `/home/user/inconvo-agent`
+- Log file: `/home/user/inconvo-agent/output.log`
+- The script must read `INCONVO_API_KEY`, `INCONVO_AGENT_ID`, `INCONVO_DB_URL`, and `OPENAI_API_KEY` from the environment.
+- Run the script and pipe output to the log file.
+
+## Integrations
+- OpenAI
+EOF
+Command outputs captured
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+Command outputs captured
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+Running command: apt-get update && apt-get install -y curl ripgrep
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Running command: apt-get update && apt-get install -y curl ripgrep
+Command outputs captured
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: echo relationship_definition_line_ite__eV4qp6t > /logs/artifacts/trial_id
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model anthropic/claude-4-6-sonnet --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Define a Many-to-One Relationship Between Line Items and Products
+
+## Background
+Inconvo uses a semantic model defined in `inconvo.yaml` to map natural language to data. Defining `relations` between tables enables Inconvo to traverse join paths when answering analytical questions. You have an existing Inconvo project at `/home/user/inconvo-app` whose semantic model already declares two tables (`line_items` and `products`) but does NOT yet declare any relations between them. Without the join, Inconvo cannot answer product-centric questions that aggregate over line items, such as "What is the most popular product name?".
+
+You must update the semantic model to:
+  - Mark `line_items` as `Queryable` (the table that gets queried).
+  - Mark `products` as `Joinable` (it is only reachable via a join from `line_items`).
+  - Add a `relations` entry named `line_item_to_product` that joins `line_items.product_id` to `products.id`.
+
+Then update the existing `index.js` so that it uses the `@inconvoai/node` SDK to ask the Data Agent "What is the most popular product name?" and writes the raw agent response as JSON to `/home/user/inconvo-app/response.json`.
+
+## Requirements
+- Edit `/home/user/inconvo-app/inconvo.yaml` so that:
+  - `tables.line_items.state` is `Queryable` with fields `id`, `order_id`, `product_id`, `quantity` (each with `state: On`).
+  - `tables.products.state` is `Joinable` with fields `id`, `name`, `price` (each with `state: On`).
+  - A top-level `relations` list contains an entry with `name: line_item_to_product`, `left: line_items.product_id`, `right: products.id`.
+- Edit `/home/user/inconvo-app/index.js` so that it:
+  - Loads environment variables from the process environment (`INCONVO_API_KEY`, `INCONVO_AGENT_ID`).
+  - Imports `Inconvo` from `@inconvoai/node`.
+  - Creates a conversation with the agent and sends the message: `What is the most popular product name?`.
+  - Writes the raw JSON agent response to `/home/user/inconvo-app/response.json`.
+- Run `node index.js` once so that the response file is produced.
+
+## Implementation Guide
+1. `cd /home/user/inconvo-app`
+2. Update `inconvo.yaml`:
+   - Confirm `line_items` has `state: Queryable` and its fields are listed.
+   - Change `products` to `state: Joinable`.
+   - Append a `relations` section that defines `line_item_to_product` joining `line_items.product_id` to `products.id`.
+3. Edit `index.js` to send the question `What is the most popular product name?` to the agent and save the raw response to `response.json`.
+4. Run `node index.js`.
+
+## Constraints
+- Project path: /home/user/inconvo-app
+- Log file: /home/user/inconvo-app/response.json
+- The `@inconvoai/node` SDK is already installed in `node_modules`.
+- You MUST use the real `INCONVO_API_KEY`, `INCONVO_AGENT_ID`, and `INCONVO_DB_URL` environment variables that are already present in the environment. Do NOT mock the SDK.
+
+## Integrations
+- Inconvo Cloud (via `@inconvoai/node` SDK)
+
+EOF
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: echo metric_definition_gross_margin__VkjCEHK > /logs/artifacts/trial_id
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model anthropic/claude-4-6-sonnet --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Define a `gross_margin` Calculated Measure with Inconvo
+
+## Background
+Inconvo's Semantic Model (`inconvo.yaml`) lets you define calculated measures directly on a table. Calculated measures are derived from other fields and can then be queried in natural language. You will add a new `gross_margin` measure to the `orders` table, derived from `total_amount` and `cost`, and then ask the Data Agent for the average gross margin per month.
+
+## Requirements
+- You have an existing Node.js project at `/home/user/inconvo-app` with `@inconvoai/node` and `dotenv` already installed.
+- A starter `inconvo.yaml` is already present in the project directory. It defines `orders` (as `Queryable`) and `customers` (as `Joinable`), but it does NOT yet contain a `gross_margin` measure.
+- A `.env` file is already present referencing `INCONVO_API_KEY`, `INCONVO_AGENT_ID`, and `INCONVO_DB_URL`. Do NOT modify it.
+- Edit `inconvo.yaml` to add a calculated measure named `gross_margin` to the `orders` table. Its `type` must be `measure` and its formula must reference both `total_amount` and `cost` using the `-` operator (i.e. `total_amount - cost`).
+- Write `index.js` in the project root which:
+  1. Loads environment variables with `dotenv`.
+  2. Initializes the Inconvo client from `@inconvoai/node` using `process.env.INCONVO_API_KEY`.
+  3. Creates a new conversation against `process.env.INCONVO_AGENT_ID` using `inconvo.agents.conversations.create`.
+  4. Calls `inconvo.agents.conversations.response.create` with the message `"What is the average gross margin per month?"` and `stream: false`.
+  5. Writes the resulting JSON response to `/home/user/inconvo-app/response.json` using `JSON.stringify`.
+- Run `node index.js` so `response.json` is created with real data returned from the Inconvo Cloud agent.
+
+## Implementation Guide
+1. Open `/home/user/inconvo-app/inconvo.yaml` and locate the existing `orders` table block.
+2. Under `orders.fields`, add an entry similar to:
+   ```yaml
+   gross_margin:
+     state: On
+     type: measure
+     formula: total_amount - cost
+   ```
+   Use whichever exact key (`formula`, `expression`, `sql`, etc.) is appropriate for your semantic model as long as the field is a `measure` and the expression contains both `total_amount` and `cost` with a `-` operator.
+3. Create `/home/user/inconvo-app/index.js` that uses `@inconvoai/node` to send the natural language query and save the JSON response.
+4. Run the script: `node index.js`.
+
+## Constraints
+- Project path: `/home/user/inconvo-app`
+- Log file: `/home/user/inconvo-app/response.json`
+- Do NOT hardcode API keys, agent IDs, or database URLs anywhere in source. Always read them from `process.env`.
+- Do NOT mock the Inconvo SDK; the script must hit the real Inconvo Cloud API.
+
+## Integrations
+- Inconvo Cloud (`INCONVO_API_KEY`, `INCONVO_AGENT_ID`)
+- PostgreSQL (`INCONVO_DB_URL`)
+EOF
+Command outputs captured
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+Running command: apt-get update && apt-get install -y curl ripgrep
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: echo conversations_api_multi_turn_fol__7MnUdbd > /logs/artifacts/trial_id
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model anthropic/claude-4-6-sonnet --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Inconvo Conversations API: Multi-turn Followup
+
+## Background
+Inconvo's Conversations API supports multi-turn conversations where the Data Agent retains context across messages within the same conversation. This allows users to ask a question, then refine the request with a followup that depends on the previous turn's context (e.g. "now show me only those in the United States").
+
+You will use the `@inconvoai/node` SDK to start a conversation, send an initial analytical question, and then send a contextual followup on the SAME conversation id.
+
+## Requirements
+- A Node.js project is already initialized at `/home/user/inconvo-app` with `@inconvoai/node` and `dotenv` installed (see `package.json` and `node_modules`). A `.env` file is present that references `INCONVO_API_KEY`, `INCONVO_AGENT_ID`, and `INCONVO_DB_URL`.
+- Create a script `/home/user/inconvo-app/index.js` that:
+  1. Loads environment variables via `dotenv/config`.
+  2. Initializes the Inconvo client with `INCONVO_API_KEY`.
+  3. Creates a new conversation against `INCONVO_AGENT_ID` with `userContext: { organisationId: 1 }`.
+  4. Writes the conversation id to `/home/user/inconvo-app/conversation_id.txt`.
+  5. Sends the FIRST message on that conversation: `"Show me my top 5 customers by total order amount."` (non-streaming) and writes the full JSON response to `/home/user/inconvo-app/first_response.json`.
+  6. Sends a FOLLOWUP message on the SAME conversation id: `"Now show me only those located in the United States."` (non-streaming) and writes the full JSON response to `/home/user/inconvo-app/second_response.json`.
+- The script must exit with code 0.
+
+## Implementation Guide
+1. `cd /home/user/inconvo-app`.
+2. Inspect the existing `package.json`, `.env`, and `node_modules` — do not reinitialize the project.
+3. Create `index.js` using ES module or CommonJS as preferred; the SDK supports both.
+4. Use `inconvo.agents.conversations.create(process.env.INCONVO_AGENT_ID, { userIdentifier, userContext: { organisationId: 1 } })` to start the conversation.
+5. Use `inconvo.agents.conversations.response.create(convId, { agentId: process.env.INCONVO_AGENT_ID, message: "...", stream: false })` twice with the SAME `convId` to send the first message and the followup.
+6. Persist all three artifacts (`conversation_id.txt`, `first_response.json`, `second_response.json`) using `fs.writeFileSync`.
+7. Run `node index.js` to produce the artifacts.
+
+## Constraints
+- Project path: `/home/user/inconvo-app`
+- Output files: `/home/user/inconvo-app/conversation_id.txt`, `/home/user/inconvo-app/first_response.json`, `/home/user/inconvo-app/second_response.json`
+- Both messages MUST be sent on the same conversation id (multi-turn).
+- Use real `INCONVO_API_KEY`, `INCONVO_AGENT_ID`, and `INCONVO_DB_URL` from the environment — do NOT hardcode or mock.
+
+## Integrations
+- None
+EOF
+Running command: apt-get update && apt-get install -y curl ripgrep
+Running command: apt-get update && apt-get install -y curl ripgrep
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: echo schema_mapping_hide_pii_off_stat__LB9gGWF > /logs/artifacts/trial_id
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model anthropic/claude-4-6-sonnet --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Hide PII Fields by Setting State to Off
+
+## Background
+Inconvo uses a semantic model defined in `inconvo.yaml` to map natural language questions to safe, validated SQL queries. To prevent sensitive PII (personally identifiable information) from being exposed to the agent, individual fields can be hidden by setting their `state` to `Off`. You have an existing Inconvo project at `/home/user/inconvo-app` where the `customers` table currently exposes the `email` and `phone` fields (both with `state: On`). Your job is to hide these PII fields and then call the Inconvo Data Agent from a Node.js script to confirm the agent still works for non-PII queries.
+
+## Requirements
+- Update `/home/user/inconvo-app/inconvo.yaml` so that the `email` and `phone` fields under the `customers` table have `state: Off`.
+- Leave the remaining fields (e.g. `customers.id`, `customers.name`, and all `orders` fields) untouched with `state: On` so they remain queryable.
+- Do not change the table-level `state: Queryable` for `customers` or `orders`.
+- Create (or edit) `/home/user/inconvo-app/index.js` so that it uses the `@inconvoai/node` SDK to:
+  - Read `INCONVO_API_KEY` and `INCONVO_AGENT_ID` from environment variables (the SDK reads `INCONVO_API_KEY` from env automatically; `INCONVO_AGENT_ID` is the agent id you pass to `inconvo.agents.conversations.create`).
+  - Start a new conversation via `inconvo.agents.conversations.create(process.env.INCONVO_AGENT_ID, { userIdentifier: "user-pii-off-test" })`.
+  - Send the natural language question `"List customer names and their total orders"` via `inconvo.agents.conversations.response.create(conversationId, { agentId: process.env.INCONVO_AGENT_ID, message: "List customer names and their total orders", stream: false })`.
+  - Write the JSON-stringified response from the agent to `/home/user/inconvo-app/response.json`.
+- Run `node index.js` from the project directory so that `response.json` is produced.
+
+## Implementation Guide
+1. Open `/home/user/inconvo-app/inconvo.yaml`.
+2. Under `tables.customers.fields`, change `email: { state: On }` to `email: { state: Off }` and `phone: { state: On }` to `phone: { state: Off }`.
+3. Write `/home/user/inconvo-app/index.js` using the snippet below as a starting point:
+
+```javascript
+import Inconvo from "@inconvoai/node";
+import fs from "node:fs";
+
+const inconvo = new Inconvo({ apiKey: process.env.INCONVO_API_KEY });
+
+async function main() {
+  const conversation = await inconvo.agents.conversations.create(
+    process.env.INCONVO_AGENT_ID,
+    { userIdentifier: "user-pii-off-test" },
+  );
+  const response = await inconvo.agents.conversations.response.create(
+    conversation.id,
+    {
+      agentId: process.env.INCONVO_AGENT_ID,
+      message: "List customer names and their total orders",
+      stream: false,
+    },
+  );
+  fs.writeFileSync("response.json", JSON.stringify(response, null, 2));
+}
+
+main().catch((err) => { console.error(err); process.exit(1); });
+```
+
+4. From `/home/user/inconvo-app`, run `node index.js`.
+
+## Constraints
+- Project path: /home/user/inconvo-app
+- Log file: /home/user/inconvo-app/response.json
+- Use the `@inconvoai/node` SDK (already installed under `node_modules`). Do not introduce mocks.
+- The script must read the `INCONVO_API_KEY` and `INCONVO_AGENT_ID` values from the environment; do not hardcode them.
+
+## Integrations
+- None
+EOF
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: echo express_api_chat_endpoint__iLPiWAZ > /logs/artifacts/trial_id
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model anthropic/claude-4-6-sonnet --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Express API Chat Endpoint with Inconvo
+
+## Background
+Inconvo is a platform for building chat-with-data agents. A common backend integration pattern is to expose a thin HTTP endpoint that forwards user questions from a client (web/mobile) to the Inconvo Data Agent and returns the structured response. In this task you will build a small Express.js application that proxies user messages to the Inconvo agent using the `@inconvoai/node` SDK.
+
+## Requirements
+- Build an Express.js HTTP server in the existing project at `/home/user/inconvo-app`.
+- Expose a single `POST /chat` route that accepts a JSON body of the form `{ "message": string, "userId": string }`.
+- The route must validate that the `message` field is present and non-empty. If it is missing/empty, respond with HTTP `400` and a JSON body `{ "error": "message is required" }`.
+- The route must:
+  1. Initialize an Inconvo client using `process.env.INCONVO_API_KEY`.
+  2. Call `inconvo.agents.conversations.create(process.env.INCONVO_AGENT_ID, { userIdentifier: userId, userContext: { organisationId: 1 } })` to start a new agent conversation.
+  3. Call `inconvo.agents.conversations.response.create(conversation.id, { agentId: process.env.INCONVO_AGENT_ID, message, stream: false })` to obtain the agent response.
+  4. Send the response object returned by Inconvo back to the client as JSON (HTTP 200).
+- The server MUST listen on port `3001`.
+- The application entry file MUST be `/home/user/inconvo-app/index.js`. Running `node index.js` from `/home/user/inconvo-app` starts the server.
+- Use the existing `@inconvoai/node`, `dotenv`, and `express` packages already installed in `/home/user/inconvo-app/node_modules`. Do NOT mock any dependency.
+
+## Implementation Guide
+1. Open `/home/user/inconvo-app/index.js` and use CommonJS or `require` to import `express` and `@inconvoai/node`.
+2. Create an Express app, configure it with `express.json()` so JSON request bodies are parsed.
+3. Implement the `POST /chat` route described in the Requirements section.
+4. Read `INCONVO_API_KEY` and `INCONVO_AGENT_ID` from the environment (do not hardcode any values).
+5. Start the server with `app.listen(3001)`.
+
+## Constraints
+- Project path: /home/user/inconvo-app
+- Entry file: /home/user/inconvo-app/index.js
+- Start command: node index.js
+- Port: 3001
+- Required env vars: INCONVO_API_KEY, INCONVO_AGENT_ID, INCONVO_DB_URL
+- Do NOT mock the Inconvo SDK or any HTTP calls. The endpoint must hit the real Inconvo service.
+
+## Integrations
+- Inconvo (via @inconvoai/node)
+EOF
+Command outputs captured
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+Command outputs captured
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+Running command: apt-get update && apt-get install -y curl ripgrep
+Command outputs captured
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+Command outputs captured
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Running command: apt-get update && apt-get install -y curl ripgrep
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: echo streaming_response_conversation__TEE6xMo > /logs/artifacts/trial_id
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model anthropic/claude-4-6-sonnet --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Stream a Data Agent Response with the Inconvo Node SDK
+
+## Background
+The Inconvo `@inconvoai/node` SDK supports streaming responses from a Data Agent via Server-Sent Events when `stream: true` is passed to `inconvo.agents.conversations.response.create(...)`. The SDK returns an async iterable that emits `response.created`, `response.progress`, and `response.completed` events. You need to write a Node.js script that consumes this stream end-to-end and records every event to disk along with a final summary of the streaming session.
+
+## Requirements
+- Use the existing Node.js project at `/home/user/inconvo-app`. `package.json` already lists `@inconvoai/node` and `dotenv` as dependencies, and `node_modules` is already installed (do NOT re-run `npm install`).
+- Write `index.js` that:
+  1. Loads environment variables with `dotenv` and reads `INCONVO_API_KEY` and `INCONVO_AGENT_ID` from the environment.
+  2. Creates an Inconvo client and starts a conversation with `inconvo.agents.conversations.create(process.env.INCONVO_AGENT_ID, { userIdentifier: "stream-user", userContext: { organisationId: 1 } })`.
+  3. Calls `inconvo.agents.conversations.response.create(conv.id, { agentId: process.env.INCONVO_AGENT_ID, message: "Summarize our sales trends for the last 3 months", stream: true })` to obtain an async iterable stream.
+  4. Iterates the stream with `for await (const chunk of stream)`, writing each chunk as a single JSON line (`JSON.stringify(chunk) + "\n"`) to `/home/user/inconvo-app/stream.jsonl`. The file must be created from scratch (truncated) at the start of the run.
+  5. Tracks the total number of chunks received (`chunkCount`) and the final assistant message string. The final message must be extracted from the `response.completed` event (e.g. `event.response.message` for a text response, or `JSON.stringify(event.response)` otherwise) and must be a non-empty string.
+  6. After the stream ends, writes `/home/user/inconvo-app/summary.json` containing `{ "chunkCount": <number>, "finalMessage": "<string>" }`.
+
+## Implementation Guide
+1. `cd /home/user/inconvo-app`.
+2. Create `index.js` using `import Inconvo from "@inconvoai/node"` (ESM) or `const Inconvo = require("@inconvoai/node").default` (CJS) — `package.json` is already configured for ESM (`"type": "module"`).
+3. Use `fs.createWriteStream` (or repeated `fs.appendFileSync` after truncating the file) to write one JSON object per line to `stream.jsonl`.
+4. Increment a counter for each chunk and capture the final message from the `response.completed` event.
+5. Run `node index.js` to verify the script executes end-to-end and produces both output files.
+
+## Constraints
+- Project path: /home/user/inconvo-app
+- Log file: /home/user/inconvo-app/stream.jsonl
+- Summary file: /home/user/inconvo-app/summary.json
+- Required env vars (already injected into the environment): `INCONVO_API_KEY`, `INCONVO_AGENT_ID`, `INCONVO_DB_URL`.
+- Do not run `npm install` — the dependencies are already installed in `node_modules`.
+- Must call the SDK with `stream: true` and iterate the returned async iterable. Do NOT make a non-streaming request and synthesize chunks.
+
+## Integrations
+- Inconvo Cloud Data Agent (configured via `INCONVO_API_KEY`, `INCONVO_AGENT_ID`, and `INCONVO_DB_URL`).
+EOF
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: echo schema_mapping_field_synonyms__Vf858tG > /logs/artifacts/trial_id
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model anthropic/claude-4-6-sonnet --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Add Field Synonyms to the Inconvo Semantic Model
+
+## Background
+Inconvo's semantic layer maps natural language to your database schema using `inconvo.yaml`. Synonyms allow you to teach the agent alternative business terms that users may use when asking questions (for example, "revenue" instead of "total_amount").
+
+A pre-existing Inconvo project lives at `/home/user/inconvo-app`. It already contains:
+- An installed `node_modules` directory with `@inconvoai/node` and `dotenv`.
+- A starter `inconvo.yaml` that defines an `orders` table (Queryable) and a `customers` table (Joinable) with a relation from `orders.customer_id` to `customers.id`.
+- A `package.json` for the project.
+
+The environment variables `INCONVO_API_KEY`, `INCONVO_AGENT_ID`, and `INCONVO_DB_URL` are already exported into the container's process environment, so `process.env.INCONVO_API_KEY` and `process.env.INCONVO_AGENT_ID` can be read directly from Node.
+
+No synonyms have been configured yet.
+
+## Requirements
+1. Edit `/home/user/inconvo-app/inconvo.yaml` to add synonyms:
+   - On the `total_amount` field of the `orders` table, add the synonyms `["revenue", "sales", "income"]`.
+   - On the `name` field of the `customers` table, add the synonyms `["customer", "buyer", "client"]`.
+2. Write (or edit) `/home/user/inconvo-app/index.js` so that when executed with `node index.js`:
+   - It loads environment variables from `.env` using `dotenv`.
+   - It uses the `@inconvoai/node` SDK to create a conversation against the agent identified by `INCONVO_AGENT_ID`.
+   - It sends the natural language message `"What is the total revenue per buyer?"` and waits for a non-streaming response.
+   - It writes the raw JSON response from the Inconvo API to `/home/user/inconvo-app/response.json`.
+3. Run `node index.js` so that `response.json` is produced.
+
+## Implementation Guide
+1. `cd /home/user/inconvo-app`
+2. Open `inconvo.yaml` and add a `synonyms` key under the `total_amount` and `name` fields. The exact YAML you use must keep the existing structure intact. For example:
+   ```yaml
+   tables:
+     orders:
+       state: Queryable
+       fields:
+         id: { state: On }
+         total_amount:
+           state: On
+           type: measure
+           synonyms: ["revenue", "sales", "income"]
+         created_at: { state: On, type: dimension }
+     customers:
+       state: Joinable
+       fields:
+         id: { state: On }
+         name:
+           state: On
+           synonyms: ["customer", "buyer", "client"]
+   relations:
+     - name: order_to_customer
+       left: orders.customer_id
+       right: customers.id
+   ```
+3. Create `index.js` similar to the snippet below, using the real environment variables `INCONVO_API_KEY` and `INCONVO_AGENT_ID`:
+   ```javascript
+   import "dotenv/config";
+   import { randomUUID } from "node:crypto";
+   import fs from "node:fs";
+   import Inconvo from "@inconvoai/node";
+
+   const inconvo = new Inconvo({ apiKey: process.env.INCONVO_API_KEY });
+
+   async function main() {
+     const convo = await inconvo.agents.conversations.create(
+       process.env.INCONVO_AGENT_ID,
+       { userIdentifier: randomUUID().toString() }
+     );
+     const response = await inconvo.agents.conversations.response.create(
+       convo.id,
+       {
+         agentId: process.env.INCONVO_AGENT_ID,
+         message: "What is the total revenue per buyer?",
+         stream: false,
+       }
+     );
+     fs.writeFileSync("response.json", JSON.stringify(response, null, 2));
+   }
+
+   main().catch((err) => {
+     console.error(err);
+     process.exit(1);
+   });
+   ```
+   You may use either ESM (`import`) or CommonJS (`require`) syntax — the project's `package.json` supports both because `@inconvoai/node` ships with dual exports.
+4. Run the script:
+   ```bash
+   node index.js
+   ```
+5. Confirm that `/home/user/inconvo-app/response.json` was written.
+
+## Constraints
+- Project path: `/home/user/inconvo-app`
+- Log file: `/home/user/inconvo-app/response.json`
+- Do NOT delete or rename the existing `orders` or `customers` table definitions or the existing relation.
+- Do NOT mock the Inconvo SDK; the script must actually call the live Inconvo API using the real credentials.
+- The `INCONVO_API_KEY`, `INCONVO_AGENT_ID`, and `INCONVO_DB_URL` environment variables are already exported into the container's process environment.
+
+## Integrations
+- Inconvo Cloud (uses `INCONVO_API_KEY`, `INCONVO_AGENT_ID`, `INCONVO_DB_URL`).
+EOF
+Running command: apt-get update && apt-get install -y curl ripgrep
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: echo user_identifier_tracking_convers__2CwXpgN > /logs/artifacts/trial_id
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model anthropic/claude-4-6-sonnet --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Track Conversations per End-User with `userIdentifier`
+
+## Background
+Inconvo associates every conversation with an end-user via the `userIdentifier` parameter on `client.agents.conversations.create`. This is distinct from `userContext`, which scopes data access (for example, `organisationId`). `userIdentifier` is a stable per-end-user string used for analytics and persistence so that you can later list or retrieve conversations belonging to a specific end-user.
+
+You must write a Node.js script that drives the `@inconvoai/node` SDK to create one conversation per end-user and persist the mapping between each `userIdentifier` and its returned conversation id.
+
+## Requirements
+- Read the list of end-user identifiers from the file `/home/user/inconvo-app/users.json`. The file contains the JSON array `["alice-001", "bob-002"]`.
+- For each user identifier, in order:
+  1. Create a conversation by calling `client.agents.conversations.create(process.env.INCONVO_AGENT_ID, { userIdentifier: <id>, userContext: { organisationId: 1 } })`.
+  2. Send the message `"Hello, what is my latest order amount?"` by calling `client.agents.conversations.response.create(conversation.id, { agentId: process.env.INCONVO_AGENT_ID, message: "Hello, what is my latest order amount?", stream: false })`.
+  3. Write the response as JSON to `/home/user/inconvo-app/responses/<id>.json`.
+- After both calls finish, write `/home/user/inconvo-app/conversation_ids.json` containing a JSON object that maps each `userIdentifier` to the conversation id returned for that user. For example: `{"alice-001": "<conv-id-alice>", "bob-002": "<conv-id-bob>"}`.
+
+## Implementation Guide
+1. Work inside `/home/user/inconvo-app`. The project is already initialised and `@inconvoai/node` and `dotenv` are already installed.
+2. Create `index.js`:
+   - `import "dotenv/config";`
+   - `import Inconvo from "@inconvoai/node";`
+   - `import fs from "node:fs";`
+   - Read and parse `/home/user/inconvo-app/users.json`.
+   - Instantiate `const client = new Inconvo({ apiKey: process.env.INCONVO_API_KEY });`.
+   - Ensure the `/home/user/inconvo-app/responses` directory exists.
+   - Iterate over the user ids sequentially. For each id:
+     - Call `client.agents.conversations.create(process.env.INCONVO_AGENT_ID, { userIdentifier: id, userContext: { organisationId: 1 } })`.
+     - Call `client.agents.conversations.response.create(conversation.id, { agentId: process.env.INCONVO_AGENT_ID, message: "Hello, what is my latest order amount?", stream: false })`.
+     - Write the response object as pretty-printed JSON to `/home/user/inconvo-app/responses/${id}.json`.
+     - Record the mapping from `id` to `conversation.id`.
+   - After the loop, write the mapping as JSON to `/home/user/inconvo-app/conversation_ids.json`.
+3. Run the script with `node index.js`.
+
+## Constraints
+- Project path: /home/user/inconvo-app
+- Input file (already present): /home/user/inconvo-app/users.json
+- Output files (must be produced): /home/user/inconvo-app/responses/alice-001.json, /home/user/inconvo-app/responses/bob-002.json, /home/user/inconvo-app/conversation_ids.json
+- Use the real Inconvo Cloud API with the `INCONVO_API_KEY` and `INCONVO_AGENT_ID` environment variables.
+- `userIdentifier` must be the per-end-user value from `users.json`. `userContext` must remain `{ organisationId: 1 }` for every call.
+- Do NOT mock the SDK or stub network calls.
+
+## Integrations
+- Inconvo Cloud (requires INCONVO_API_KEY, INCONVO_AGENT_ID, INCONVO_DB_URL).
+EOF
+Command outputs captured
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+Command outputs captured
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+Command outputs captured
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+Command outputs captured
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.

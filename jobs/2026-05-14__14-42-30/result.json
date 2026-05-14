@@ -1,0 +1,49 @@
+{
+    "id": "7377b46c-f3a1-45e1-9d5c-0e4e003cacd5",
+    "started_at": "2026-05-14T14:42:34.197198",
+    "finished_at": "2026-05-14T15:03:42.749049",
+    "n_total_trials": 19,
+    "stats": {
+        "n_trials": 19,
+        "n_errors": 0,
+        "evals": {
+            "pochi__claude-4-6-sonnet__tasks": {
+                "n_trials": 19,
+                "n_errors": 0,
+                "metrics": [
+                    {
+                        "mean": 0.3684210526315789
+                    }
+                ],
+                "reward_stats": {
+                    "reward": {
+                        "0.0": [
+                            "initialize_inconvo_with_postgres__Gbts8wi",
+                            "conversations_api_text_response__9JaXJNE",
+                            "conversations_api_create_tenant__6mCBzUF",
+                            "multi_tenant_authorization_conte__ZTRfELF",
+                            "sdk_vercel_ai_streaming_ui__NK2WkxY",
+                            "conversations_api_send_message_t__xdLZyRq",
+                            "metric_definition_gross_margin__VkjCEHK",
+                            "conversations_api_multi_turn_fol__7MnUdbd",
+                            "express_api_chat_endpoint__iLPiWAZ",
+                            "schema_mapping_hide_pii_off_stat__LB9gGWF",
+                            "streaming_response_conversation__TEE6xMo",
+                            "schema_mapping_field_synonyms__Vf858tG"
+                        ],
+                        "1.0": [
+                            "api_integration_nextjs__RYmWKc5",
+                            "customer_support_bot_order_statu__9VhkmRh",
+                            "schema_mapping_joinable_tables__vzZUWt5",
+                            "multi_tenant_reporting_user_reco__Nbihkz8",
+                            "sdk_vercel_ai_tool_integration__B25sMDt",
+                            "relationship_definition_line_ite__eV4qp6t",
+                            "user_identifier_tracking_convers__2CwXpgN"
+                        ]
+                    }
+                },
+                "exception_stats": {}
+            }
+        }
+    }
+}

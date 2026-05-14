@@ -1,0 +1,77 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 6,
+            "passed": 5,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1778742042.8081775,
+            "stop": 1778742045.7554605
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_inconvo_yaml_exists",
+                "status": "passed",
+                "duration": 0.0005427021533250809,
+                "start": 1778742042.829338,
+                "stop": 1778742042.8302197,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_total_amount_synonyms_present",
+                "status": "passed",
+                "duration": 0.0007463870570063591,
+                "start": 1778742042.8304143,
+                "stop": 1778742042.8313687,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_customer_name_synonyms_present",
+                "status": "passed",
+                "duration": 0.0007664021104574203,
+                "start": 1778742042.8315468,
+                "stop": 1778742042.8324447,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_index_js_exists_and_uses_sdk",
+                "status": "passed",
+                "duration": 0.0005261260084807873,
+                "start": 1778742042.8326156,
+                "stop": 1778742042.8333368,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_run_index_js_against_real_inconvo",
+                "status": "passed",
+                "duration": 2.8722237409092486,
+                "start": 1778742042.8335063,
+                "stop": 1778742045.7062974,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_response_json_is_valid_and_has_real_data",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0025784578174352646,
+                "start": 1778742045.7071369,
+                "stop": 1778742045.7552207,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_response_json_is_valid_and_has_real_data():\n        assert os.path.isfile(RESPONSE_FILE), f\"response.json not found at {RESPONSE_FILE}\"\n    \n        raw = _read(RESPONSE_FILE)\n        try:\n            data = json.loads(raw)\n        except json.JSONDecodeError as exc:\n            pytest.fail(f\"response.json is not valid JSON: {exc}\\nContents: {raw[:500]}\")\n    \n        # Reject an obvious error envelope.\n        if isinstance(data, dict):\n>           assert data.get(\"error\") not in (True, \"true\"), (\n                f\"response.json indicates an error: {data}\"\n            )\nE           AssertionError: response.json indicates an error: {'error': True, 'status': 403, 'message': '403 You have reached your message limit for your current plan. Please upgrade your plan to continue using the service.', 'headers': {'access-control-allow-origin': '*', 'connection': 'keep-alive', 'content-type': 'text/plain;charset=UTF-8', 'date': 'Thu, 14 May 2026 07:00:45 GMT', 'transfer-encoding': 'chunked', 'vary': 'rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch', 'via': '1.1 76ea4124553a6a24f128f56848dd62cc.cloudfront.net (CloudFront)', 'x-amz-cf-id': 'AJZOaKaNu3bJIAgSyNghgYP0sq384vHTGhtQoq3Jddp1wzHlaF8JAg==', 'x-amz-cf-pop': 'LAX54-P10', 'x-cache': 'Error from cloudfront'}}\nE           assert True not in (True, 'true')\nE            +  where True = <built-in method get of dict object at 0x703de46e5440>('error')\nE            +    where <built-in method get of dict object at 0x703de46e5440> = {'error': True, 'headers': {'access-control-allow-origin': '*', 'connection': 'keep-alive', 'content-type': 'text/plai...ched your message limit for your current plan. Please upgrade your plan to continue using the service.', 'status': 403}.get\n\ntests/test_final_state.py:112: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

@@ -1,0 +1,59 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 4,
+            "passed": 3,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1778742049.5528164,
+            "stop": 1778742051.185242
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_index_js_exists",
+                "status": "passed",
+                "duration": 0.0005170367658138275,
+                "start": 1778742049.5874915,
+                "stop": 1778742049.5882146,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_index_js_content_references_required_apis",
+                "status": "passed",
+                "duration": 0.000435675960034132,
+                "start": 1778742049.5884027,
+                "stop": 1778742049.5889716,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_missing_message_returns_400",
+                "status": "passed",
+                "duration": 0.05869808280840516,
+                "start": 1778742049.58914,
+                "stop": 1778742049.6484215,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_valid_request_returns_inconvo_response",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 1.3826322038657963,
+                "start": 1778742049.6488676,
+                "stop": 1778742051.1849604,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "start_server = <Popen: returncode: None args: ['node', 'index.js']>\n\n    def test_valid_request_returns_inconvo_response(start_server):\n>       status, body = _http_post(\n            \"/chat\",\n            {\"message\": \"What are my top products?\", \"userId\": \"user-123\"},\n        )\n\ntests/test_final_state.py:130: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \ntests/test_final_state.py:85: in _http_post\n    with urllib.request.urlopen(req, timeout=120) as resp:\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nusr/lib/python3.12/urllib/request.py:215: in urlopen\n    return opener.open(url, data, timeout)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nusr/lib/python3.12/urllib/request.py:515: in open\n    response = self._open(req, data)\n               ^^^^^^^^^^^^^^^^^^^^^\nusr/lib/python3.12/urllib/request.py:532: in _open\n    result = self._call_chain(self.handle_open, protocol, protocol +\nusr/lib/python3.12/urllib/request.py:492: in _call_chain\n    result = func(*args)\n             ^^^^^^^^^^^\nusr/lib/python3.12/urllib/request.py:1373: in http_open\n    return self.do_open(http.client.HTTPConnection, req)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nusr/lib/python3.12/urllib/request.py:1348: in do_open\n    r = h.getresponse()\n        ^^^^^^^^^^^^^^^\nusr/lib/python3.12/http/client.py:1448: in getresponse\n    response.begin()\nusr/lib/python3.12/http/client.py:336: in begin\n    version, status, reason = self._read_status()\n                              ^^^^^^^^^^^^^^^^^^^\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nself = <http.client.HTTPResponse object at 0x77fbf30336d0>\n\n    def _read_status(self):\n        line = str(self.fp.readline(_MAXLINE + 1), \"iso-8859-1\")\n        if len(line) > _MAXLINE:\n            raise LineTooLong(\"status line\")\n        if self.debuglevel > 0:\n            print(\"reply:\", repr(line))\n        if not line:\n            # Presumably, the server closed the connection before\n            # sending a valid response.\n>           raise RemoteDisconnected(\"Remote end closed connection without\"\n                                     \" response\")\nE           http.client.RemoteDisconnected: Remote end closed connection without response\n\nusr/lib/python3.12/http/client.py:305: RemoteDisconnected",
+                "message": "The test failed in the call phase"
+            }
+        ]
+    }
+}

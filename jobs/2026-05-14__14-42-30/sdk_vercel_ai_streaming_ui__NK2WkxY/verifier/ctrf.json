@@ -1,0 +1,32 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 1,
+            "passed": 0,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1778741896.1276426,
+            "stop": 1778742204.1382124
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_streaming_ui_table",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 307.98402087111026,
+                "start": 1778741896.1384962,
+                "stop": 1778742204.1379805,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "start_app = None\n\n    def test_streaming_ui_table(start_app):\n        reason = \"The application should feature a chat interface that can render Inconvo table responses as HTML tables.\"\n        truth = \"Navigate to http://localhost:3000. Verify that an input field for chat is visible. Type 'Show me the top products' and press Enter. Verify that the response contains an HTML `<table>` element with a `<thead>` and `<tbody>`.\"\n    \n        verifier = PochiVerifier()\n        result = verifier.verify(\n            reason=reason,\n            truth=truth,\n            use_browser_agent=True,\n            trajectory_dir=\"/logs/verifier/pochi/test_streaming_ui_table\"\n        )\n>       assert result.status == \"pass\", f\"Browser verification failed: {result.reason}\"\nE       AssertionError: Browser verification failed: The test failed because the application at http://localhost:3000 encountered a client-side exception upon loading. As a result, the chat input field was not visible, and the subsequent steps (typing the message and verifying the table response) could not be performed.\nE       assert 'fail' == 'pass'\nE         \nE         - pass\nE         + fail\n\ntests/test_final_state.py:57: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

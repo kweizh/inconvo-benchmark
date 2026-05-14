@@ -1,0 +1,11 @@
+{
+  "error": {
+    "status": 403,
+    "message": "403 You have reached your message limit for your current plan. Please upgrade your plan to continue using the service."
+  },
+  "conversationId": "convo_ee8f0e7f-5419-4752-b980-9e5838a4f533",
+  "requestedContext": {
+    "store_id": 123
+  },
+  "requestedMessage": "What are my orders?"
+}
