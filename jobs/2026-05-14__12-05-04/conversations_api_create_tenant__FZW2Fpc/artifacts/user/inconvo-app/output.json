@@ -1,0 +1,3 @@
+{
+  "error": "400 Invalid agentId: Agent ID must start with 'agt_', Agent ID must be 'agt_' followed by a valid UUID. Received: dummy_agent_id"
+}

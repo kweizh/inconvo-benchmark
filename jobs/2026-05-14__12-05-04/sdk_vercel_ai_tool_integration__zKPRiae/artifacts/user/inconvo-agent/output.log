@@ -1,0 +1,34 @@
+◇ injected env (0) from .env // tip: ⌘ enable debugging { debug: true }
+Asking agent: What is the total amount of orders?
+Step 0 finished.
+Tool calls: getDataAgentConnectedDataSummary
+Tool results: [
+  {
+    "type": "tool-result",
+    "toolCallId": "call_Ues8gfjyKQnQt1fnzwAknypS",
+    "toolName": "getDataAgentConnectedDataSummary",
+    "input": {},
+    "output": "Connection: Neon\nDescription: (none)\nTables:\n- orders - customer orders with gross margin\n- sales - sales transactions with amount, timestamps, gross margin",
+    "dynamic": false,
+    "providerMetadata": {
+      "openai": {
+        "itemId": "fc_06e48548d12ecc5a006a054e511db08196b43fd74441a4d597"
+      }
+    }
+  }
+]
+Agent response: 
+Tool calls: [
+  {
+    "type": "tool-call",
+    "toolCallId": "call_Ues8gfjyKQnQt1fnzwAknypS",
+    "toolName": "getDataAgentConnectedDataSummary",
+    "input": {},
+    "providerMetadata": {
+      "openai": {
+        "itemId": "fc_06e48548d12ecc5a006a054e511db08196b43fd74441a4d597"
+      }
+    }
+  }
+]
+Response saved to response.json

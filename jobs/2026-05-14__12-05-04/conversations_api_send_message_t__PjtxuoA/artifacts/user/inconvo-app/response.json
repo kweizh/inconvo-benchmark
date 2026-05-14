@@ -1,0 +1,6 @@
+{
+  "id": "1f06ca0a-6e30-4e20-8217-2918248b9ea5",
+  "conversationId": "convo_c08e9507-509b-41c0-8299-9d090fb882b3",
+  "type": "text",
+  "message": "I can’t answer “top products” from the data available here: the `orders` and `sales` tables don’t include any product identifier/name/category columns to rank products by. \n\nIf you tell me what you mean by “top” (e.g., highest sales amount, most orders, highest gross margin) and where product info lives in your system, I can compute it once a product field/table is available."
+}

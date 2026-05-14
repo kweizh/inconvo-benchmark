@@ -1,0 +1,6 @@
+{
+  "id": "80079b58-2abc-410c-9ea1-20ef65d3e599",
+  "conversationId": "convo_7425fa27-cb7c-41de-8cf6-944c408f4118",
+  "type": "text",
+  "message": "I can’t identify “top products” from the available data: the current tables only include order/sale amounts and timestamps, but no product identifier or product name/category. If you want, I can still report your top customers/users (by total order amount) or your top time periods (e.g., top days/months by sales)."
+}

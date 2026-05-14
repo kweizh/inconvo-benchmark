@@ -1,0 +1,53 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 3,
+            "passed": 1,
+            "failed": 2,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1778732214.048649,
+            "stop": 1778732214.1628034
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_env_file_contains_database_url",
+                "status": "passed",
+                "duration": 0.000576299149543047,
+                "start": 1778732214.1070397,
+                "stop": 1778732214.1078227,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_inconvo_yaml_exists",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.001074036117643118,
+                "start": 1778732214.1080134,
+                "stop": 1778732214.1240985,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_inconvo_yaml_exists():\n        config_path = os.path.join(PROJECT_DIR, \"inconvo.yaml\")\n        assert os.path.isfile(config_path), f\"Config file {config_path} does not exist.\"\n    \n        with open(config_path, 'r') as f:\n            config = yaml.safe_load(f)\n    \n        assert config is not None, \"inconvo.yaml is empty or invalid\"\n>       assert 'tables' in config or 'connections' in config or 'models' in config, \"inconvo.yaml does not look like a valid semantic model\"\nE       AssertionError: inconvo.yaml does not look like a valid semantic model\nE       assert ('tables' in {'database': {'url': 'postgresql://inconvo:inconvo@localhost:5432/inconvo_db'}} or 'connections' in {'database': {'url': 'postgresql://inconvo:inconvo@localhost:5432/inconvo_db'}} or 'models' in {'database': {'url': 'postgresql://inconvo:inconvo@localhost:5432/inconvo_db'}})\n\ntests/test_final_state.py:25: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_database_connection",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.036427564918994904,
+                "start": 1778732214.124293,
+                "stop": 1778732214.1626282,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_database_connection():\n        result = subprocess.run(\n            [\"psql\", \"postgresql://inconvo:inconvo@localhost:5432/inconvo_db\", \"-c\", \"\\\\conninfo\"],\n            capture_output=True, text=True\n        )\n>       assert result.returncode == 0, f\"Failed to connect to the database: {result.stderr}\"\nE       AssertionError: Failed to connect to the database: psql: error: connection to server at \"localhost\" (::1), port 5432 failed: Connection refused\nE         \tIs the server running on that host and accepting TCP/IP connections?\nE         connection to server at \"localhost\" (127.0.0.1), port 5432 failed: Connection refused\nE         \tIs the server running on that host and accepting TCP/IP connections?\nE         \nE       assert 2 == 0\nE        +  where 2 = CompletedProcess(args=['psql', 'postgresql://inconvo:inconvo@localhost:5432/inconvo_db', '-c', '\\\\conninfo'], returnco....0.1), port 5432 failed: Connection refused\\n\\tIs the server running on that host and accepting TCP/IP connections?\\n').returncode\n\ntests/test_final_state.py:32: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

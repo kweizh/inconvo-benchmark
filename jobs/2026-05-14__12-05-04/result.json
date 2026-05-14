@@ -1,0 +1,44 @@
+{
+    "id": "fccaccda-6031-439e-8829-e815624f9d1e",
+    "started_at": "2026-05-14T12:05:10.209381",
+    "finished_at": "2026-05-14T12:24:56.268631",
+    "n_total_trials": 9,
+    "stats": {
+        "n_trials": 9,
+        "n_errors": 2,
+        "evals": {
+            "pochi__gemini-3-flash__tasks2": {
+                "n_trials": 9,
+                "n_errors": 2,
+                "metrics": [
+                    {
+                        "mean": 0.5555555555555556
+                    }
+                ],
+                "reward_stats": {
+                    "reward": {
+                        "0.0": [
+                            "conversations_api_create_tenant__FZW2Fpc",
+                            "api_integration_nextjs__er3oFx4",
+                            "initialize_inconvo_with_postgres__G82pXZL",
+                            "sdk_vercel_ai_streaming_ui__Ru3jU2E"
+                        ],
+                        "1.0": [
+                            "conversations_api_send_message_t__PjtxuoA",
+                            "conversations_api_text_response__VhcNTH9",
+                            "express_api_chat_endpoint__JRkUrSL",
+                            "schema_mapping_joinable_tables__DwH4eRK",
+                            "sdk_vercel_ai_tool_integration__zKPRiae"
+                        ]
+                    }
+                },
+                "exception_stats": {
+                    "AgentTimeoutError": [
+                        "sdk_vercel_ai_streaming_ui__Ru3jU2E",
+                        "sdk_vercel_ai_tool_integration__zKPRiae"
+                    ]
+                }
+            }
+        }
+    }
+}

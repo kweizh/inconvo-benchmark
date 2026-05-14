@@ -1,0 +1,3 @@
+# Inconvo Project Configuration
+database:
+  url: postgresql://inconvo:inconvo@localhost:5432/inconvo_db

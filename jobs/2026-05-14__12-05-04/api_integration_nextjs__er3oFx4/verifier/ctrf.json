@@ -1,0 +1,48 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 3,
+            "passed": 2,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1778731910.4793928,
+            "stop": 1778731918.8543458
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_api_route_configured_correctly",
+                "status": "passed",
+                "duration": 0.0007474184967577457,
+                "start": 1778731910.493959,
+                "stop": 1778731910.4950554,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_page_uses_use_chat",
+                "status": "passed",
+                "duration": 0.000600879080593586,
+                "start": 1778731910.4953725,
+                "stop": 1778731910.4961634,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_browser_ui",
+                "status": "failed",
+                "duration": 8.339575505815446,
+                "start": 1778731910.4964666,
+                "stop": 1778731918.8540885,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "@pytest.fixture(scope=\"module\")\n    def start_app():\n        # Build the app first\n        build_process = subprocess.run(\n            [\"npm\", \"run\", \"build\"],\n            cwd=PROJECT_DIR,\n            stdout=subprocess.PIPE,\n            stderr=subprocess.PIPE,\n        )\n        if build_process.returncode != 0:\n>           pytest.fail(f\"Build failed: {build_process.stderr.decode('utf-8')}\")\nE           Failed: Build failed: \nE           > Build error occurred\nE           Error: Turbopack build failed with 1 errors:\nE           ./app/api/chat/route.ts:1:1\nE           Export convertToCoreMessages doesn't exist in target module\nE           \u001b[31m\u001b[1m>\u001b[0m \u001b[90m1 |\u001b[0m \u001b[36mimport\u001b[0m { streamText, convertToCoreMessages } \u001b[36mfrom\u001b[0m \u001b[32m'ai'\u001b[0m;\nE             \u001b[90m  |\u001b[0m \u001b[31m\u001b[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\u001b[0m\nE             \u001b[90m2 |\u001b[0m \u001b[36mimport\u001b[0m { inconvoDataAgent } \u001b[36mfrom\u001b[0m \u001b[32m'@inconvoai/vercel-ai-sdk'\u001b[0m;\nE             \u001b[90m3 |\u001b[0m\nE             \u001b[90m4 |\u001b[0m \u001b[36mexport\u001b[0m \u001b[36mconst\u001b[0m maxDuration = \u001b[35m30\u001b[0m;\nE           \nE           The export convertToCoreMessages was not found in module [project]/node_modules/ai/dist/index.mjs [app-route] (ecmascript).\nE           Did you mean to import convertToModelMessages?\nE           All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.\nE           \nE           \nE               at <unknown> (./app/api/chat/route.ts:1:1)\n\ntests/test_final_state.py:29: Failed"
+            }
+        ]
+    }
+}

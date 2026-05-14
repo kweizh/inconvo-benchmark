@@ -1,0 +1,20 @@
+{
+  "name": "inconvo-agent",
+  "version": "1.0.0",
+  "description": "",
+  "main": "agent.js",
+  "type": "module",
+  "scripts": {
+    "start": "node agent.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@ai-sdk/openai": "^3.0.63",
+    "@inconvoai/node": "^0.5.0",
+    "@inconvoai/vercel-ai-sdk": "^1.1.0",
+    "ai": "^6.0.182",
+    "dotenv": "^17.4.2"
+  }
+}

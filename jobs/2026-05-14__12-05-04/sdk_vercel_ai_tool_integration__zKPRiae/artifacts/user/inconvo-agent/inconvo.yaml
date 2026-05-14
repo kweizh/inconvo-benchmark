@@ -1,0 +1,31 @@
+version: "1.0"
+tables:
+  - name: orders
+    type: queryable
+    description: "Contains information about customer orders"
+    columns:
+      - name: id
+        type: integer
+        primary_key: true
+      - name: customer_id
+        type: integer
+        relationship:
+          table: customers
+          column: id
+      - name: amount
+        type: decimal
+        description: "The total amount of the order"
+      - name: order_date
+        type: date
+
+  - name: customers
+    type: joinable
+    description: "Contains information about customers"
+    columns:
+      - name: id
+        type: integer
+        primary_key: true
+      - name: name
+        type: string
+      - name: email
+        type: string
