@@ -15,7 +15,7 @@ Inconvo is a platform for building chat-with-data agents. You need to write a No
 2. Install the required packages: `npm install @inconvoai/node dotenv`.
 3. Create `.env` with dummy values for `INCONVO_API_KEY` and `INCONVO_AGENT_ID`.
 4. In `index.js`, import `Inconvo` from `@inconvoai/node`.
-5. Initialize the client and call `client.conversations.create({ context: { tenant_id: "tenant_456" } })`.
+5. Initialize the client and call `client.agents.conversations.create({ context: { tenant_id: "tenant_456" } })`.
 6. Catch any errors (since dummy keys are used) and write the error message or the response to `output.json`.
 
 ## Constraints

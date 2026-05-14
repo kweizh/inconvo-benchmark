@@ -13,8 +13,9 @@
     *   **Fields**: Define dimensions and measures, including visibility (`On`/`Off`) and synonyms.
     *   **Relationships**: Define join paths between tables (e.g., `orders.customer_id` -> `customers.id`).
 *   **Conversations API**: Used to interact with the agent programmatically.
-    *   `client.conversations.create({ context: { user_id: 123 } })`: Starts a new conversation with a specific tenant context.
-    *   `client.conversations.messages.create(id, { message: "What are my top products?" })`: Sends a natural language query and receives a structured response (text, table, or chart).
+    *   `client.agents.conversations.create(process.env.INCONVO_AGENT_ID!, { userIdentifier: randomUUID().toString(), userContext: { organisationId: 1}} )`: Starts a new conversation with a specific tenant context.
+    *   `client.agents.conversations.response.create(id, { agentId: process.env.INCONVO_AGENT_ID!, message: "What are my top products?" })`: Sends a natural language query and receives a structured response (text, table, or chart).
+*  **UserContext**: UserContext can only toggled in dashboard, for all the benchmark should always use `{ organisationId: ID }` as userContext where ID is number.
 *   **SDKs**:
     *   **Node.js**: `@inconvoai/node` for server-side integration.
     *   **Vercel AI SDK**: `@inconvoai/vercel-ai-sdk` for building streaming chat interfaces in React/Next.js.
