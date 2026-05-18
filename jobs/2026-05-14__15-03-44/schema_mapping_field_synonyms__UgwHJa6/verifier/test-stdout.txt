@@ -1,0 +1,93 @@
+downloading uv 0.9.7 x86_64-unknown-linux-gnu
+no checksums to verify
+installing to /root/.local/bin
+  uv
+  uvx
+everything's installed!
+
+To add $HOME/.local/bin to your PATH, either restart your shell or run:
+
+    source $HOME/.local/bin/env (sh, bash, zsh)
+    source $HOME/.local/bin/env.fish (fish)
+Downloading pygments (1.2MiB)
+ Downloading pygments
+Installed 7 packages in 23ms
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 6 items
+
+tests/test_final_state.py ....FF                                         [100%]
+
+=================================== FAILURES ===================================
+____________________ test_run_index_js_against_real_inconvo ____________________
+
+    def test_run_index_js_against_real_inconvo():
+        # The Inconvo credentials must already be in the environment.
+        for var in ("INCONVO_API_KEY", "INCONVO_AGENT_ID"):
+            assert os.environ.get(var), (
+                f"{var} env var is required for verification but was not set in the verifier environment"
+            )
+    
+        result = subprocess.run(
+            ["node", "index.js"],
+            cwd=PROJECT_DIR,
+            capture_output=True,
+            text=True,
+            timeout=300,
+        )
+>       assert result.returncode == 0, (
+            f"'node index.js' failed with exit code {result.returncode}.\n"
+            f"STDOUT:\n{result.stdout}\nSTDERR:\n{result.stderr}"
+        )
+E       AssertionError: 'node index.js' failed with exit code 1.
+E         STDOUT:
+E         
+E         STDERR:
+E         PermissionDeniedError: 403 You have reached your message limit for your current plan. Please upgrade your plan to continue using the service.
+E             at APIError.generate (/home/user/inconvo-app/node_modules/@inconvoai/node/core/error.js:46:20)
+E             at Inconvo.makeStatusError (/home/user/inconvo-app/node_modules/@inconvoai/node/client.js:119:32)
+E             at Inconvo.makeRequest (/home/user/inconvo-app/node_modules/@inconvoai/node/client.js:261:30)
+E             at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+E             at async main (/home/user/inconvo-app/index.js:13:20) {
+E           status: 403,
+E           headers: Headers {
+E             'content-type': 'text/plain;charset=UTF-8',
+E             'transfer-encoding': 'chunked',
+E             connection: 'keep-alive',
+E             date: 'Thu, 14 May 2026 07:24:09 GMT',
+E             vary: 'rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch',
+E             'access-control-allow-origin': '*',
+E             'x-cache': 'Error from cloudfront',
+E             via: '1.1 7209599daa2d2d4f7d86ed85ac7bf618.cloudfront.net (CloudFront)',
+E             'x-amz-cf-pop': 'LAX54-P10',
+E             'x-amz-cf-id': 'PI5pY1og6fV-vrtwRt9_CHNMKqx8pANHxy7ZTkHl6UMr2cE4i5zsEg=='
+E           },
+E           error: undefined
+E         }
+E         
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['node', 'index.js'], returncode=1, stdout='', stderr="PermissionDeniedError: 403 You have reach...4-P10',\n    'x-amz-cf-id': 'PI5pY1og6fV-vrtwRt9_CHNMKqx8pANHxy7ZTkHl6UMr2cE4i5zsEg=='\n  },\n  error: undefined\n}\n").returncode
+
+tests/test_final_state.py:95: AssertionError
+________________ test_response_json_is_valid_and_has_real_data _________________
+
+    def test_response_json_is_valid_and_has_real_data():
+>       assert os.path.isfile(RESPONSE_FILE), f"response.json not found at {RESPONSE_FILE}"
+E       AssertionError: response.json not found at /home/user/inconvo-app/response.json
+E       assert False
+E        +  where False = <function isfile at 0x76b6422442c0>('/home/user/inconvo-app/response.json')
+E        +    where <function isfile at 0x76b6422442c0> = <module 'posixpath' (frozen)>.isfile
+E        +      where <module 'posixpath' (frozen)> = os.path
+
+tests/test_final_state.py:102: AssertionError
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED tests/test_final_state.py::test_inconvo_yaml_exists
+PASSED tests/test_final_state.py::test_total_amount_synonyms_present
+PASSED tests/test_final_state.py::test_customer_name_synonyms_present
+PASSED tests/test_final_state.py::test_index_js_exists_and_uses_sdk
+FAILED tests/test_final_state.py::test_run_index_js_against_real_inconvo - As...
+FAILED tests/test_final_state.py::test_response_json_is_valid_and_has_real_data
+========================= 2 failed, 4 passed in 2.65s ==========================

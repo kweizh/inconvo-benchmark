@@ -1,0 +1,62 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 4,
+            "passed": 2,
+            "failed": 2,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1778743260.7096605,
+            "stop": 1778743263.6596231
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_inconvo_yaml_contains_gross_margin_measure",
+                "status": "passed",
+                "duration": 0.0005262084305286407,
+                "start": 1778743260.724643,
+                "stop": 1778743260.725398,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_index_js_exists_and_uses_inconvo_sdk",
+                "status": "passed",
+                "duration": 0.0005411081947386265,
+                "start": 1778743260.725589,
+                "stop": 1778743260.7262654,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_run_index_js_produces_response",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 2.914170258678496,
+                "start": 1778743260.7264345,
+                "stop": 1778743263.6564682,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_run_index_js_produces_response():\n        env = os.environ.copy()\n        for var in (\"INCONVO_API_KEY\", \"INCONVO_AGENT_ID\", \"INCONVO_DB_URL\"):\n            assert env.get(var), \\\n                f\"Required environment variable {var} is not set for the verifier.\"\n    \n        # Remove any stale response from previous runs so we know the script wrote it.\n        if os.path.isfile(RESPONSE_FILE):\n            os.remove(RESPONSE_FILE)\n    \n        result = subprocess.run(\n            [\"node\", \"index.js\"],\n            cwd=PROJECT_DIR,\n            capture_output=True,\n            text=True,\n            env=env,\n            timeout=300,\n        )\n>       assert result.returncode == 0, \\\n            f\"'node index.js' failed with code {result.returncode}.\\nSTDOUT:\\n{result.stdout}\\nSTDERR:\\n{result.stderr}\"\nE       AssertionError: 'node index.js' failed with code 1.\nE         STDOUT:\nE         \u25c7 injected env (0) from .env // tip: \u2318 suppress logs { quiet: true }\nE         Conversation created: convo_86372cdc-7cb2-48e2-8a7a-758f777f2145\nE         \nE         STDERR:\nE         Error: PermissionDeniedError: 403 You have reached your message limit for your current plan. Please upgrade your plan to continue using the service.\nE             at APIError.generate (/home/user/inconvo-app/node_modules/@inconvoai/node/core/error.js:46:20)\nE             at Inconvo.makeStatusError (/home/user/inconvo-app/node_modules/@inconvoai/node/client.js:119:32)\nE             at Inconvo.makeRequest (/home/user/inconvo-app/node_modules/@inconvoai/node/client.js:261:30)\nE             at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\nE             at async queryGrossMargin (/home/user/inconvo-app/index.js:22:22) {\nE           status: 403,\nE           headers: Headers {\nE             'content-type': 'text/plain;charset=UTF-8',\nE             'transfer-encoding': 'chunked',\nE             connection: 'keep-alive',\nE             date: 'Thu, 14 May 2026 07:21:03 GMT',\nE             vary: 'rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch',\nE             'access-control-allow-origin': '*',\nE             'x-cache': 'Error from cloudfront',\nE             via: '1.1 6f2e6e6963fe54e72e2f5102c6d0e02e.cloudfront.net (CloudFront)',\nE             'x-amz-cf-pop': 'LAX54-P10',\nE             'x-amz-cf-id': 'sJlfhatzDxA8SDxSDZSTdetiaTkMSpjDCMOPgvp6RCw8HVJNDYP-CA=='\nE           },\nE           error: undefined\nE         }\nE         node:internal/process/promises:394\nE             triggerUncaughtException(err, true /* fromPromise */);\nE             ^\nE         \nE         PermissionDeniedError: 403 You have reached your message limit for your current plan. Please upgrade your plan to continue using the service.\nE             at APIError.generate (/home/user/inconvo-app/node_modules/@inconvoai/node/core/error.js:46:20)\nE             at Inconvo.makeStatusError (/home/user/inconvo-app/node_modules/@inconvoai/node/client.js:119:32)\nE             at Inconvo.makeRequest (/home/user/inconvo-app/node_modules/@inconvoai/node/client.js:261:30)\nE             at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\nE             at async queryGrossMargin (/home/user/inconvo-app/index.js:22:22) {\nE           status: 403,\nE           headers: Headers {},\nE           error: undefined\nE         }\nE         \nE         Node.js v24.15.0\nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['node', 'index.js'], returncode=1, stdout='\u25c7 injected env (0) from .env // tip: \u2318 suppress logs...er/inconvo-app/index.js:22:22) {\\n  status: 403,\\n  headers: Headers {},\\n  error: undefined\\n}\\n\\nNode.js v24.15.0\\n\").returncode\n\ntests/test_final_state.py:71: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_response_json_is_valid_and_non_empty",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0004984429106116295,
+                "start": 1778743263.6566648,
+                "stop": 1778743263.6594703,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_response_json_is_valid_and_non_empty():\n>       assert os.path.isfile(RESPONSE_FILE), \\\n            f\"response.json was not produced at {RESPONSE_FILE}\"\nE       AssertionError: response.json was not produced at /home/user/inconvo-app/response.json\nE       assert False\nE        +  where False = <function isfile at 0x7c7f0252c2c0>('/home/user/inconvo-app/response.json')\nE        +    where <function isfile at 0x7c7f0252c2c0> = <module 'posixpath' (frozen)>.isfile\nE        +      where <module 'posixpath' (frozen)> = os.path\n\ntests/test_final_state.py:76: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

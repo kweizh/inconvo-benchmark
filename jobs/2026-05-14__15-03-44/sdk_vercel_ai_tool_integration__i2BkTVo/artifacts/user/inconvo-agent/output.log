@@ -1,0 +1,36 @@
+Initializing Inconvo agent...
+Environment variables loaded successfully
+Agent ID: REDACTED
+Inconvo client initialized
+
+Step 1: Getting data summary...
+Data summary: "Connection: Neon\nDescription: (none)\nTables:\n- line_items - order line items by product and quantity\n- orders - customer orders with gross margin\n- products - product catalog items with identifiers and names\n- sales - sales transactions with amount, timestamps, gross margin"
+
+Step 2: Starting conversation...
+Conversation started: {
+  "id": "convo_4f6933d9-9962-4f33-a2f5-fe54791e9b85"
+}
+Conversation ID: convo_4f6933d9-9962-4f33-a2f5-fe54791e9b85
+
+Step 3: Asking question about total orders...
+Chunk received: error
+No response.completed event received. Chunks received: 1
+Chunks: [
+  {
+    "type": "error",
+    "error": "You have reached your message limit for your current plan. Please upgrade your plan to continue using the service."
+  }
+]
+Error during streaming: No response received from Inconvo
+Chunks received: 1
+Chunks: [
+  {
+    "type": "error",
+    "error": "You have reached your message limit for your current plan. Please upgrade your plan to continue using the service."
+  }
+]
+
+Error: No response received from Inconvo
+Error: No response received from Inconvo
+    at main (file:///home/user/inconvo-agent/agent.js:92:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)

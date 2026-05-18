@@ -1,0 +1,53 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 3,
+            "passed": 1,
+            "failed": 2,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1778742547.8687744,
+            "stop": 1778742550.983362
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_index_js_exists",
+                "status": "passed",
+                "duration": 0.0004925779066979885,
+                "start": 1778742547.8796492,
+                "stop": 1778742547.88041,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_run_index_js",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 3.051449822727591,
+                "start": 1778742547.8806028,
+                "stop": 1778742550.9783561,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_run_index_js():\n        # Run the script that interacts with the SDK\n        result = subprocess.run(\n            [\"node\", \"index.js\"],\n            cwd=PROJECT_DIR,\n            capture_output=True,\n            text=True\n        )\n>       assert result.returncode == 0, f\"'node index.js' failed with output: {result.stderr}\\n{result.stdout}\"\nE       AssertionError: 'node index.js' failed with output: Error: PermissionDeniedError: 403 You have reached your message limit for your current plan. Please upgrade your plan to continue using the service.\nE             at APIError.generate (/home/user/inconvo-app/node_modules/@inconvoai/node/core/error.js:46:20)\nE             at Inconvo.makeStatusError (/home/user/inconvo-app/node_modules/@inconvoai/node/client.js:119:32)\nE             at Inconvo.makeRequest (/home/user/inconvo-app/node_modules/@inconvoai/node/client.js:261:30)\nE             at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\nE             at async main (/home/user/inconvo-app/index.js:22:22) {\nE           status: 403,\nE           headers: Headers {\nE             'content-type': 'text/plain;charset=UTF-8',\nE             'transfer-encoding': 'chunked',\nE             connection: 'keep-alive',\nE             date: 'Thu, 14 May 2026 07:09:10 GMT',\nE             vary: 'rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch',\nE             'access-control-allow-origin': '*',\nE             'x-cache': 'Error from cloudfront',\nE             via: '1.1 e661d5d9c6b4cf5fc90dae756f41d81a.cloudfront.net (CloudFront)',\nE             'x-amz-cf-pop': 'LAX54-P10',\nE             'x-amz-cf-id': 'aoW1eg7qb8vklSlkkftiVja-lvJ0ZUFlO1wqMHnNE2uoNunkwME0jg=='\nE           },\nE           error: undefined\nE         }\nE         \nE         \u25c7 injected env (0) from .env // tip: \u25c8 secrets for agents [www.dotenvx.com]\nE         Conversation created: convo_158fe14e-a942-4039-9948-b6f68ee5bce8\nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['node', 'index.js'], returncode=1, stdout='\u25c7 injected env (0) from .env // tip: \u25c8 secrets for a...4-P10',\\n    'x-amz-cf-id': 'aoW1eg7qb8vklSlkkftiVja-lvJ0ZUFlO1wqMHnNE2uoNunkwME0jg=='\\n  },\\n  error: undefined\\n}\\n\").returncode\n\ntests/test_final_state.py:21: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_response_json_exists_and_valid",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0009935442358255386,
+                "start": 1778742550.9787428,
+                "stop": 1778742550.9830549,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_response_json_exists_and_valid():\n>       assert os.path.isfile(RESPONSE_FILE), f\"response.json not found at {RESPONSE_FILE}\"\nE       AssertionError: response.json not found at /home/user/inconvo-app/response.json\nE       assert False\nE        +  where False = <function isfile at 0x7ddf6a8742c0>('/home/user/inconvo-app/response.json')\nE        +    where <function isfile at 0x7ddf6a8742c0> = <module 'posixpath' (frozen)>.isfile\nE        +      where <module 'posixpath' (frozen)> = os.path\n\ntests/test_final_state.py:24: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

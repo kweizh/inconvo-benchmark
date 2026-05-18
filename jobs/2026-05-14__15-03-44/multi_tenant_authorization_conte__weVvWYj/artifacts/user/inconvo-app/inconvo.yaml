@@ -1,0 +1,6 @@
+# Inconvo Configuration for Multi-tenant Authorization
+# Context filter for orders table based on store_id
+
+context_filters:
+  orders:
+    store_id: $store_id

@@ -1,0 +1,61 @@
+downloading uv 0.9.7 x86_64-unknown-linux-gnu
+no checksums to verify
+installing to /root/.local/bin
+  uv
+  uvx
+everything's installed!
+
+To add $HOME/.local/bin to your PATH, either restart your shell or run:
+
+    source $HOME/.local/bin/env (sh, bash, zsh)
+    source $HOME/.local/bin/env.fish (fish)
+Downloading pygments (1.2MiB)
+ Downloading pygments
+Installed 7 packages in 25ms
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 4 items
+
+tests/test_final_state.py .F.F                                           [100%]
+
+=================================== FAILURES ===================================
+____________________________ test_index_js_contents ____________________________
+
+    def test_index_js_contents():
+        with open(INDEX_JS, "r") as f:
+            content = f.read()
+    
+        assert "conversations.create" in content, "Expected client.conversations.create to be called in index.js"
+>       assert "tenant_456" in content, "Expected tenant_456 context to be used in index.js"
+E       AssertionError: Expected tenant_456 context to be used in index.js
+E       assert 'tenant_456' in "import { Inconvo } from '@inconvoai/node';\nimport dotenv from 'dotenv';\nimport { randomUUID } from 'crypto';\nimpor...error('Error occurred:', error.message);\n    console.error('Error details saved to:', outputPath);\n  }\n}\n\nmain();"
+
+tests/test_final_state.py:18: AssertionError
+______________________ test_output_json_exists_and_valid _______________________
+
+    def test_output_json_exists_and_valid():
+        assert os.path.isfile(OUTPUT_JSON), f"output.json not found at {OUTPUT_JSON}"
+    
+        with open(OUTPUT_JSON, "r") as f:
+            try:
+                data = json.load(f)
+            except json.JSONDecodeError:
+                pytest.fail("output.json is not valid JSON")
+    
+        if isinstance(data, dict):
+>           assert data.get("error") is not True, f"output.json indicates an error: {data}"
+E           AssertionError: output.json indicates an error: {'error': True, 'message': '400 User context is disabled for this agent. Omit userContext when starting a conversation.', 'stack': 'Error: 400 User context is disabled for this agent. Omit userContext when starting a conversation.\n    at APIError.generate (file:///home/user/inconvo-app/node_modules/@inconvoai/node/core/error.mjs:36:20)\n    at Inconvo.makeStatusError (file:///home/user/inconvo-app/node_modules/@inconvoai/node/client.mjs:116:32)\n    at Inconvo.makeRequest (file:///home/user/inconvo-app/node_modules/@inconvoai/node/client.mjs:258:30)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async main (file:///home/user/inconvo-app/index.js:22:26)'}
+E           assert True is not True
+E            +  where True = <built-in method get of dict object at 0x7baf0f712ec0>('error')
+E            +    where <built-in method get of dict object at 0x7baf0f712ec0> = {'error': True, 'message': '400 User context is disabled for this agent. Omit userContext when starting a conversation...ejections (node:internal/process/task_queues:104:5)\n    at async main (file:///home/user/inconvo-app/index.js:22:26)'}.get
+
+tests/test_final_state.py:48: AssertionError
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED tests/test_final_state.py::test_index_js_exists
+PASSED tests/test_final_state.py::test_run_index_js
+FAILED tests/test_final_state.py::test_index_js_contents - AssertionError: Ex...
+FAILED tests/test_final_state.py::test_output_json_exists_and_valid - Asserti...
+========================= 2 failed, 2 passed in 1.50s ==========================

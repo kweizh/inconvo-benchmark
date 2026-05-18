@@ -1,0 +1,50 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 3,
+            "passed": 2,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1778742619.6121836,
+            "stop": 1778742623.5261612
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_inconvo_yaml_exists_and_contains_orders_table",
+                "status": "passed",
+                "duration": 0.0006510806269943714,
+                "start": 1778742619.6261647,
+                "stop": 1778742619.6270978,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_run_index_js",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 3.8610352114774287,
+                "start": 1778742619.6273758,
+                "stop": 1778742623.51766,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_run_index_js():\n        # Run the script that interacts with the SDK\n        result = subprocess.run(\n            [\"node\", \"index.js\"],\n            cwd=PROJECT_DIR,\n            capture_output=True,\n            text=True\n        )\n>       assert result.returncode == 0, f\"'node index.js' failed with output: {result.stderr}\\n{result.stdout}\"\nE       AssertionError: 'node index.js' failed with output: Error: PermissionDeniedError: 403 You have reached your message limit for your current plan. Please upgrade your plan to continue using the service.\nE             at APIError.generate (/home/user/inconvo-bot/node_modules/@inconvoai/node/core/error.js:46:20)\nE             at Inconvo.makeStatusError (/home/user/inconvo-bot/node_modules/@inconvoai/node/client.js:119:32)\nE             at Inconvo.makeRequest (/home/user/inconvo-bot/node_modules/@inconvoai/node/client.js:261:30)\nE             at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\nE             at async main (/home/user/inconvo-bot/index.js:25:22) {\nE           status: 403,\nE           headers: Headers {\nE             'content-type': 'text/plain;charset=UTF-8',\nE             'transfer-encoding': 'chunked',\nE             connection: 'keep-alive',\nE             date: 'Thu, 14 May 2026 07:10:22 GMT',\nE             vary: 'rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch',\nE             'access-control-allow-origin': '*',\nE             'x-cache': 'Error from cloudfront',\nE             via: '1.1 7209599daa2d2d4f7d86ed85ac7bf618.cloudfront.net (CloudFront)',\nE             'x-amz-cf-pop': 'LAX54-P10',\nE             'x-amz-cf-id': 'Oo_vLT98eZj9_l_KuO_BY7v5wYvlmM_pbnOPKoLeO2dBM0FYwCMyKw=='\nE           },\nE           error: undefined\nE         }\nE         \nE         \u25c7 injected env (0) from .env // tip: \u2318 custom filepath { path: '/custom/path/.env' }\nE         Creating conversation...\nE         Conversation created: convo_4d927965-9106-4ea8-8ad9-745d42093129\nE         Sending message: What is the status of order 123?\nE         Error response saved to: /home/user/inconvo-bot/response.json\nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['node', 'index.js'], returncode=1, stdout=\"\u25c7 injected env (0) from .env // tip: \u2318 custom filepa...4-P10',\\n    'x-amz-cf-id': 'Oo_vLT98eZj9_l_KuO_BY7v5wYvlmM_pbnOPKoLeO2dBM0FYwCMyKw=='\\n  },\\n  error: undefined\\n}\\n\").returncode\n\ntests/test_final_state.py:28: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_response_json_exists_and_valid",
+                "status": "passed",
+                "duration": 0.007698295172303915,
+                "start": 1778742623.517948,
+                "stop": 1778742623.5259063,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            }
+        ]
+    }
+}

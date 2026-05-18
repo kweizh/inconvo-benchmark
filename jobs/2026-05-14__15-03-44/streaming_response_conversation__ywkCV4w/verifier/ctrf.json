@@ -1,0 +1,80 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 6,
+            "passed": 4,
+            "failed": 2,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1778743560.379921,
+            "stop": 1778743563.3469844
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_index_js_exists",
+                "status": "passed",
+                "duration": 0.0004807049408555031,
+                "start": 1778743560.396398,
+                "stop": 1778743560.397086,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_index_js_uses_streaming_sdk_call",
+                "status": "passed",
+                "duration": 0.0004486660473048687,
+                "start": 1778743560.3973134,
+                "stop": 1778743560.397922,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_run_index_js_produces_outputs",
+                "status": "passed",
+                "duration": 2.9269316401332617,
+                "start": 1778743560.3980923,
+                "stop": 1778743563.3252308,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_stream_jsonl_exists_with_multiple_json_lines",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0007028239779174328,
+                "start": 1778743563.3254907,
+                "stop": 1778743563.341926,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_stream_jsonl_exists_with_multiple_json_lines():\n        assert os.path.isfile(STREAM_FILE), f\"stream.jsonl not found at {STREAM_FILE}\"\n    \n        lines = _read_non_empty_lines(STREAM_FILE)\n>       assert len(lines) > 1, \\\n            f\"Expected more than 1 non-empty line in stream.jsonl, got {len(lines)}.\"\nE       AssertionError: Expected more than 1 non-empty line in stream.jsonl, got 1.\nE       assert 1 > 1\nE        +  where 1 = len(['{\"type\":\"error\",\"error\":\"You have reached your message limit for your current plan. Please upgrade your plan to continue using the service.\"}'])\n\ntests/test_final_state.py:60: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_summary_json_exists_and_valid",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0005632322281599045,
+                "start": 1778743563.3421159,
+                "stop": 1778743563.3460743,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_summary_json_exists_and_valid():\n        assert os.path.isfile(SUMMARY_FILE), f\"summary.json not found at {SUMMARY_FILE}\"\n    \n        with open(SUMMARY_FILE, \"r\") as f:\n            try:\n                summary = json.load(f)\n            except json.JSONDecodeError:\n                pytest.fail(\"summary.json is not valid JSON\")\n    \n        assert isinstance(summary, dict), f\"summary.json must be a JSON object, got: {type(summary).__name__}\"\n    \n        chunk_count = summary.get(\"chunkCount\")\n        assert isinstance(chunk_count, int), \\\n            f\"Expected 'chunkCount' in summary.json to be an integer, got: {chunk_count!r}\"\n        assert chunk_count >= 1, \\\n            f\"Expected 'chunkCount' to be >= 1, got {chunk_count}\"\n    \n        final_message = summary.get(\"finalMessage\")\n        assert isinstance(final_message, str), \\\n            f\"Expected 'finalMessage' to be a string, got: {type(final_message).__name__}\"\n>       assert final_message.strip() != \"\", \\\n            \"Expected 'finalMessage' to be a non-empty string.\"\nE       AssertionError: Expected 'finalMessage' to be a non-empty string.\nE       assert '' != ''\nE        +  where '' = <built-in method strip of str object at 0xb3b3f0>()\nE        +    where <built-in method strip of str object at 0xb3b3f0> = ''.strip\n\ntests/test_final_state.py:99: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_summary_chunk_count_matches_stream_lines",
+                "status": "passed",
+                "duration": 0.00045609334483742714,
+                "start": 1778743563.3462589,
+                "stop": 1778743563.3468354,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            }
+        ]
+    }
+}

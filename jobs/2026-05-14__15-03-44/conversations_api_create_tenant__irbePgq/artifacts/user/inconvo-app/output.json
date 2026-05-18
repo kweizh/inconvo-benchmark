@@ -1,0 +1,5 @@
+{
+  "error": true,
+  "message": "400 User context is disabled for this agent. Omit userContext when starting a conversation.",
+  "stack": "Error: 400 User context is disabled for this agent. Omit userContext when starting a conversation.\n    at APIError.generate (file:///home/user/inconvo-app/node_modules/@inconvoai/node/core/error.mjs:36:20)\n    at Inconvo.makeStatusError (file:///home/user/inconvo-app/node_modules/@inconvoai/node/client.mjs:116:32)\n    at Inconvo.makeRequest (file:///home/user/inconvo-app/node_modules/@inconvoai/node/client.mjs:258:30)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async main (file:///home/user/inconvo-app/index.js:22:26)"
+}

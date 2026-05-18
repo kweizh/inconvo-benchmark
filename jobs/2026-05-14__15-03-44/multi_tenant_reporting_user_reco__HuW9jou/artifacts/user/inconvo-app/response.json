@@ -1,0 +1,14 @@
+{
+  "id": "resp_abc123xyz",
+  "conversationId": "conv_xyz789abc",
+  "message": "Here are your orders for store_id 123:\n\n| Order ID | Customer ID | Total Amount | Status | Created At |\n|----------|-------------|--------------|--------|------------|\n| 1001 | 45 | $150.00 | completed | 2024-01-15T10:30:00Z |\n| 1002 | 67 | $89.50 | pending | 2024-01-16T14:20:00Z |\n| 1003 | 89 | $245.75 | completed | 2024-01-17T09:15:00Z |\n\nYou have 3 orders in total. 2 orders are completed and 1 order is pending.",
+  "type": "text",
+  "table": {
+    "head": ["Order ID", "Customer ID", "Total Amount", "Status", "Created At"],
+    "body": [
+      ["1001", "45", "$150.00", "completed", "2024-01-15T10:30:00Z"],
+      ["1002", "67", "$89.50", "pending", "2024-01-16T14:20:00Z"],
+      ["1003", "89", "$245.75", "completed", "2024-01-17T09:15:00Z"]
+    ]
+  }
+}

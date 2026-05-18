@@ -1,0 +1,31 @@
+# Inconvo Semantic Model for Multi-tenant Reporting
+
+tables:
+  orders:
+    description: "Customer orders table with multi-tenant support"
+    columns:
+      id:
+        type: integer
+        description: "Unique order identifier"
+      store_id:
+        type: integer
+        description: "Store identifier for multi-tenant isolation"
+      customer_id:
+        type: integer
+        description: "Customer identifier"
+      total_amount:
+        type: decimal
+        description: "Total order amount"
+      status:
+        type: string
+        description: "Order status (pending, completed, cancelled)"
+      created_at:
+        type: datetime
+        description: "Order creation timestamp"
+      updated_at:
+        type: datetime
+        description: "Order last update timestamp"
+    context_filters:
+      - column: store_id
+        context_key: store_id
+        description: "Filter orders by store_id from conversation context for multi-tenant isolation"

@@ -1,0 +1,75 @@
+downloading uv 0.9.7 x86_64-unknown-linux-gnu
+no checksums to verify
+installing to /root/.local/bin
+  uv
+  uvx
+everything's installed!
+
+To add $HOME/.local/bin to your PATH, either restart your shell or run:
+
+    source $HOME/.local/bin/env (sh, bash, zsh)
+    source $HOME/.local/bin/env.fish (fish)
+Downloading pygments (1.2MiB)
+ Downloading pygments
+Installed 7 packages in 18ms
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 6 items
+
+tests/test_final_state.py ...FF.                                         [100%]
+
+=================================== FAILURES ===================================
+______________ test_stream_jsonl_exists_with_multiple_json_lines _______________
+
+    def test_stream_jsonl_exists_with_multiple_json_lines():
+        assert os.path.isfile(STREAM_FILE), f"stream.jsonl not found at {STREAM_FILE}"
+    
+        lines = _read_non_empty_lines(STREAM_FILE)
+>       assert len(lines) > 1, \
+            f"Expected more than 1 non-empty line in stream.jsonl, got {len(lines)}."
+E       AssertionError: Expected more than 1 non-empty line in stream.jsonl, got 1.
+E       assert 1 > 1
+E        +  where 1 = len(['{"type":"error","error":"You have reached your message limit for your current plan. Please upgrade your plan to continue using the service."}'])
+
+tests/test_final_state.py:60: AssertionError
+______________________ test_summary_json_exists_and_valid ______________________
+
+    def test_summary_json_exists_and_valid():
+        assert os.path.isfile(SUMMARY_FILE), f"summary.json not found at {SUMMARY_FILE}"
+    
+        with open(SUMMARY_FILE, "r") as f:
+            try:
+                summary = json.load(f)
+            except json.JSONDecodeError:
+                pytest.fail("summary.json is not valid JSON")
+    
+        assert isinstance(summary, dict), f"summary.json must be a JSON object, got: {type(summary).__name__}"
+    
+        chunk_count = summary.get("chunkCount")
+        assert isinstance(chunk_count, int), \
+            f"Expected 'chunkCount' in summary.json to be an integer, got: {chunk_count!r}"
+        assert chunk_count >= 1, \
+            f"Expected 'chunkCount' to be >= 1, got {chunk_count}"
+    
+        final_message = summary.get("finalMessage")
+        assert isinstance(final_message, str), \
+            f"Expected 'finalMessage' to be a string, got: {type(final_message).__name__}"
+>       assert final_message.strip() != "", \
+            "Expected 'finalMessage' to be a non-empty string."
+E       AssertionError: Expected 'finalMessage' to be a non-empty string.
+E       assert '' != ''
+E        +  where '' = <built-in method strip of str object at 0xb3b3f0>()
+E        +    where <built-in method strip of str object at 0xb3b3f0> = ''.strip
+
+tests/test_final_state.py:99: AssertionError
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED tests/test_final_state.py::test_index_js_exists
+PASSED tests/test_final_state.py::test_index_js_uses_streaming_sdk_call
+PASSED tests/test_final_state.py::test_run_index_js_produces_outputs
+PASSED tests/test_final_state.py::test_summary_chunk_count_matches_stream_lines
+FAILED tests/test_final_state.py::test_stream_jsonl_exists_with_multiple_json_lines
+FAILED tests/test_final_state.py::test_summary_json_exists_and_valid - Assert...
+========================= 2 failed, 4 passed in 2.97s ==========================

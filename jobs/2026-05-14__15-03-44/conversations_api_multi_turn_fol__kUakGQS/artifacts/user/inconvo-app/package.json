@@ -1,0 +1,10 @@
+{
+  "name": "inconvo-app",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.js",
+  "dependencies": {
+    "@inconvoai/node": "^0.8.0",
+    "dotenv": "^16.4.5"
+  }
+}

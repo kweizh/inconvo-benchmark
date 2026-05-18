@@ -1,0 +1,55 @@
+{
+    "id": "c410f8a0-5bc5-4419-9c12-76062e9e33f2",
+    "started_at": "2026-05-14T15:03:48.208318",
+    "finished_at": "2026-05-14T15:26:14.938987",
+    "n_total_trials": 19,
+    "stats": {
+        "n_trials": 19,
+        "n_errors": 3,
+        "evals": {
+            "pochi__glm-4.7__tasks": {
+                "n_trials": 19,
+                "n_errors": 3,
+                "metrics": [
+                    {
+                        "mean": 0.10526315789473684
+                    }
+                ],
+                "reward_stats": {
+                    "reward": {
+                        "0.0": [
+                            "initialize_inconvo_with_postgres__kaCuXgw",
+                            "api_integration_nextjs__LsgUMkv",
+                            "conversations_api_text_response__XCGgaVd",
+                            "customer_support_bot_order_statu__rWJydz2",
+                            "conversations_api_create_tenant__irbePgq",
+                            "multi_tenant_authorization_conte__weVvWYj",
+                            "sdk_vercel_ai_streaming_ui__EpEDEnS",
+                            "conversations_api_send_message_t__WhqsrCx",
+                            "multi_tenant_reporting_user_reco__HuW9jou",
+                            "relationship_definition_line_ite__5AGxU95",
+                            "metric_definition_gross_margin__k4JSZpM",
+                            "conversations_api_multi_turn_fol__kUakGQS",
+                            "express_api_chat_endpoint__j3hULSB",
+                            "schema_mapping_hide_pii_off_stat__cmMoT8T",
+                            "streaming_response_conversation__ywkCV4w",
+                            "schema_mapping_field_synonyms__UgwHJa6",
+                            "user_identifier_tracking_convers__qwYBgbz"
+                        ],
+                        "1.0": [
+                            "schema_mapping_joinable_tables__9B2AVz9",
+                            "sdk_vercel_ai_tool_integration__i2BkTVo"
+                        ]
+                    }
+                },
+                "exception_stats": {
+                    "AgentTimeoutError": [
+                        "api_integration_nextjs__LsgUMkv",
+                        "sdk_vercel_ai_streaming_ui__EpEDEnS",
+                        "sdk_vercel_ai_tool_integration__i2BkTVo"
+                    ]
+                }
+            }
+        }
+    }
+}

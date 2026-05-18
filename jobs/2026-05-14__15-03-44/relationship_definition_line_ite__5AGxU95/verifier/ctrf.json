@@ -1,0 +1,53 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 3,
+            "passed": 1,
+            "failed": 2,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1778743043.5007987,
+            "stop": 1778743046.7040446
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_inconvo_yaml_has_line_item_to_product_relation",
+                "status": "passed",
+                "duration": 0.0005948832258582115,
+                "start": 1778743043.536641,
+                "stop": 1778743043.537459,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_run_index_js",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 3.1266092327423394,
+                "start": 1778743043.537673,
+                "stop": 1778743046.6987777,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_run_index_js():\n        result = subprocess.run(\n            [\"node\", \"index.js\"],\n            cwd=PROJECT_DIR,\n            capture_output=True,\n            text=True,\n        )\n>       assert result.returncode == 0, (\n            f\"'node index.js' failed with output: {result.stderr}\\n{result.stdout}\"\n        )\nE       AssertionError: 'node index.js' failed with output: PermissionDeniedError: 403 You have reached your message limit for your current plan. Please upgrade your plan to continue using the service.\nE             at APIError.generate (/home/user/inconvo-app/node_modules/@inconvoai/node/core/error.js:46:20)\nE             at Inconvo.makeStatusError (/home/user/inconvo-app/node_modules/@inconvoai/node/client.js:119:32)\nE             at Inconvo.makeRequest (/home/user/inconvo-app/node_modules/@inconvoai/node/client.js:261:30)\nE             at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\nE             at async main (/home/user/inconvo-app/index.js:18:25) {\nE           status: 403,\nE           headers: Headers {\nE             'content-type': 'text/plain;charset=UTF-8',\nE             'transfer-encoding': 'chunked',\nE             connection: 'keep-alive',\nE             date: 'Thu, 14 May 2026 07:17:26 GMT',\nE             vary: 'rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch',\nE             'access-control-allow-origin': '*',\nE             'x-cache': 'Error from cloudfront',\nE             via: '1.1 a1d020574da8e7032ee462a9c73996c6.cloudfront.net (CloudFront)',\nE             'x-amz-cf-pop': 'LAX54-P10',\nE             'x-amz-cf-id': 'Ba0qXhCqws9Q70LLC8NGKz-6LfBbT_ujc561_Ts_0Fh0ktCWVirJhQ=='\nE           },\nE           error: undefined\nE         }\nE         \nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['node', 'index.js'], returncode=1, stdout='', stderr=\"PermissionDeniedError: 403 You have reach...4-P10',\\n    'x-amz-cf-id': 'Ba0qXhCqws9Q70LLC8NGKz-6LfBbT_ujc561_Ts_0Fh0ktCWVirJhQ=='\\n  },\\n  error: undefined\\n}\\n\").returncode\n\ntests/test_final_state.py:44: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_response_json_exists_and_valid",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0009206128306686878,
+                "start": 1778743046.6990564,
+                "stop": 1778743046.7038538,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_response_json_exists_and_valid():\n        assert os.path.isfile(RESPONSE_FILE), f\"response.json not found at {RESPONSE_FILE}\"\n    \n        with open(RESPONSE_FILE, \"r\") as f:\n            try:\n                data = json.load(f)\n            except json.JSONDecodeError:\n                pytest.fail(\"response.json is not valid JSON\")\n    \n        if isinstance(data, dict):\n            assert data.get(\"error\") is not True, (\n                f\"response.json indicates an error: {data}\"\n            )\n    \n        content_str = json.dumps(data).lower()\n>       assert (\n            \"table\" in content_str\n            or \"data\" in content_str\n            or \"rows\" in content_str\n            or \"text\" in content_str\n            or \"product\" in content_str\n        ), (\n            f\"response.json does not seem to contain a real Inconvo agent response payload. \"\n            f\"Content: {data}\"\n        )\nE       AssertionError: response.json does not seem to contain a real Inconvo agent response payload. Content: {'error': '403 You have reached your message limit for your current plan. Please upgrade your plan to continue using the service.', 'status': 403, 'name': 'Error'}\nE       assert ('table' in '{\"error\": \"403 you have reached your message limit for your current plan. please upgrade your plan to continue using the service.\", \"status\": 403, \"name\": \"error\"}' or 'data' in '{\"error\": \"403 you have reached your message limit for your current plan. please upgrade your plan to continue using the service.\", \"status\": 403, \"name\": \"error\"}' or 'rows' in '{\"error\": \"403 you have reached your message limit for your current plan. please upgrade your plan to continue using the service.\", \"status\": 403, \"name\": \"error\"}' or 'text' in '{\"error\": \"403 you have reached your message limit for your current plan. please upgrade your plan to continue using the service.\", \"status\": 403, \"name\": \"error\"}' or 'product' in '{\"error\": \"403 you have reached your message limit for your current plan. please upgrade your plan to continue using the service.\", \"status\": 403, \"name\": \"error\"}')\n\ntests/test_final_state.py:64: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

@@ -1,0 +1,153 @@
+downloading uv 0.9.7 x86_64-unknown-linux-gnu
+no checksums to verify
+installing to /root/.local/bin
+  uv
+  uvx
+everything's installed!
+
+To add $HOME/.local/bin to your PATH, either restart your shell or run:
+
+    source $HOME/.local/bin/env (sh, bash, zsh)
+    source $HOME/.local/bin/env.fish (fish)
+Downloading pygments (1.2MiB)
+ Downloading pygments
+Installed 7 packages in 15ms
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 4 items
+
+tests/test_final_state.py .EEE                                           [100%]
+
+==================================== ERRORS ====================================
+__________________ ERROR at setup of test_alice_response_file __________________
+
+    @pytest.fixture(scope="module")
+    def run_index_js():
+        assert os.path.isfile(INDEX_JS), f"index.js not found at {INDEX_JS}."
+        result = subprocess.run(
+            ["node", "index.js"],
+            cwd=PROJECT_DIR,
+            capture_output=True,
+            text=True,
+            timeout=300,
+        )
+>       assert result.returncode == 0, (
+            f"'node index.js' failed (rc={result.returncode}).\n"
+            f"stdout:\n{result.stdout}\nstderr:\n{result.stderr}"
+        )
+E       AssertionError: 'node index.js' failed (rc=1).
+E         stdout:
+E         
+E         stderr:
+E         file:///home/user/inconvo-app/node_modules/@inconvoai/node/core/error.mjs:36
+E                     return new BadRequestError(status, error, message, headers);
+E                            ^
+E         
+E         BadRequestError: 400 User context is disabled for this agent. Omit userContext when starting a conversation.
+E             at APIError.generate (file:///home/user/inconvo-app/node_modules/@inconvoai/node/core/error.mjs:36:20)
+E             at Inconvo.makeStatusError (file:///home/user/inconvo-app/node_modules/@inconvoai/node/client.mjs:116:32)
+E             at Inconvo.makeRequest (file:///home/user/inconvo-app/node_modules/@inconvoai/node/client.mjs:258:30)
+E             at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+E             at async file:///home/user/inconvo-app/index.js:20:24 {
+E           status: 400,
+E           headers: Headers {},
+E           error: undefined
+E         }
+E         
+E         Node.js v24.15.0
+E         
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['node', 'index.js'], returncode=1, stdout='', stderr='file:///home/user/inconvo-app/node_module...ser/inconvo-app/index.js:20:24 {\n  status: 400,\n  headers: Headers {},\n  error: undefined\n}\n\nNode.js v24.15.0\n').returncode
+
+tests/test_final_state.py:28: AssertionError
+___________________ ERROR at setup of test_bob_response_file ___________________
+
+    @pytest.fixture(scope="module")
+    def run_index_js():
+        assert os.path.isfile(INDEX_JS), f"index.js not found at {INDEX_JS}."
+        result = subprocess.run(
+            ["node", "index.js"],
+            cwd=PROJECT_DIR,
+            capture_output=True,
+            text=True,
+            timeout=300,
+        )
+>       assert result.returncode == 0, (
+            f"'node index.js' failed (rc={result.returncode}).\n"
+            f"stdout:\n{result.stdout}\nstderr:\n{result.stderr}"
+        )
+E       AssertionError: 'node index.js' failed (rc=1).
+E         stdout:
+E         
+E         stderr:
+E         file:///home/user/inconvo-app/node_modules/@inconvoai/node/core/error.mjs:36
+E                     return new BadRequestError(status, error, message, headers);
+E                            ^
+E         
+E         BadRequestError: 400 User context is disabled for this agent. Omit userContext when starting a conversation.
+E             at APIError.generate (file:///home/user/inconvo-app/node_modules/@inconvoai/node/core/error.mjs:36:20)
+E             at Inconvo.makeStatusError (file:///home/user/inconvo-app/node_modules/@inconvoai/node/client.mjs:116:32)
+E             at Inconvo.makeRequest (file:///home/user/inconvo-app/node_modules/@inconvoai/node/client.mjs:258:30)
+E             at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+E             at async file:///home/user/inconvo-app/index.js:20:24 {
+E           status: 400,
+E           headers: Headers {},
+E           error: undefined
+E         }
+E         
+E         Node.js v24.15.0
+E         
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['node', 'index.js'], returncode=1, stdout='', stderr='file:///home/user/inconvo-app/node_module...ser/inconvo-app/index.js:20:24 {\n  status: 400,\n  headers: Headers {},\n  error: undefined\n}\n\nNode.js v24.15.0\n').returncode
+
+tests/test_final_state.py:28: AssertionError
+_________________ ERROR at setup of test_conversation_ids_file _________________
+
+    @pytest.fixture(scope="module")
+    def run_index_js():
+        assert os.path.isfile(INDEX_JS), f"index.js not found at {INDEX_JS}."
+        result = subprocess.run(
+            ["node", "index.js"],
+            cwd=PROJECT_DIR,
+            capture_output=True,
+            text=True,
+            timeout=300,
+        )
+>       assert result.returncode == 0, (
+            f"'node index.js' failed (rc={result.returncode}).\n"
+            f"stdout:\n{result.stdout}\nstderr:\n{result.stderr}"
+        )
+E       AssertionError: 'node index.js' failed (rc=1).
+E         stdout:
+E         
+E         stderr:
+E         file:///home/user/inconvo-app/node_modules/@inconvoai/node/core/error.mjs:36
+E                     return new BadRequestError(status, error, message, headers);
+E                            ^
+E         
+E         BadRequestError: 400 User context is disabled for this agent. Omit userContext when starting a conversation.
+E             at APIError.generate (file:///home/user/inconvo-app/node_modules/@inconvoai/node/core/error.mjs:36:20)
+E             at Inconvo.makeStatusError (file:///home/user/inconvo-app/node_modules/@inconvoai/node/client.mjs:116:32)
+E             at Inconvo.makeRequest (file:///home/user/inconvo-app/node_modules/@inconvoai/node/client.mjs:258:30)
+E             at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+E             at async file:///home/user/inconvo-app/index.js:20:24 {
+E           status: 400,
+E           headers: Headers {},
+E           error: undefined
+E         }
+E         
+E         Node.js v24.15.0
+E         
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['node', 'index.js'], returncode=1, stdout='', stderr='file:///home/user/inconvo-app/node_module...ser/inconvo-app/index.js:20:24 {\n  status: 400,\n  headers: Headers {},\n  error: undefined\n}\n\nNode.js v24.15.0\n').returncode
+
+tests/test_final_state.py:28: AssertionError
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED tests/test_final_state.py::test_users_json_unchanged
+ERROR tests/test_final_state.py::test_alice_response_file - AssertionError: '...
+ERROR tests/test_final_state.py::test_bob_response_file - AssertionError: 'no...
+ERROR tests/test_final_state.py::test_conversation_ids_file - AssertionError:...
+========================= 1 passed, 3 errors in 1.49s ==========================

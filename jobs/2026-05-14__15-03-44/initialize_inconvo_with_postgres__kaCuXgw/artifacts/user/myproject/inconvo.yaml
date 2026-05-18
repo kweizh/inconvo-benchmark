@@ -1,0 +1,36 @@
+# Inconvo Project Configuration
+# This file configures the Inconvo semantic layer for your database
+
+project:
+  name: myproject
+  version: "1.0.0"
+
+database:
+  # Database connection is configured via environment variable
+  # See .env file for DATABASE_URL
+  type: postgresql
+  schema: public
+
+# Semantic model settings
+semantic_model:
+  # Tables that can be queried directly
+  queryable_tables: []
+  
+  # Tables that can only be joined
+  joinable_tables: []
+  
+  # Virtual tables (computed/views)
+  virtual_tables: []
+
+# User context configuration
+user_context:
+  # Fields available for user context
+  fields: []
+  
+  # Default user context values
+  defaults: {}
+
+# Inconvo API configuration
+api:
+  # API key should be set via INCONVO_API_KEY environment variable
+  base_url: https://app.inconvo.ai

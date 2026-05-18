@@ -1,0 +1,38 @@
+version: "1"
+
+tables:
+  - name: orders
+    type: Queryable
+    schema:
+      - name: id
+        type: integer
+        primary_key: true
+      - name: customer_id
+        type: integer
+      - name: order_date
+        type: date
+      - name: amount
+        type: number
+      - name: status
+        type: string
+    relationships:
+      - name: customer
+        to_table: customers
+        type: many_to_one
+        from_column: customer_id
+        to_column: id
+
+  - name: customers
+    type: Joinable
+    schema:
+      - name: id
+        type: integer
+        primary_key: true
+      - name: name
+        type: string
+      - name: email
+        type: string
+      - name: country
+        type: string
+      - name: created_at
+        type: date

@@ -1,0 +1,72 @@
+downloading uv 0.9.7 x86_64-unknown-linux-gnu
+no checksums to verify
+installing to /root/.local/bin
+  uv
+  uvx
+everything's installed!
+
+To add $HOME/.local/bin to your PATH, either restart your shell or run:
+
+    source $HOME/.local/bin/env (sh, bash, zsh)
+    source $HOME/.local/bin/env.fish (fish)
+Downloading pygments (1.2MiB)
+ Downloading pygments
+Installed 7 packages in 245ms
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 3 items
+
+tests/test_final_state.py .F.                                            [100%]
+
+=================================== FAILURES ===================================
+______________________________ test_run_index_js _______________________________
+
+    def test_run_index_js():
+        # Run the script that interacts with the SDK
+        result = subprocess.run(
+            ["node", "index.js"],
+            cwd=PROJECT_DIR,
+            capture_output=True,
+            text=True
+        )
+>       assert result.returncode == 0, f"'node index.js' failed with output: {result.stderr}\n{result.stdout}"
+E       AssertionError: 'node index.js' failed with output: Error: PermissionDeniedError: 403 You have reached your message limit for your current plan. Please upgrade your plan to continue using the service.
+E             at APIError.generate (/home/user/inconvo-bot/node_modules/@inconvoai/node/core/error.js:46:20)
+E             at Inconvo.makeStatusError (/home/user/inconvo-bot/node_modules/@inconvoai/node/client.js:119:32)
+E             at Inconvo.makeRequest (/home/user/inconvo-bot/node_modules/@inconvoai/node/client.js:261:30)
+E             at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+E             at async main (/home/user/inconvo-bot/index.js:25:22) {
+E           status: 403,
+E           headers: Headers {
+E             'content-type': 'text/plain;charset=UTF-8',
+E             'transfer-encoding': 'chunked',
+E             connection: 'keep-alive',
+E             date: 'Thu, 14 May 2026 07:10:22 GMT',
+E             vary: 'rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch',
+E             'access-control-allow-origin': '*',
+E             'x-cache': 'Error from cloudfront',
+E             via: '1.1 7209599daa2d2d4f7d86ed85ac7bf618.cloudfront.net (CloudFront)',
+E             'x-amz-cf-pop': 'LAX54-P10',
+E             'x-amz-cf-id': 'Oo_vLT98eZj9_l_KuO_BY7v5wYvlmM_pbnOPKoLeO2dBM0FYwCMyKw=='
+E           },
+E           error: undefined
+E         }
+E         
+E         ◇ injected env (0) from .env // tip: ⌘ custom filepath { path: '/custom/path/.env' }
+E         Creating conversation...
+E         Conversation created: convo_4d927965-9106-4ea8-8ad9-745d42093129
+E         Sending message: What is the status of order 123?
+E         Error response saved to: /home/user/inconvo-bot/response.json
+E         
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['node', 'index.js'], returncode=1, stdout="◇ injected env (0) from .env // tip: ⌘ custom filepa...4-P10',\n    'x-amz-cf-id': 'Oo_vLT98eZj9_l_KuO_BY7v5wYvlmM_pbnOPKoLeO2dBM0FYwCMyKw=='\n  },\n  error: undefined\n}\n").returncode
+
+tests/test_final_state.py:28: AssertionError
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED tests/test_final_state.py::test_inconvo_yaml_exists_and_contains_orders_table
+PASSED tests/test_final_state.py::test_response_json_exists_and_valid
+FAILED tests/test_final_state.py::test_run_index_js - AssertionError: 'node i...
+========================= 1 failed, 2 passed in 3.92s ==========================

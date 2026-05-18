@@ -1,0 +1,114 @@
+downloading uv 0.9.7 x86_64-unknown-linux-gnu
+no checksums to verify
+installing to /root/.local/bin
+  uv
+  uvx
+everything's installed!
+
+To add $HOME/.local/bin to your PATH, either restart your shell or run:
+
+    source $HOME/.local/bin/env (sh, bash, zsh)
+    source $HOME/.local/bin/env.fish (fish)
+Downloading pygments (1.2MiB)
+ Downloading pygments
+Installed 7 packages in 14ms
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 6 items
+
+tests/test_final_state.py .F.FF.                                         [100%]
+
+=================================== FAILURES ===================================
+______________________________ test_run_index_js _______________________________
+
+    def test_run_index_js():
+        """Run the multi-turn script against the real Inconvo Data Agent."""
+        result = subprocess.run(
+            ["node", "index.js"],
+            cwd=PROJECT_DIR,
+            capture_output=True,
+            text=True,
+            timeout=300,
+        )
+>       assert result.returncode == 0, \
+            f"'node index.js' failed with output:\nSTDERR: {result.stderr}\nSTDOUT: {result.stdout}"
+E       AssertionError: 'node index.js' failed with output:
+E         STDERR: Error: PermissionDeniedError: 403 You have reached your message limit for your current plan. Please upgrade your plan to continue using the service.
+E             at APIError.generate (/home/user/inconvo-app/node_modules/@inconvoai/node/core/error.js:46:20)
+E             at Inconvo.makeStatusError (/home/user/inconvo-app/node_modules/@inconvoai/node/client.js:119:32)
+E             at Inconvo.makeRequest (/home/user/inconvo-app/node_modules/@inconvoai/node/client.js:261:30)
+E             at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+E             at async main (/home/user/inconvo-app/index.js:27:27) {
+E           status: 403,
+E           headers: Headers {
+E             'content-type': 'text/plain;charset=UTF-8',
+E             'transfer-encoding': 'chunked',
+E             connection: 'keep-alive',
+E             date: 'Thu, 14 May 2026 07:20:23 GMT',
+E             vary: 'rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch',
+E             'access-control-allow-origin': '*',
+E             'x-cache': 'Error from cloudfront',
+E             via: '1.1 eef563fae53c37faf4507932d58833c6.cloudfront.net (CloudFront)',
+E             'x-amz-cf-pop': 'LAX54-P10',
+E             'x-amz-cf-id': 'aa-eVZXW1a0LRoxMGqQy0bN8Yf9W0rxKaIc6J616RASaUVR3wdBCCw=='
+E           },
+E           error: undefined
+E         }
+E         
+E         STDOUT: Conversation created with ID: convo_0f040f14-9cab-45b4-90d4-5f0e83d39dff
+E         
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['node', 'index.js'], returncode=1, stdout='Conversation created with ID: convo_0f040f14-9cab-45...4-P10',\n    'x-amz-cf-id': 'aa-eVZXW1a0LRoxMGqQy0bN8Yf9W0rxKaIc6J616RASaUVR3wdBCCw=='\n  },\n  error: undefined\n}\n").returncode
+
+tests/test_final_state.py:26: AssertionError
+__________________ test_first_response_is_valid_real_response __________________
+
+    def test_first_response_is_valid_real_response():
+>       data = _load_response(FIRST_RESPONSE_FILE)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_final_state.py:64: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = '/home/user/inconvo-app/first_response.json'
+
+    def _load_response(path):
+>       assert os.path.isfile(path), f"Response file not found at {path}"
+E       AssertionError: Response file not found at /home/user/inconvo-app/first_response.json
+E       assert False
+E        +  where False = <function isfile at 0x7305ab7902c0>('/home/user/inconvo-app/first_response.json')
+E        +    where <function isfile at 0x7305ab7902c0> = <module 'posixpath' (frozen)>.isfile
+E        +      where <module 'posixpath' (frozen)> = os.path
+
+tests/test_final_state.py:43: AssertionError
+_________________ test_second_response_is_valid_real_response __________________
+
+    def test_second_response_is_valid_real_response():
+>       data = _load_response(SECOND_RESPONSE_FILE)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_final_state.py:69: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = '/home/user/inconvo-app/second_response.json'
+
+    def _load_response(path):
+>       assert os.path.isfile(path), f"Response file not found at {path}"
+E       AssertionError: Response file not found at /home/user/inconvo-app/second_response.json
+E       assert False
+E        +  where False = <function isfile at 0x7305ab7902c0>('/home/user/inconvo-app/second_response.json')
+E        +    where <function isfile at 0x7305ab7902c0> = <module 'posixpath' (frozen)>.isfile
+E        +      where <module 'posixpath' (frozen)> = os.path
+
+tests/test_final_state.py:43: AssertionError
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED tests/test_final_state.py::test_index_js_exists
+PASSED tests/test_final_state.py::test_conversation_id_file_contains_non_empty_id
+PASSED tests/test_final_state.py::test_index_js_sends_multi_turn_followup
+FAILED tests/test_final_state.py::test_run_index_js - AssertionError: 'node i...
+FAILED tests/test_final_state.py::test_first_response_is_valid_real_response
+FAILED tests/test_final_state.py::test_second_response_is_valid_real_response
+========================= 3 failed, 3 passed in 2.88s ==========================

@@ -1,0 +1,50 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 3,
+            "passed": 2,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1778743057.649777,
+            "stop": 1778743059.2784626
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_inconvo_yaml_exists_and_contains_filter",
+                "status": "passed",
+                "duration": 0.0006985277868807316,
+                "start": 1778743057.661643,
+                "stop": 1778743057.6626165,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_run_index_js",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 1.599342068657279,
+                "start": 1778743057.6628683,
+                "stop": 1778743059.2774088,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_run_index_js():\n        # Priority 1: Run the script that interacts with the SDK\n        result = subprocess.run(\n            [\"node\", \"index.js\"],\n            cwd=PROJECT_DIR,\n            capture_output=True,\n            text=True\n        )\n>       assert result.returncode == 0, f\"'node index.js' failed with output: {result.stderr}\\n{result.stdout}\"\nE       AssertionError: 'node index.js' failed with output: Error: 400 User context is disabled for this agent. Omit userContext when starting a conversation.\nE         \nE         \u25c7 injected env (0) from .env // tip: \u2318 suppress logs { quiet: true }\nE         Creating conversation with userContext: { store_id: 123 }\nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['node', 'index.js'], returncode=1, stdout='\u25c7 injected env (0) from .env // tip: \u2318 suppress logs...23 }\\n', stderr='Error: 400 User context is disabled for this agent. Omit userContext when starting a conversation.\\n').returncode\n\ntests/test_final_state.py:27: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            },
+            {
+                "name": "test_final_state.py::test_response_json_exists_and_valid",
+                "status": "passed",
+                "duration": 0.0005625588819384575,
+                "start": 1778743059.277619,
+                "stop": 1778743059.2783113,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            }
+        ]
+    }
+}

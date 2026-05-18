@@ -1,0 +1,18 @@
+{
+  "error": {
+    "message": "403 You have reached your message limit for your current plan. Please upgrade your plan to continue using the service.",
+    "status": 403,
+    "headers": {
+      "access-control-allow-origin": "*",
+      "connection": "keep-alive",
+      "content-type": "text/plain;charset=UTF-8",
+      "date": "Thu, 14 May 2026 07:10:22 GMT",
+      "transfer-encoding": "chunked",
+      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+      "via": "1.1 7209599daa2d2d4f7d86ed85ac7bf618.cloudfront.net (CloudFront)",
+      "x-amz-cf-id": "Oo_vLT98eZj9_l_KuO_BY7v5wYvlmM_pbnOPKoLeO2dBM0FYwCMyKw==",
+      "x-amz-cf-pop": "LAX54-P10",
+      "x-cache": "Error from cloudfront"
+    }
+  }
+}

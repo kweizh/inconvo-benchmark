@@ -1,0 +1,48 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 3,
+            "passed": 2,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1778742879.5291574,
+            "stop": 1778743010.181769
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_api_route_configured_correctly",
+                "status": "passed",
+                "duration": 0.0005742479115724564,
+                "start": 1778742879.5438774,
+                "stop": 1778742879.5446815,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_page_uses_use_chat",
+                "status": "passed",
+                "duration": 0.0004861620254814625,
+                "start": 1778742879.5448909,
+                "stop": 1778742879.5455234,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_browser_ui",
+                "status": "failed",
+                "duration": 130.58521391963586,
+                "start": 1778742879.5457103,
+                "stop": 1778743010.1814287,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "@pytest.fixture(scope=\"module\")\n    def start_app():\n        # Build the app first\n        build_process = subprocess.run(\n            [\"npm\", \"run\", \"build\"],\n            cwd=PROJECT_DIR,\n            stdout=subprocess.PIPE,\n            stderr=subprocess.PIPE,\n        )\n        if build_process.returncode != 0:\n            pytest.fail(f\"Build failed: {build_process.stderr.decode('utf-8')}\")\n    \n        # Start the app\n        process = subprocess.Popen(\n            [\"npm\", \"start\"],\n            cwd=PROJECT_DIR,\n            stdout=subprocess.PIPE,\n            stderr=subprocess.PIPE,\n            preexec_fn=os.setsid\n        )\n    \n        # Wait for the app to be ready\n        if not wait_for_port(3000):\n            import signal\n            os.killpg(os.getpgid(process.pid), signal.SIGTERM)\n>           pytest.fail(\"App failed to start and listen on required ports.\")\nE           Failed: App failed to start and listen on required ports.\n\ntests/test_final_state.py:44: Failed"
+            }
+        ]
+    }
+}

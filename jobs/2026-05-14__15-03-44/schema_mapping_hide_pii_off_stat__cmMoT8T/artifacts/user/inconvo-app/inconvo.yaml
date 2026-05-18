@@ -1,0 +1,19 @@
+tables:
+  orders:
+    state: Queryable
+    fields:
+      id: { state: On }
+      total_amount: { state: On, type: measure }
+      created_at: { state: On, type: dimension }
+      customer_id: { state: On }
+  customers:
+    state: Queryable
+    fields:
+      id: { state: On }
+      name: { state: On }
+      email: { state: Off }
+      phone: { state: Off }
+relations:
+  - name: order_to_customer
+    left: orders.customer_id
+    right: customers.id
